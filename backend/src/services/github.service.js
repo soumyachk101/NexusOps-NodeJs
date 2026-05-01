@@ -1,7 +1,11 @@
-const { Octokit } = require('@octokit/rest');
+let _OctokitClass = null;
 
-function getOctokit(token) {
-  return new Octokit({ auth: token });
+async function getOctokit(token) {
+  if (!_OctokitClass) {
+    const { Octokit } = await import('@octokit/rest');
+    _OctokitClass = Octokit;
+  }
+  return new _OctokitClass({ auth: token });
 }
 
 function splitRepo(fullName) {
@@ -11,7 +15,7 @@ function splitRepo(fullName) {
 
 async function fetchFileContent(fullName, filePath, token) {
   const { owner, repo } = splitRepo(fullName);
-  const octokit = getOctokit(token);
+  const octokit = await getOctokit(token);
   const { data } = await octokit.repos.getContent({ owner, repo, path: filePath });
   if (Array.isArray(data)) throw new Error(`${filePath} is a directory, not a file`);
   return Buffer.from(data.content, 'base64').toString('utf8');
@@ -33,7 +37,7 @@ async function fetchMultipleFiles(fullName, filePaths, token) {
 
 async function createBranch(fullName, baseBranch, newBranch, token) {
   const { owner, repo } = splitRepo(fullName);
-  const octokit = getOctokit(token);
+  const octokit = await getOctokit(token);
   const { data: ref } = await octokit.git.getRef({ owner, repo, ref: `heads/${baseBranch}` });
   await octokit.git.createRef({
     owner,
@@ -46,7 +50,7 @@ async function createBranch(fullName, baseBranch, newBranch, token) {
 
 async function commitFileChange(fullName, branch, filePath, content, message, token) {
   const { owner, repo } = splitRepo(fullName);
-  const octokit = getOctokit(token);
+  const octokit = await getOctokit(token);
   let sha;
   try {
     const { data } = await octokit.repos.getContent({ owner, repo, path: filePath, ref: branch });
@@ -66,7 +70,7 @@ async function commitFileChange(fullName, branch, filePath, content, message, to
 
 async function createPullRequest(fullName, { title, body, head, base }, token) {
   const { owner, repo } = splitRepo(fullName);
-  const octokit = getOctokit(token);
+  const octokit = await getOctokit(token);
   const { data } = await octokit.pulls.create({
     owner,
     repo,
