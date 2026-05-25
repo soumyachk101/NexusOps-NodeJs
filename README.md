@@ -2,621 +2,865 @@
 
 <br />
 
-```
-███╗   ██╗███████╗██╗  ██╗██╗   ██╗███████╗ ██████╗ ██████╗ ███████╗
-████╗  ██║██╔════╝╚██╗██╔╝██║   ██║██╔════╝██╔═══██╗██╔══██╗██╔════╝
-██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗██║   ██║██████╔╝███████╗
-██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║██║   ██║██╔═══╝ ╚════██║
-██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║╚██████╔╝██║     ███████║
-╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚══════╝
-```
+<img src="https://media.giphy.com/media/qgQUggACfP3NqCxMx6/giphy.gif" width="80" height="80" />
+
+# **NexusOps 2.0**
 
 ### The Intelligent Command Center for Modern AIOps
 
-<br />
-
-[![Version](https://img.shields.io/badge/version-2.0.4-6D28D9?style=flat-square)](https://github.com/soumyachk101/NexusOps-2.0/releases)
-[![License](https://img.shields.io/badge/license-MIT-0F6E56?style=flat-square)](./LICENSE)
-[![Node.js](https://img.shields.io/badge/node-20.x-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
-[![TypeScript](https://img.shields.io/badge/typescript-5.6-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://typescriptlang.org)
-[![LangChain](https://img.shields.io/badge/LangChain.js-0.3-1C3C3C?style=flat-square)](https://js.langchain.com)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org)
-[![Docker](https://img.shields.io/badge/docker-compose-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG1hNnV3dHF0ZHRhazQ3NGNqbjB4cnY4bG14ZmJqcG16cjJ4eGZzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif" width="100%" height="3" />
 
 <br />
 
-> *Most AI observability tools only see the current stack trace.*  
+[![Version](https://img.shields.io/badge/version-2.0.4-8B5CF6?style=for-the-badge&logoColor=white)](https://github.com/soumyachk101/NexusOps-2.0/releases)
+[![License](https://img.shields.io/badge/license-MIT-10B981?style=for-the-badge&logoColor=white)](./LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
+[![Prisma](https://img.shields.io/badge/Prisma-5.x-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io)
+[![LangChain](https://img.shields.io/badge/LangChain-0.3-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)](https://js.langchain.com)
+[![Groq](https://img.shields.io/badge/Groq-AI-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com)
+[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+
+<br />
+
+> *Most AI observability tools only see the current stack trace.*
 > *NexusOps sees the last 6 months of your team's institutional memory.*
 
 <br />
 
-[Getting Started](#-getting-started) · [Architecture](#-architecture) · [Features](#-core-features) · [Configuration](#-configuration) · [Contributing](#-contributing)
-
-<br />
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG1hNnV3dHF0ZHRhazQ3NGNqbjB4cnY4bG14ZmJqcG16cjJ4eGZzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif" width="100%" height="3" />
 
 </div>
 
 ---
 
-## Table of Contents
+## **Table of Contents**
 
-- [Overview](#-overview)
+- [Why NexusOps?](#-why-nexusops)
+- [How It Works](#-how-it-works)
 - [Architecture](#-architecture)
 - [Core Features](#-core-features)
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Quick Start with Docker](#quick-start-with-docker)
-  - [Manual Installation](#manual-installation)
-- [Configuration](#-configuration)
 - [API Reference](#-api-reference)
-- [Security Model](#-security-model)
 - [Project Structure](#-project-structure)
+- [Configuration](#-configuration)
+- [Security Model](#-security-model)
 - [Roadmap](#-roadmap)
 - [Contributing](#-contributing)
 - [License](#-license)
 
 ---
 
-## 📌 Overview
+## **Why NexusOps?**
 
-**NexusOps 2.0** is a production-grade operational intelligence platform engineered for Site Reliability Engineers who need more than alerts — they need *context*. It is built on the principle that the most critical information during an incident is not what broke, but **what broke before and how the team fixed it**.
+<br />
 
-NexusOps unifies three pillars into a single cohesive workflow:
+<table>
+<tr>
+<td width="50%">
 
-| Pillar | What it does |
-|---|---|
-| **Event Ingestion** | Consumes webhooks from Sentry, custom telemetry pipelines, and Telegram |
-| **Memory Enrichment** | Augments each incident with semantically similar past events and runbooks via LangChain.js + pgvector |
-| **AI Remediation** | Generates root cause analysis and a draft code fix via Claude Sonnet 4 through LangChain LCEL chains |
+### The Problem
 
-No auto-merges. No silent deployments. Every fix is a Draft Pull Request reviewed by a human engineer.
+Every production incident follows the same painful cycle:
+
+1. Alert fires at 2 AM
+2. SRE scrambles through Slack threads
+3. Someone vaguely remembers a similar bug from 3 months ago
+4. Nobody can find the old fix
+5. Hours wasted re-diagnosing known issues
+
+</td>
+<td width="50%">
+
+### The Solution
+
+NexusOps **remembers** so your team doesn't have to:
+
+1. Webhook arrives — incident captured instantly
+2. Memory engine finds 3 similar past incidents
+3. AI generates root cause analysis with context
+4. Draft PR created with a proposed fix
+5. Human reviews and merges. Done.
+
+</td>
+</tr>
+</table>
+
+<br />
+
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG1hNnV3dHF0ZHRhazQ3NGNqbjB4cnY4bG14ZmJqcG16cjJ4eGZzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif" width="100%" height="2" />
 
 ---
 
-## 🏗️ Architecture
+## **How It Works**
 
-NexusOps is designed as a distributed, event-driven system with strict separation between the ingestion layer, the intelligence layer, and the resolution layer.
+<br />
+
+```mermaid
+graph LR
+    A["🔴 Sentry\nWebhook"] -->|"POST /webhook/sentry"| B["⚡ Express\nGateway"]
+    C["✈️ Telegram\nBot"] -->|"Messages"| B
+    D["📡 Custom\nTelemetry"] -->|"POST /webhook/error"| B
+    
+    B --> E["🛡️ PII\nSanitizer"]
+    E --> F["🧠 Memory\nEngine"]
+    F <-->|"pgvector\n1536-dim"| G[("🐘 PostgreSQL\npgvector")]
+    
+    F --> H["⚙️ BullMQ\nQueue"]
+    H <--> I[("🔴 Redis")]
+    H --> J["🤖 Groq\nLLM"]
+    
+    J --> K["📝 Root Cause\nAnalysis"]
+    K --> L["🔧 Fix\nGenerator"]
+    L --> M["📬 GitHub\nDraft PR"]
+    L --> N["📊 Dashboard\nUpdate"]
+    L --> O["💬 Telegram\nNotification"]
+    
+    style A fill:#EF4444,stroke:#B91C1C,color:#fff
+    style C fill:#3B82F6,stroke:#1D4ED8,color:#fff
+    style D fill:#F59E0B,stroke:#D97706,color:#fff
+    style B fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style E fill:#10B981,stroke:#059669,color:#fff
+    style F fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style G fill:#3B82F6,stroke:#1D4ED8,color:#fff
+    style H fill:#F59E0B,stroke:#D97706,color:#fff
+    style I fill:#EF4444,stroke:#B91C1C,color:#fff
+    style J fill:#10B981,stroke:#059669,color:#fff
+    style K fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style L fill:#3B82F6,stroke:#1D4ED8,color:#fff
+    style M fill:#10B981,stroke:#059669,color:#fff
+    style N fill:#F59E0B,stroke:#D97706,color:#fff
+    style O fill:#EF4444,stroke:#B91C1C,color:#fff
+```
+
+<br />
+
+### Incident Lifecycle
+
+```mermaid
+stateDiagram-v2
+    [*] --> Received : Webhook Arrives
+    Received --> Sanitizing : PII Stripped
+    Sanitizing --> Analyzing : Groq LLM Analysis
+    Analyzing --> Querying_Memory : pgvector Search
+    Querying_Memory --> Generating_Fix : Context Enriched
+    Generating_Fix --> Fix_Blocked : Safety Check Failed
+    Generating_Fix --> Resolved : Fix Generated
+    Resolved --> PR_Created : Human Creates PR
+    PR_Created --> Merged : Human Reviews & Merges
+    Fix_Blocked --> [*]
+    Merged --> [*]
+    
+    Received --> Failed : Pipeline Error
+    Failed --> Received : Retry
+```
+
+<br />
+
+---
+
+## **Architecture**
+
+<br />
 
 ```mermaid
 graph TD
-    subgraph INGESTION ["⬛ Ingestion Mesh"]
-        A1[🔴 Sentry Webhooks]
-        A2[✈️ Telegram Bot — Telegraf]
-        A3[📡 Custom Telemetry]
+    subgraph INGESTION ["📥 INGESTION LAYER"]
+        A1["🔴 Sentry Webhooks"]
+        A2["✈️ Telegram Bot — Telegraf"]
+        A3["📡 Custom Telemetry"]
+        A4["📝 Manual Input"]
     end
 
-    subgraph INTELLIGENCE ["🟣 Intelligence Layer"]
-        B1[⚡ Express.js + TypeScript Gateway]
-        B2[🛡️ PII & Secret Sanitizer]
-        B3[🧠 LangChain Memory Enrichment]
-        B4[🗄️ PostgreSQL + pgvector\nPGVectorStore]
-        B5[⚙️ BullMQ Pipeline Controller]
-        B6[(🔴 Redis Cache & Queue)]
+    subgraph PROCESSING ["⚙️ PROCESSING LAYER"]
+        B1["⚡ Express.js Gateway"]
+        B2["🛡️ PII & Secret Sanitizer"]
+        B3["🧠 LangChain Memory Engine"]
+        B4[("🐘 PostgreSQL + pgvector")]
+        B5["📋 BullMQ Pipeline"]
+        B6[("🔴 Redis Queue")]
     end
 
-    subgraph RESOLUTION ["🟢 Resolution Layer"]
-        C1[🤖 Claude Sonnet 4\nvia ChatAnthropic LangChain]
-        C2[🔧 LCEL AutoFix Chain\nRunnableSequence + JsonOutputParser]
-        C3[📬 GitHub Draft PR — Octokit]
-        C4[🖥️ Cinematic Dashboard]
-        C5[📩 Telegram Notification]
+    subgraph AI ["🤖 AI LAYER"]
+        C1["🤖 Groq LLM — Llama 3.3 70B"]
+        C2["📊 Analysis Chain"]
+        C3["🔧 Fix Generation Chain"]
+        C4["🔍 Similarity Search"]
+    end
+
+    subgraph OUTPUT ["📤 OUTPUT LAYER"]
+        D1["📬 GitHub Draft PR — Octokit"]
+        D2["🖥️ Real-time Dashboard"]
+        D3["💬 Telegram Notification"]
+        D4["📋 Activity Logs"]
     end
 
     A1 --> B1
     A2 --> B1
     A3 --> B1
+    A4 --> B1
 
     B1 --> B2
     B2 --> B3
     B3 <--> B4
     B3 --> B5
     B5 <--> B6
-    B5 --> C1
 
+    B5 --> C1
     C1 --> C2
     C2 --> C3
-    C2 --> C4
-    C2 --> C5
+    C3 --> C4
 
-    style INGESTION fill:#1e1e2e,stroke:#6D28D9,color:#fff
-    style INTELLIGENCE fill:#1e1e2e,stroke:#7C3AED,color:#fff
-    style RESOLUTION fill:#1e1e2e,stroke:#059669,color:#fff
+    C2 --> D1
+    C3 --> D2
+    C4 --> D3
+    C3 --> D4
+
+    style INGESTION fill:#1E1B4B,stroke:#8B5CF6,color:#E0E7FF
+    style PROCESSING fill:#1E1B4B,stroke:#6D28D9,color:#E0E7FF
+    style AI fill:#1E1B4B,stroke:#4C1D95,color:#E0E7FF
+    style OUTPUT fill:#1E1B4B,stroke:#5B21B6,color:#E0E7FF
 ```
 
-### Data Flow
-
-```mermaid
-sequenceDiagram
-    autonumber
-    participant SW as Sentry Webhook
-    participant GW as Express.js Gateway
-    participant SN as PII Sanitizer
-    participant ME as LangChain Memory Engine
-    participant DB as PostgreSQL + pgvector
-    participant BQ as BullMQ + Redis
-    participant AI as Claude Sonnet 4 (LangChain)
-    participant GH as GitHub (Octokit)
-    participant TG as Telegram (Telegraf)
-
-    SW->>GW: POST /webhook/sentry (HMAC verified)
-    GW->>SN: Raw incident payload
-    SN->>SN: Strip API keys, IPs, emails (local)
-    SN->>ME: Sanitized payload
-    ME->>DB: PGVectorStore.similaritySearchWithScore (top-k, threshold 0.60)
-    DB-->>ME: Relevant past incidents + runbooks
-    ME->>BQ: Enqueue enriched incident job
-    BQ->>AI: analysisChain.invoke() — sanitized trace + memory context
-    AI-->>BQ: JsonOutputParser → { rootCause, affectedFiles, confidence }
-    BQ->>AI: fixGenerationChain.invoke() — code + memory summary
-    AI-->>BQ: JsonOutputParser → { fileChanges, explanation }
-    BQ->>GH: Octokit — create branch + commit + Draft PR
-    BQ->>TG: Telegraf notify — PR link + confidence badge
-    BQ->>GW: Update incident status → RESOLVED (Prisma)
-```
+<br />
 
 ---
 
-## ⚡ Core Features
+## **Core Features**
 
-### Memory Engine
+<br />
 
-The Memory Engine is the primary differentiator of NexusOps. Built on `PGVectorStore` from `@langchain/community` with cosine similarity search, it maintains a continuously updated knowledge base drawn from:
+<table>
+<tr>
+<td width="50%" valign="top">
 
-- **Incident History** — Every resolved incident is vectorized via `OpenAIEmbeddings` and stored. When a new incident arrives, the top-k most semantically similar past events are surfaced.
-- **Team Discussions** — Telegram threads ingested via Telegraf are chunked with LangChain's `RecursiveCharacterTextSplitter` and indexed automatically, capturing informal tribal knowledge that never makes it into runbooks.
-- **Runbooks & Internal Documentation** — Structured documentation ingested, chunked, and stored via `PGVectorStore.addDocuments()`.
+### 🧠 Memory Engine
 
-> **Why this matters:** An SRE triaging a `NullPointerException` in a payment service at 2 AM needs to know that the same error surfaced 3 months ago because of a race condition in the order fulfillment pipeline — and that the fix was a 2-line database transaction scope change. NexusOps surfaces this in the incident brief automatically.
+The brain of NexusOps. Built on **pgvector** with cosine similarity search.
 
-### AutoFix Engine
+**What it remembers:**
+- Past incident analyses and fixes
+- Telegram team discussions
+- Ingested documents (PDF, DOCX, audio)
+- Runbooks and internal docs
 
-Powered by **Claude Sonnet 4** via LangChain's `ChatAnthropic`, the AutoFix Engine uses LCEL `RunnableSequence` chains with `JsonOutputParser` for structured, type-safe output:
+**Why it matters:**
+> An SRE triaging a payment service error at 2 AM needs to know that the same error appeared 3 months ago because of a race condition — and the fix was a 2-line change. NexusOps surfaces this automatically.
 
-| Property | Detail |
-|---|---|
-| **Chain Pattern** | `analysisPrompt \| ChatAnthropic \| JsonOutputParser` |
-| **Input** | Sanitized stack trace + enriched memory context |
-| **Output** | Root cause analysis + line-level code fix + confidence score |
-| **Confidence Tiers** | `SAFE` · `REVIEW` · `BLOCKED` |
-| **Output Artifact** | GitHub Draft PR (via Octokit) with cited memory context |
+</td>
+<td width="50%" valign="top">
 
-### Cinematic Dashboard
+### 🤖 AutoFix Engine
 
-A real-time incident command interface built with Next.js 14 App Router, Framer Motion, and Shadcn/UI. Designed for high-stress, low-latency decision making — not for demo slides.
+Powered by **Groq Llama 3.3 70B** via LangChain chains.
 
-### Security-First by Design
+**Pipeline stages:**
+1. `received` — Webhook captured
+2. `sanitizing` — PII stripped
+3. `analyzing` — Root cause identified
+4. `querying_memory` — Past context found
+5. `generating_fix` — Code fix generated
+6. `resolved` — Ready for human review
 
-NexusOps treats data privacy as a first-class architectural constraint, not an afterthought:
+**Safety guarantees:**
+- Dangerous pattern detection (`rm -rf`, `eval`, etc.)
+- Confidence scoring (0.0 - 1.0)
+- Draft PRs only — never auto-merges
 
-- **Local PII Sanitization** — All secrets, API keys, email addresses, and IP addresses are stripped at the ingestion gateway using a deterministic regex engine before any data leaves the system boundary.
-- **Cryptographic Audit Logs** — Every AI inference action is hashed and logged with full attribution to a specific incident ID and user.
-- **Draft-Only PRs** — NexusOps is architecturally incapable of merging code. It creates Draft Pull Requests only via Octokit. Merge authority belongs exclusively to the human engineer.
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 📚 Document Ingestion
+
+Multi-format support with intelligent chunking:
+
+| Format | Handler |
+|--------|---------|
+| PDF | `pdf-parse` |
+| DOCX | `mammoth` |
+| Audio | OpenAI Whisper |
+| Text/Markdown | Direct ingestion |
+
+**Features:**
+- Recursive text splitting (1000 chars, 150 overlap)
+- Automatic task detection via LLM
+- Cloudflare R2 storage for files
+
+</td>
+<td width="50%" valign="top">
+
+### 🔗 Integrations
+
+| Service | Purpose |
+|---------|---------|
+| **Sentry** | Error webhook ingestion |
+| **GitHub** | Code fetch, branch create, Draft PRs |
+| **Telegram** | Message ingestion + notifications |
+| **Jira** | Task sync with bidirectional updates |
+| **Groq** | LLM inference (analysis + fix gen) |
+| **OpenAI** | Embeddings (text-embedding-3-small) |
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 📊 Dashboard API
+
+Real-time operational intelligence:
+
+- **Stats** — Total incidents, resolution rate, avg confidence
+- **Timeline** — Recent activity across all modules
+- **Time Series** — Incident trends for charts
+- **Workspace scoped** — Multi-tenant by design
+
+</td>
+<td width="50%" valign="top">
+
+### 🔄 Revert Engine
+
+Automated rollback capability:
+
+- Error rate monitoring via snapshots
+- Configurable threshold triggers
+- Vercel/Railway deploy integration
+- Full revert event history
+- Telegram alerts on revert
+
+</td>
+</tr>
+</table>
+
+<br />
 
 ---
 
-## 🛠️ Tech Stack
+## **Tech Stack**
+
+<br />
+
+<div align="center">
 
 ### Backend
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| Runtime | Node.js 20.x + TypeScript 5.6 | Core application runtime, unified JS/TS stack |
-| Framework | Express.js 4.x | Async HTTP gateway, middleware pipeline |
-| ORM | Prisma ORM + Prisma Migrate | Type-safe DB access, pgvector extension, migrations |
-| Task Queue | BullMQ + Redis | Async incident processing, repeatable scheduled jobs |
-| RAG Framework | LangChain.js (`langchain`, `@langchain/core`) | LCEL chains, retrieval, chunking, output parsers |
-| Vector Store | `PGVectorStore` (`@langchain/community`) | LangChain-native pgvector retriever |
-| LLM | `ChatAnthropic` (`@langchain/anthropic`) — Claude Sonnet 4 | Root cause analysis + fix generation |
-| Embeddings | `OpenAIEmbeddings` (`@langchain/openai`) — text-embedding-3-small | 1536-dim semantic vectors |
-| Text Splitting | `RecursiveCharacterTextSplitter` (LangChain.js) | Semantic chunking for ingestion pipeline |
-| Telegram | Telegraf v4 | Team message + voice ingestion + notifications |
-| GitHub | `@octokit/rest` | Code fetch, branch create, Draft PR creation |
+![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-4.x-000000?style=flat-square&logo=express&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-5.x-2D3748?style=flat-square&logo=prisma&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-7-DC382D?style=flat-square&logo=redis&logoColor=white)
+![BullMQ](https://img.shields.io/badge/BullMQ-Queue-5B21B6?style=flat-square)
+![Socket.io](https://img.shields.io/badge/Socket.io-Realtime-010101?style=flat-square&logo=socket.io&logoColor=white)
 
-### Frontend
+### AI / ML
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| Framework | Next.js 14 (App Router) | SSR/RSC, routing, API layer |
-| Styling | Tailwind CSS + Shadcn/UI | Design system, accessible components |
-| Animation | Framer Motion | Incident timeline, dashboard transitions |
-| State | Zustand | Global incident state management |
-| Data Fetching | TanStack Query | Server state, real-time polling |
+![LangChain](https://img.shields.io/badge/LangChain-0.3-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-Llama_3.3_70B-F55036?style=flat-square&logo=groq&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-Embeddings-412991?style=flat-square&logo=openai&logoColor=white)
+![pgvector](https://img.shields.io/badge/pgvector-Vector_DB-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 
-### Infrastructure
+### Integrations
 
-| Component | Technology |
-|---|---|
-| Container Orchestration | Docker Compose |
-| Primary Database | PostgreSQL 15 + pgvector extension |
-| Cache & Broker | Redis 7 (Upstash-compatible) + BullMQ |
-| Version Control Integration | GitHub REST API v3 (Octokit) |
-| Monitoring Ingestion | Sentry Webhook API |
+![GitHub](https://img.shields.io/badge/GitHub-Octokit-181717?style=flat-square&logo=github&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram-Telegraf-26A5E4?style=flat-square&logo=telegram&logoColor=white)
+![Jira](https://img.shields.io/badge/Jira-REST_API-0052CC?style=flat-square&logo=jira&logoColor=white)
+![Sentry](https://img.shields.io/badge/Sentry-Webhooks-362D59?style=flat-square&logo=sentry&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-Auth-DD2C00?style=flat-square&logo=firebase&logoColor=white)
+
+</div>
+
+<br />
 
 ---
 
-## 🚀 Getting Started
+## **Getting Started**
+
+<br />
 
 ### Prerequisites
 
-Ensure the following are installed and configured on your development machine:
+```
+Node.js >= 20.x     PostgreSQL >= 15     Redis >= 7
+Docker >= 24.x      Git                  npm or yarn
+```
 
-- **Node.js** `>= 20.x` — [Download](https://nodejs.org)
-- **Docker** `>= 24.x` and **Docker Compose** `>= 2.x` — [Download](https://docker.com)
-- **Git** — [Download](https://git-scm.com)
+<br />
 
-You will also need the following API credentials:
-
-- `ANTHROPIC_API_KEY` — [Obtain from Anthropic Console](https://console.anthropic.com)
-- `OPENAI_API_KEY` — For `text-embedding-3-small` embeddings
-- `GITHUB_TOKEN` — Personal Access Token with `repo` scope
-- `SENTRY_WEBHOOK_SECRET` — From your Sentry project's webhook settings
-
----
-
-### Quick Start with Docker
-
-The fastest path to a running instance. Spins up the full stack — PostgreSQL, Redis, backend, BullMQ worker, and frontend — with a single command.
+### Quick Start
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/soumyachk101/NexusOps-2.0.git
 cd NexusOps-2.0
 
-# 2. Copy environment templates
-cp backend/.env.example backend/.env
-cp frontend/.env.local.example frontend/.env.local
+# 2. Install dependencies
+cd backend && npm install
 
-# 3. Populate your credentials in backend/.env
-#    (ANTHROPIC_API_KEY, OPENAI_API_KEY, DATABASE_URL, GITHUB_TOKEN, SENTRY_WEBHOOK_SECRET)
+# 3. Configure environment
+cp .env.example .env
+# Edit .env with your credentials (see Configuration section)
 
-# 4. Build and start all services
-docker-compose up --build
-
-# 5. Run Prisma migrations (first-time setup)
-docker-compose exec backend npx prisma migrate deploy
-
-# 6. Seed pgvector extension
-docker-compose exec backend npx ts-node scripts/seedPgvector.ts
-```
-
-The application will be available at:
-
-| Service | URL |
-|---|---|
-| Frontend Dashboard | `http://localhost:3000` |
-| Backend API | `http://localhost:8000` |
-| API Documentation | `http://localhost:8000/api-docs` |
-| PostgreSQL | `localhost:5432` |
-| Redis | `localhost:6379` |
-
----
-
-### Manual Installation
-
-Use this path for development or if you prefer managing processes individually.
-
-**1. Clone and configure**
-
-```bash
-git clone https://github.com/soumyachk101/NexusOps-2.0.git
-cd NexusOps-2.0
-cp backend/.env.example backend/.env
-cp frontend/.env.local.example frontend/.env.local
-```
-
-**2. Start infrastructure services**
-
-```bash
-# Start PostgreSQL and Redis via Docker (or use local installations)
-docker-compose up postgres redis -d
-```
-
-**3. Backend setup**
-
-```bash
-cd backend
-
-# Install dependencies
-npm install
-
-# Generate Prisma client
+# 4. Setup database
 npx prisma generate
-
-# Apply database migrations
 npx prisma migrate dev
 
-# Start the development server
-npx ts-node src/index.ts
-# or with hot reload:
-npx tsx watch src/index.ts
-```
-
-**4. Frontend setup**
-
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start the development server
+# 5. Start the server
 npm run dev
 ```
 
-**5. Start the BullMQ worker** (separate terminal)
+<br />
+
+### Docker Setup
 
 ```bash
-cd backend
-npx ts-node src/workers/queue.ts
+# Start all services
+docker-compose up -d
+
+# Run migrations
+docker-compose exec backend npx prisma migrate deploy
 ```
+
+<br />
 
 ---
 
-## ⚙️ Configuration
+## **API Reference**
 
-All configuration is managed via environment variables. Never commit `.env` files to version control.
+<br />
 
-### `backend/.env`
+<details>
+<summary><b>🔐 Auth Endpoints</b></summary>
 
-```env
-# ── Application ─────────────────────────────────────────────────────
-NODE_ENV=development
-SECRET_KEY=your-secret-key-minimum-32-characters
-PORT=8000
-
-# ── Database ─────────────────────────────────────────────────────────
-DATABASE_URL=postgresql://nexusops:password@localhost:5432/nexusops
-PGVECTOR_DIMENSIONS=1536
-
-# ── Redis / BullMQ ────────────────────────────────────────────────────
-REDIS_URL=redis://localhost:6379
-
-# ── AI Inference (LangChain) ─────────────────────────────────────────
-ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxxxxxx
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxx
-MEMORY_TOP_K=5                     # Number of similar incidents to retrieve
-SIMILARITY_THRESHOLD=0.60          # Minimum cosine similarity score
-
-# ── Integrations ─────────────────────────────────────────────────────
-GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
-GITHUB_CLIENT_ID=your-github-oauth-client-id
-GITHUB_CLIENT_SECRET=your-github-oauth-client-secret
-
-SENTRY_WEBHOOK_SECRET=your-sentry-webhook-secret
-TELEGRAM_BOT_TOKEN=your-telegram-bot-token
-TELEGRAM_CHAT_ID=your-chat-id
-
-# ── Jira ─────────────────────────────────────────────────────────────
-JIRA_BASE_URL=https://team.atlassian.net
-JIRA_API_TOKEN=your-jira-api-token
-JIRA_USER_EMAIL=your-jira-email
-
-# ── Storage ──────────────────────────────────────────────────────────
-CLOUDFLARE_R2_ACCESS_KEY=your-r2-access-key
-CLOUDFLARE_R2_SECRET_KEY=your-r2-secret-key
-CLOUDFLARE_R2_BUCKET=nexusops
-
-# ── Sanitizer ────────────────────────────────────────────────────────
-SANITIZER_ENABLED=true
-SANITIZER_LOG_REDACTIONS=true
+```
+POST   /api/v1/auth/register          Register new user
+POST   /api/v1/auth/login             Email/password login
+POST   /api/v1/auth/firebase          Sync Firebase user
+GET    /api/v1/auth/github/callback   GitHub OAuth callback
+GET    /api/v1/auth/google/callback   Google OAuth callback
 ```
 
-### `frontend/.env.local`
+</details>
 
-```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_APP_ENV=development
-NEXTAUTH_SECRET=your-nextauth-secret
-NEXTAUTH_URL=http://localhost:3000
-NEXT_PUBLIC_GITHUB_CLIENT_ID=your-github-client-id
+<details>
+<summary><b>📋 Workspace Endpoints</b></summary>
+
 ```
+GET    /api/v1/workspace              List user workspaces
+GET    /api/v1/workspace/:id          Get workspace details
+POST   /api/v1/workspace              Create workspace
+```
+
+</details>
+
+<details>
+<summary><b>🤖 AutoFix Endpoints</b></summary>
+
+```
+GET    /api/v1/autofix/repos/                 List connected repos
+POST   /api/v1/autofix/repos/connect          Connect GitHub repo
+DELETE /api/v1/autofix/repos/:id               Disconnect repo
+
+GET    /api/v1/autofix/incidents/              List incidents
+POST   /api/v1/autofix/incidents/manual        Create manual incident
+GET    /api/v1/autofix/incidents/:id           Get incident details
+PATCH  /api/v1/autofix/incidents/:id/status    Update status
+POST   /api/v1/autofix/incidents/:id/retry     Retry pipeline
+
+GET    /api/v1/autofix/fixes/incident/:id      Get fixes for incident
+POST   /api/v1/autofix/fixes/:id/create-pr     Create GitHub PR
+POST   /api/v1/autofix/fixes/:id/review        Review fix
+
+GET    /api/v1/autofix/reverts/                Revert history
+POST   /api/v1/autofix/reverts/trigger         Trigger revert
+```
+
+</details>
+
+<details>
+<summary><b>🧠 Memory Endpoints</b></summary>
+
+```
+POST   /api/v1/memory/telegram/webhook        Telegram bot webhook
+GET    /api/v1/memory/ingest/                  List sources
+POST   /api/v1/memory/ingest/document          Ingest document text
+POST   /api/v1/memory/ingest/audio             Ingest audio file
+POST   /api/v1/memory/ingest                   Ingest uploaded file
+GET    /api/v1/memory/query/                   Query (GET)
+POST   /api/v1/memory/query                    Query (POST)
+GET    /api/v1/memory/tasks/                   List detected tasks
+PATCH  /api/v1/memory/tasks/:id                Update task
+POST   /api/v1/memory/tasks/:id/jira           Sync to Jira
+GET    /api/v1/memory/problems                 List problems
+POST   /api/v1/memory/problems/detect          Detect problems
+```
+
+</details>
+
+<details>
+<summary><b>📊 Dashboard Endpoints</b></summary>
+
+```
+GET    /api/v1/dashboard/stats                 Workspace statistics
+GET    /api/v1/dashboard/timeline              Activity timeline
+GET    /api/v1/dashboard/incidents/series      Incident time series
+```
+
+</details>
+
+<details>
+<summary><b>🔗 Webhook Endpoints</b></summary>
+
+```
+POST   /webhook/sentry/:workspaceId    Sentry error events
+POST   /webhook/error/:workspaceId     Custom telemetry
+POST   /webhook/github                 GitHub webhooks
+```
+
+</details>
+
+<details>
+<summary><b>❤️ Health Endpoints</b></summary>
+
+```
+GET    /                       API info
+GET    /health                 Full health check (DB status)
+GET    /api/v1/health          Simple health check
+```
+
+</details>
+
+<br />
 
 ---
 
-## 📡 API Reference
-
-Full interactive documentation is available at `/api-docs` (Swagger via `swagger-ui-express`) when the backend is running.
-
-### Key Endpoints
-
-```
-POST   /webhook/sentry/:projectToken    Receive Sentry error events (HMAC verified)
-POST   /webhook/error/:projectToken     Receive custom telemetry payloads
-
-GET    /api/v1/autofix/incidents        List all incidents (paginated)
-GET    /api/v1/autofix/incidents/:id    Get incident detail with memory context
-PATCH  /api/v1/autofix/incidents/:id/status   Dismiss or resolve incident
-POST   /api/v1/autofix/incidents/:id/retry    Re-enqueue BullMQ fix job
-
-POST   /api/v1/memory/ingest/document   Ingest a document into PGVectorStore
-POST   /api/v1/memory/query             LangChain RAG Q&A (createRetrievalChain)
-GET    /api/v1/memory/search            Semantic search — PGVectorStore.similaritySearch
-
-GET    /api/v1/nexus/dashboard          Unified stats for both modules
-GET    /health                          Health check (liveness + readiness)
-```
-
----
-
-## 🔒 Security Model
-
-```mermaid
-flowchart TD
-    EXT([🌐 External Input\nSentry · Telegram · Telemetry])
-
-    subgraph BOUNDARY ["🔒 Trust Boundary — NexusOps System"]
-        HMAC[✅ HMAC — crypto.timingSafeEqual]
-        RATE[🚦 Rate Limiter — Redis backed]
-
-        subgraph LOCAL ["Runs Locally — Never Leaves System"]
-            SAN["🛡️ PII Sanitizer\n──────────────────\nAPI keys · JWT tokens\nEmails · IP addresses\nAWS/GCP secrets · Private keys"]
-        end
-
-        LOG[📋 Cryptographic Audit Logger\nAction hash · Actor · Incident ID]
-    end
-
-    CLAUDE([🤖 Claude Sonnet 4 via LangChain\nSanitized payload only])
-    GH([📬 GitHub via Octokit\nDraft PR — no merge scope])
-
-    EXT --> HMAC --> RATE --> SAN
-    SAN -- "Sanitized payload only" --> CLAUDE
-    CLAUDE --> LOG
-    LOG --> GH
-
-    style BOUNDARY fill:#0f172a,stroke:#6D28D9,color:#e2e8f0
-    style LOCAL fill:#1e293b,stroke:#059669,color:#e2e8f0
-```
-
-- **HMAC Verification** — All incoming webhooks verified via `crypto.timingSafeEqual` against a shared secret before processing.
-- **JWT Authentication** — Dashboard access requires a signed JWT with configurable expiry (Express middleware).
-- **Rate Limiting** — Express middleware enforces per-IP and per-workspace rate limits via Redis.
-- **Draft PRs Only** — The Octokit integration is scoped to `pull_request:write`. It cannot push directly to any branch.
-
----
-
-## 📁 Project Structure
+## **Project Structure**
 
 ```
 nexusops-2.0/
 ├── backend/
 │   ├── src/
-│   │   ├── routers/
-│   │   │   ├── auth.router.ts
-│   │   │   ├── webhooks.router.ts
-│   │   │   ├── memory/
-│   │   │   │   ├── ingest.router.ts
-│   │   │   │   └── query.router.ts
-│   │   │   └── autofix/
-│   │   │       ├── incidents.router.ts
-│   │   │       └── fixes.router.ts
-│   │   ├── services/
-│   │   │   ├── memory/
-│   │   │   │   ├── rag.service.ts          # createRetrievalChain (LangChain)
-│   │   │   │   ├── chunking.service.ts     # RecursiveCharacterTextSplitter
-│   │   │   │   └── embedding.service.ts    # OpenAIEmbeddings + PGVectorStore
-│   │   │   ├── autofix/
-│   │   │   │   ├── analysis.service.ts     # analysisChain (LCEL)
-│   │   │   │   ├── fixGeneration.service.ts # fixGenerationChain (LCEL)
-│   │   │   │   ├── sanitization.service.ts
-│   │   │   │   └── pr.service.ts           # Octokit Draft PR
-│   │   │   └── nexus/
-│   │   │       ├── memoryEnrichment.service.ts  # PGVectorStore similarity
-│   │   │       └── notification.service.ts      # Telegraf alerts
-│   │   ├── workers/
-│   │   │   ├── queue.ts                    # BullMQ setup + repeatable jobs
-│   │   │   ├── autofix.worker.ts           # Fix pipeline BullMQ worker
-│   │   │   └── memory.worker.ts            # Ingestion BullMQ worker
-│   │   ├── integrations/
-│   │   │   ├── telegramBot.ts              # Telegraf v4 bot
-│   │   │   ├── githubClient.ts             # @octokit/rest wrapper
-│   │   │   └── anthropicClient.ts          # ChatAnthropic LangChain wrapper
-│   │   ├── middleware/
-│   │   │   ├── auth.middleware.ts
-│   │   │   └── error.middleware.ts
-│   │   └── index.ts                        # Express app entry
+│   │   ├── controllers/          # Request handlers
+│   │   │   ├── auth.controller.js
+│   │   │   ├── autofix.controller.js
+│   │   │   ├── dashboard.controller.js
+│   │   │   ├── memory.controller.js
+│   │   │   ├── webhook.controller.js
+│   │   │   └── workspace.controller.js
+│   │   │
+│   │   ├── services/             # Business logic
+│   │   │   ├── autofix.service.js      # Incident pipeline + fix generation
+│   │   │   ├── memory.service.js       # Document ingestion + RAG queries
+│   │   │   ├── vector.service.js       # pgvector operations
+│   │   │   ├── github.service.js       # Octokit integration
+│   │   │   ├── telegram.service.js     # Telegraf bot
+│   │   │   ├── jira.service.js         # Atlassian REST API
+│   │   │   ├── dashboard.service.js    # Stats & analytics
+│   │   │   ├── storage.service.js      # Cloudflare R2
+│   │   │   ├── revert.service.js       # Deploy rollback
+│   │   │   ├── problem.service.js      # Problem detection
+│   │   │   ├── auth.service.js         # JWT + OAuth
+│   │   │   └── workspace.service.js    # Multi-tenant
+│   │   │
+│   │   ├── routes/               # Express routers
+│   │   │   ├── auth.js
+│   │   │   ├── autofix.js
+│   │   │   ├── dashboard.js
+│   │   │   ├── memory.js
+│   │   │   ├── webhooks.js
+│   │   │   └── workspace.js
+│   │   │
+│   │   ├── middleware/           # Express middleware
+│   │   │   ├── auth.js                 # JWT verification
+│   │   │   └── error.js               # Error handling
+│   │   │
+│   │   ├── lib/                  # Core utilities
+│   │   │   ├── config.js               # Zod-validated env config
+│   │   │   ├── prisma.js               # Prisma client singleton
+│   │   │   ├── http.js                 # HTTP helpers
+│   │   │   └── tokens.js               # JWT utilities
+│   │   │
+│   │   ├── workers/              # BullMQ workers
+│   │   │   └── queue.js
+│   │   │
+│   │   ├── utils/                # Shared utilities
+│   │   │   ├── json.js                 # JSON extraction
+│   │   │   └── slug.js                 # Slug generation
+│   │   │
+│   │   ├── config/               # External service configs
+│   │   │   └── firebase.js
+│   │   │
+│   │   ├── bot.js                # Telegram bot entry
+│   │   └── index.js              # Express app entry
+│   │
 │   ├── prisma/
-│   │   ├── schema.prisma                   # Prisma schema + pgvector
-│   │   └── migrations/
-│   ├── tests/
-│   ├── .env.example
+│   │   └── schema.prisma         # Database schema (14 models)
+│   │
 │   ├── package.json
-│   └── tsconfig.json
+│   └── .env.example
 │
-├── frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── (dashboard)/
-│   │   │   │   ├── incidents/
-│   │   │   │   └── memory/
-│   │   │   └── layout.tsx
-│   │   ├── components/
-│   │   │   ├── ui/                         # Shadcn base components
-│   │   │   ├── incident-card.tsx
-│   │   │   ├── memory-panel.tsx
-│   │   │   └── confidence-badge.tsx
-│   │   ├── lib/
-│   │   │   ├── api.ts
-│   │   │   └── utils.ts
-│   │   └── store/
-│   │       └── incidents.ts                # Zustand store
-│   ├── .env.local.example
-│   └── package.json
-│
-├── docker-compose.yml
-├── .github/
-│   └── workflows/
-│       └── ci.yml
 └── README.md
 ```
 
+<br />
+
 ---
 
-## 🗺️ Roadmap
+## **Database Schema**
+
+<br />
+
+```mermaid
+erDiagram
+    users ||--o{ workspaces : "owns"
+    users ||--o{ workspace_members : "joins"
+    workspaces ||--o{ sources : "contains"
+    workspaces ||--o{ document_chunks : "stores"
+    workspaces ||--o{ incidents : "tracks"
+    workspaces ||--o{ repositories : "connects"
+    workspaces ||--o{ tasks : "detects"
+    workspaces ||--o{ problems : "identifies"
+    sources ||--o{ document_chunks : "produces"
+    incidents ||--o{ fixes : "generates"
+    incidents ||--o{ document_chunks : "references"
+    repositories ||--o{ incidents : "linked_to"
+    document_chunks ||--o{ tasks : "extracts"
+
+    users {
+        uuid id PK
+        varchar email UK
+        varchar name
+        varchar provider
+        varchar github_id
+        varchar google_id
+    }
+
+    workspaces {
+        uuid id PK
+        varchar name
+        varchar slug UK
+        uuid owner_id FK
+        varchar telegram_chat_id
+        varchar jira_project_key
+    }
+
+    incidents {
+        uuid id PK
+        uuid workspace_id FK
+        uuid repository_id FK
+        text raw_error
+        text sanitized_error
+        varchar error_type
+        varchar severity
+        varchar status
+        float analysis_confidence
+        text root_cause
+        varchar pr_url
+    }
+
+    fixes {
+        uuid id PK
+        uuid incident_id FK
+        varchar title
+        text explanation
+        text diff
+        float confidence
+        varchar safety_score
+        varchar status
+        varchar pr_url
+    }
+
+    document_chunks {
+        uuid id PK
+        uuid workspace_id FK
+        uuid source_id FK
+        text text
+        vector embedding
+        jsonb metadata
+    }
+```
+
+<br />
+
+---
+
+## **Configuration**
+
+<br />
+
+<details>
+<summary><b>Environment Variables</b></summary>
+
+```env
+# ── Application ──────────────────────────────────────────
+NODE_ENV=development
+PORT=8000
+JWT_SECRET=your-secret-key-minimum-32-characters
+JWT_EXPIRES_IN=7d
+REFRESH_TOKEN_EXPIRES_IN=30d
+CORS_ORIGIN=*
+
+# ── Database ─────────────────────────────────────────────
+DATABASE_URL=postgresql://user:password@localhost:5432/nexusops
+
+# ── Redis ────────────────────────────────────────────────
+REDIS_URL=redis://127.0.0.1:6379
+
+# ── AI (Required) ────────────────────────────────────────
+GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxx
+GROQ_MODEL=llama-3.3-70b-versatile
+
+# ── AI (Optional — for embeddings) ───────────────────────
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxx
+OPENAI_BASE_URL=https://api.openai.com/v1
+
+# ── GitHub ───────────────────────────────────────────────
+GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
+GITHUB_CLIENT_ID=your-github-oauth-client-id
+GITHUB_CLIENT_SECRET=your-github-oauth-client-secret
+
+# ── Telegram ─────────────────────────────────────────────
+TELEGRAM_BOT_TOKEN=your-telegram-bot-token
+
+# ── Jira ─────────────────────────────────────────────────
+JIRA_BASE_URL=https://team.atlassian.net
+JIRA_EMAIL=your-email@company.com
+JIRA_API_TOKEN=your-jira-api-token
+
+# ── Firebase (Optional) ──────────────────────────────────
+FIREBASE_PROJECT_ID=your-project-id
+FIREBASE_WEB_API_KEY=your-web-api-key
+
+# ── Sentry ───────────────────────────────────────────────
+SENTRY_WEBHOOK_SECRET=your-sentry-webhook-secret
+
+# ── Workers ──────────────────────────────────────────────
+START_WORKERS=true
+START_BOT=true
+```
+
+</details>
+
+<br />
+
+---
+
+## **Security Model**
+
+<br />
+
+```mermaid
+flowchart LR
+    A["🌐 External\nInput"] --> B["✅ HMAC\nVerification"]
+    B --> C["🚦 Rate\nLimiter"]
+    C --> D["🛡️ PII\nSanitizer"]
+    D --> E["🤖 Groq LLM\n(Sanitized Only)"]
+    E --> F["📋 Audit\nLogger"]
+    F --> G["📬 GitHub\nDraft PR"]
+    
+    style A fill:#EF4444,stroke:#B91C1C,color:#fff
+    style B fill:#10B981,stroke:#059669,color:#fff
+    style C fill:#F59E0B,stroke:#D97706,color:#fff
+    style D fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style E fill:#3B82F6,stroke:#1D4ED8,color:#fff
+    style F fill:#6366F1,stroke:#4F46E5,color:#fff
+    style G fill:#10B981,stroke:#059669,color:#fff
+```
+
+**What gets sanitized:**
+- API keys (sk-, pk-, ghp-, AKIA, etc.)
+- JWT tokens
+- Database connection strings
+- Email addresses
+- IPv4 addresses
+- Password assignments
+
+**What gets blocked:**
+- `rm -rf` commands
+- `eval()` / `new Function()`
+- `child_process` / `execSync`
+- `DROP TABLE` / `DELETE FROM`
+- `process.env` assignments
+
+<br />
+
+---
+
+## **Roadmap**
+
+<br />
 
 - [x] Sentry webhook ingestion
-- [x] LangChain.js RAG memory enrichment (PGVectorStore + pgvector)
-- [x] Claude Sonnet 4 inference via LangChain LCEL chains
-- [x] GitHub Draft PR generation (Octokit)
-- [x] Telegram notifications (Telegraf)
-- [x] Confidence scoring (SAFE / REVIEW / BLOCKED)
-- [x] BullMQ async pipeline with repeatable scheduled jobs
+- [x] LangChain RAG memory enrichment
+- [x] Groq LLM inference (Llama 3.3 70B)
+- [x] GitHub Draft PR generation
+- [x] Telegram notifications
+- [x] Confidence scoring
+- [x] BullMQ async pipeline
+- [x] Jira task sync
+- [x] Document ingestion (PDF, DOCX, audio)
+- [x] Problem detection
+- [x] Revert engine
 - [ ] Slack ingestion adapter
 - [ ] OpenTelemetry trace integration
 - [ ] Multi-repository support
 - [ ] RBAC for team-level access control
 - [ ] Memory decay and re-ranking policies
 - [ ] Exportable incident post-mortems (PDF)
-- [ ] Self-hosted LLM option via Ollama + LangChain
+- [ ] Self-hosted LLM option via Ollama
+
+<br />
 
 ---
 
-## 🤝 Contributing
+## **Contributing**
 
-Contributions are welcome. Please follow the process below to keep the codebase clean and the review cycle fast.
-
-**1. Fork and branch**
+<br />
 
 ```bash
-git checkout -b feat/your-feature-name
-# or
-git checkout -b fix/your-bug-description
+# 1. Fork and clone
+git clone https://github.com/your-username/NexusOps-2.0.git
+
+# 2. Create feature branch
+git checkout -b feat/your-feature
+
+# 3. Make changes and test
+cd backend && npm test
+
+# 4. Commit with conventional commits
+git commit -m "feat: add slack ingestion adapter"
+
+# 5. Push and create PR
+git push origin feat/your-feature
 ```
 
-**2. Commit convention**
-
-This project follows [Conventional Commits](https://www.conventionalcommits.org/).
-
-```
-feat: add slack ingestion adapter
-fix: resolve race condition in memory engine query
-docs: update API reference for /incidents endpoint
-chore: bump @langchain/anthropic to 0.4.0
-```
-
-**3. Before opening a PR**
-
-```bash
-# Backend
-cd backend && npm run test && npm run type-check
-
-# Frontend
-cd frontend && npm run lint && npm run type-check
-```
-
-**4. Open a Pull Request** against `main` with a clear description of what changed and why.
+<br />
 
 ---
 
-## 📄 License
+## **License**
 
 Distributed under the [MIT License](./LICENSE).
+
+<br />
 
 ---
 
 <div align="center">
 
-Built by **[Soumya Chakraborty](https://chksoumya.in)** · [@soumyachk101](https://github.com/soumyachk101)
+### Built with dedication by
+
+**[Soumya Chakraborty](https://chksoumya.in)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-soumyachk101-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/soumyachk101)
+[![Portfolio](https://img.shields.io/badge/Portfolio-chksoumya.in-8B5CF6?style=for-the-badge&logoColor=white)](https://chksoumya.in)
+
+<br />
+
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG1hNnV3dHF0ZHRhazQ3NGNqbjB4cnY4bG14ZmJqcG16cjJ4eGZzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif" width="100%" height="3" />
+
+<br />
 
 *If this project was useful to you, consider leaving a ⭐*
 
