@@ -83,6 +83,16 @@ export type ErrorRateSnapshot = $Result.DefaultSelection<Prisma.$ErrorRateSnapsh
  * 
  */
 export type ActivityLog = $Result.DefaultSelection<Prisma.$ActivityLogPayload>
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
+/**
+ * Model PostMortem
+ * 
+ */
+export type PostMortem = $Result.DefaultSelection<Prisma.$PostMortemPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -346,6 +356,26 @@ export class PrismaClient<
     * ```
     */
   get activityLog(): Prisma.ActivityLogDelegate<ExtArgs>;
+
+  /**
+   * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Notifications
+    * const notifications = await prisma.notification.findMany()
+    * ```
+    */
+  get notification(): Prisma.NotificationDelegate<ExtArgs>;
+
+  /**
+   * `prisma.postMortem`: Exposes CRUD operations for the **PostMortem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PostMortems
+    * const postMortems = await prisma.postMortem.findMany()
+    * ```
+    */
+  get postMortem(): Prisma.PostMortemDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -800,7 +830,9 @@ export namespace Prisma {
     Fix: 'Fix',
     RevertEvent: 'RevertEvent',
     ErrorRateSnapshot: 'ErrorRateSnapshot',
-    ActivityLog: 'ActivityLog'
+    ActivityLog: 'ActivityLog',
+    Notification: 'Notification',
+    PostMortem: 'PostMortem'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -816,7 +848,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "workspace" | "workspaceMember" | "source" | "documentChunk" | "queryHistory" | "task" | "problem" | "repository" | "incident" | "fix" | "revertEvent" | "errorRateSnapshot" | "activityLog"
+      modelProps: "user" | "workspace" | "workspaceMember" | "source" | "documentChunk" | "queryHistory" | "task" | "problem" | "repository" | "incident" | "fix" | "revertEvent" | "errorRateSnapshot" | "activityLog" | "notification" | "postMortem"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1800,6 +1832,146 @@ export namespace Prisma {
           }
         }
       }
+      Notification: {
+        payload: Prisma.$NotificationPayload<ExtArgs>
+        fields: Prisma.NotificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NotificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NotificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          findFirst: {
+            args: Prisma.NotificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NotificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          findMany: {
+            args: Prisma.NotificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          create: {
+            args: Prisma.NotificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          createMany: {
+            args: Prisma.NotificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NotificationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
+          }
+          delete: {
+            args: Prisma.NotificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          update: {
+            args: Prisma.NotificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.NotificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NotificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.NotificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>
+          }
+          aggregate: {
+            args: Prisma.NotificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNotification>
+          }
+          groupBy: {
+            args: Prisma.NotificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NotificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NotificationCountArgs<ExtArgs>
+            result: $Utils.Optional<NotificationCountAggregateOutputType> | number
+          }
+        }
+      }
+      PostMortem: {
+        payload: Prisma.$PostMortemPayload<ExtArgs>
+        fields: Prisma.PostMortemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PostMortemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PostMortemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>
+          }
+          findFirst: {
+            args: Prisma.PostMortemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PostMortemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>
+          }
+          findMany: {
+            args: Prisma.PostMortemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>[]
+          }
+          create: {
+            args: Prisma.PostMortemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>
+          }
+          createMany: {
+            args: Prisma.PostMortemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PostMortemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>[]
+          }
+          delete: {
+            args: Prisma.PostMortemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>
+          }
+          update: {
+            args: Prisma.PostMortemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>
+          }
+          deleteMany: {
+            args: Prisma.PostMortemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PostMortemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PostMortemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostMortemPayload>
+          }
+          aggregate: {
+            args: Prisma.PostMortemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePostMortem>
+          }
+          groupBy: {
+            args: Prisma.PostMortemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PostMortemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PostMortemCountArgs<ExtArgs>
+            result: $Utils.Optional<PostMortemCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2039,6 +2211,8 @@ export namespace Prisma {
     activity_logs: number
     revert_events: number
     error_rate_snapshots: number
+    notifications: number
+    post_mortems: number
   }
 
   export type WorkspaceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2053,6 +2227,8 @@ export namespace Prisma {
     activity_logs?: boolean | WorkspaceCountOutputTypeCountActivity_logsArgs
     revert_events?: boolean | WorkspaceCountOutputTypeCountRevert_eventsArgs
     error_rate_snapshots?: boolean | WorkspaceCountOutputTypeCountError_rate_snapshotsArgs
+    notifications?: boolean | WorkspaceCountOutputTypeCountNotificationsArgs
+    post_mortems?: boolean | WorkspaceCountOutputTypeCountPost_mortemsArgs
   }
 
   // Custom InputTypes
@@ -2141,6 +2317,20 @@ export namespace Prisma {
    */
   export type WorkspaceCountOutputTypeCountError_rate_snapshotsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ErrorRateSnapshotWhereInput
+  }
+
+  /**
+   * WorkspaceCountOutputType without action
+   */
+  export type WorkspaceCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationWhereInput
+  }
+
+  /**
+   * WorkspaceCountOutputType without action
+   */
+  export type WorkspaceCountOutputTypeCountPost_mortemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostMortemWhereInput
   }
 
 
@@ -3472,6 +3662,12 @@ export namespace Prisma {
     notify_on_pr: boolean | null
     notify_on_revert: boolean | null
     notify_on_task: boolean | null
+    slack_webhook_url: string | null
+    slack_bot_token: string | null
+    slack_channel_id: string | null
+    ollama_base_url: string | null
+    otel_endpoint: string | null
+    otel_service_name: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -3493,6 +3689,12 @@ export namespace Prisma {
     notify_on_pr: boolean | null
     notify_on_revert: boolean | null
     notify_on_task: boolean | null
+    slack_webhook_url: string | null
+    slack_bot_token: string | null
+    slack_channel_id: string | null
+    ollama_base_url: string | null
+    otel_endpoint: string | null
+    otel_service_name: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -3514,6 +3716,12 @@ export namespace Prisma {
     notify_on_pr: number
     notify_on_revert: number
     notify_on_task: number
+    slack_webhook_url: number
+    slack_bot_token: number
+    slack_channel_id: number
+    ollama_base_url: number
+    otel_endpoint: number
+    otel_service_name: number
     settings: number
     created_at: number
     updated_at: number
@@ -3548,6 +3756,12 @@ export namespace Prisma {
     notify_on_pr?: true
     notify_on_revert?: true
     notify_on_task?: true
+    slack_webhook_url?: true
+    slack_bot_token?: true
+    slack_channel_id?: true
+    ollama_base_url?: true
+    otel_endpoint?: true
+    otel_service_name?: true
     created_at?: true
     updated_at?: true
   }
@@ -3569,6 +3783,12 @@ export namespace Prisma {
     notify_on_pr?: true
     notify_on_revert?: true
     notify_on_task?: true
+    slack_webhook_url?: true
+    slack_bot_token?: true
+    slack_channel_id?: true
+    ollama_base_url?: true
+    otel_endpoint?: true
+    otel_service_name?: true
     created_at?: true
     updated_at?: true
   }
@@ -3590,6 +3810,12 @@ export namespace Prisma {
     notify_on_pr?: true
     notify_on_revert?: true
     notify_on_task?: true
+    slack_webhook_url?: true
+    slack_bot_token?: true
+    slack_channel_id?: true
+    ollama_base_url?: true
+    otel_endpoint?: true
+    otel_service_name?: true
     settings?: true
     created_at?: true
     updated_at?: true
@@ -3699,6 +3925,12 @@ export namespace Prisma {
     notify_on_pr: boolean
     notify_on_revert: boolean
     notify_on_task: boolean
+    slack_webhook_url: string | null
+    slack_bot_token: string | null
+    slack_channel_id: string | null
+    ollama_base_url: string | null
+    otel_endpoint: string | null
+    otel_service_name: string | null
     settings: JsonValue
     created_at: Date
     updated_at: Date
@@ -3740,6 +3972,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: boolean
+    slack_bot_token?: boolean
+    slack_channel_id?: boolean
+    ollama_base_url?: boolean
+    otel_endpoint?: boolean
+    otel_service_name?: boolean
     settings?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -3755,6 +3993,8 @@ export namespace Prisma {
     activity_logs?: boolean | Workspace$activity_logsArgs<ExtArgs>
     revert_events?: boolean | Workspace$revert_eventsArgs<ExtArgs>
     error_rate_snapshots?: boolean | Workspace$error_rate_snapshotsArgs<ExtArgs>
+    notifications?: boolean | Workspace$notificationsArgs<ExtArgs>
+    post_mortems?: boolean | Workspace$post_mortemsArgs<ExtArgs>
     _count?: boolean | WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workspace"]>
 
@@ -3775,6 +4015,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: boolean
+    slack_bot_token?: boolean
+    slack_channel_id?: boolean
+    ollama_base_url?: boolean
+    otel_endpoint?: boolean
+    otel_service_name?: boolean
     settings?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -3798,6 +4044,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: boolean
+    slack_bot_token?: boolean
+    slack_channel_id?: boolean
+    ollama_base_url?: boolean
+    otel_endpoint?: boolean
+    otel_service_name?: boolean
     settings?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -3816,6 +4068,8 @@ export namespace Prisma {
     activity_logs?: boolean | Workspace$activity_logsArgs<ExtArgs>
     revert_events?: boolean | Workspace$revert_eventsArgs<ExtArgs>
     error_rate_snapshots?: boolean | Workspace$error_rate_snapshotsArgs<ExtArgs>
+    notifications?: boolean | Workspace$notificationsArgs<ExtArgs>
+    post_mortems?: boolean | Workspace$post_mortemsArgs<ExtArgs>
     _count?: boolean | WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type WorkspaceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3837,6 +4091,8 @@ export namespace Prisma {
       activity_logs: Prisma.$ActivityLogPayload<ExtArgs>[]
       revert_events: Prisma.$RevertEventPayload<ExtArgs>[]
       error_rate_snapshots: Prisma.$ErrorRateSnapshotPayload<ExtArgs>[]
+      notifications: Prisma.$NotificationPayload<ExtArgs>[]
+      post_mortems: Prisma.$PostMortemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3855,6 +4111,12 @@ export namespace Prisma {
       notify_on_pr: boolean
       notify_on_revert: boolean
       notify_on_task: boolean
+      slack_webhook_url: string | null
+      slack_bot_token: string | null
+      slack_channel_id: string | null
+      ollama_base_url: string | null
+      otel_endpoint: string | null
+      otel_service_name: string | null
       settings: Prisma.JsonValue
       created_at: Date
       updated_at: Date
@@ -4234,6 +4496,8 @@ export namespace Prisma {
     activity_logs<T extends Workspace$activity_logsArgs<ExtArgs> = {}>(args?: Subset<T, Workspace$activity_logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivityLogPayload<ExtArgs>, T, "findMany"> | Null>
     revert_events<T extends Workspace$revert_eventsArgs<ExtArgs> = {}>(args?: Subset<T, Workspace$revert_eventsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RevertEventPayload<ExtArgs>, T, "findMany"> | Null>
     error_rate_snapshots<T extends Workspace$error_rate_snapshotsArgs<ExtArgs> = {}>(args?: Subset<T, Workspace$error_rate_snapshotsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ErrorRateSnapshotPayload<ExtArgs>, T, "findMany"> | Null>
+    notifications<T extends Workspace$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, Workspace$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany"> | Null>
+    post_mortems<T extends Workspace$post_mortemsArgs<ExtArgs> = {}>(args?: Subset<T, Workspace$post_mortemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4279,6 +4543,12 @@ export namespace Prisma {
     readonly notify_on_pr: FieldRef<"Workspace", 'Boolean'>
     readonly notify_on_revert: FieldRef<"Workspace", 'Boolean'>
     readonly notify_on_task: FieldRef<"Workspace", 'Boolean'>
+    readonly slack_webhook_url: FieldRef<"Workspace", 'String'>
+    readonly slack_bot_token: FieldRef<"Workspace", 'String'>
+    readonly slack_channel_id: FieldRef<"Workspace", 'String'>
+    readonly ollama_base_url: FieldRef<"Workspace", 'String'>
+    readonly otel_endpoint: FieldRef<"Workspace", 'String'>
+    readonly otel_service_name: FieldRef<"Workspace", 'String'>
     readonly settings: FieldRef<"Workspace", 'Json'>
     readonly created_at: FieldRef<"Workspace", 'DateTime'>
     readonly updated_at: FieldRef<"Workspace", 'DateTime'>
@@ -4817,6 +5087,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ErrorRateSnapshotScalarFieldEnum | ErrorRateSnapshotScalarFieldEnum[]
+  }
+
+  /**
+   * Workspace.notifications
+   */
+  export type Workspace$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    where?: NotificationWhereInput
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    cursor?: NotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Workspace.post_mortems
+   */
+  export type Workspace$post_mortemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    where?: PostMortemWhereInput
+    orderBy?: PostMortemOrderByWithRelationInput | PostMortemOrderByWithRelationInput[]
+    cursor?: PostMortemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PostMortemScalarFieldEnum | PostMortemScalarFieldEnum[]
   }
 
   /**
@@ -6876,10 +7186,16 @@ export namespace Prisma {
 
   export type DocumentChunkAvgAggregateOutputType = {
     chunk_index: number | null
+    relevance_score: number | null
+    access_count: number | null
+    decay_factor: number | null
   }
 
   export type DocumentChunkSumAggregateOutputType = {
     chunk_index: number | null
+    relevance_score: number | null
+    access_count: number | null
+    decay_factor: number | null
   }
 
   export type DocumentChunkMinAggregateOutputType = {
@@ -6893,6 +7209,10 @@ export namespace Prisma {
     source_type: string | null
     channel_name: string | null
     incident_id: string | null
+    relevance_score: number | null
+    access_count: number | null
+    last_accessed_at: Date | null
+    decay_factor: number | null
     created_at: Date | null
   }
 
@@ -6907,6 +7227,10 @@ export namespace Prisma {
     source_type: string | null
     channel_name: string | null
     incident_id: string | null
+    relevance_score: number | null
+    access_count: number | null
+    last_accessed_at: Date | null
+    decay_factor: number | null
     created_at: Date | null
   }
 
@@ -6922,6 +7246,10 @@ export namespace Prisma {
     source_type: number
     channel_name: number
     incident_id: number
+    relevance_score: number
+    access_count: number
+    last_accessed_at: number
+    decay_factor: number
     created_at: number
     _all: number
   }
@@ -6929,10 +7257,16 @@ export namespace Prisma {
 
   export type DocumentChunkAvgAggregateInputType = {
     chunk_index?: true
+    relevance_score?: true
+    access_count?: true
+    decay_factor?: true
   }
 
   export type DocumentChunkSumAggregateInputType = {
     chunk_index?: true
+    relevance_score?: true
+    access_count?: true
+    decay_factor?: true
   }
 
   export type DocumentChunkMinAggregateInputType = {
@@ -6946,6 +7280,10 @@ export namespace Prisma {
     source_type?: true
     channel_name?: true
     incident_id?: true
+    relevance_score?: true
+    access_count?: true
+    last_accessed_at?: true
+    decay_factor?: true
     created_at?: true
   }
 
@@ -6960,6 +7298,10 @@ export namespace Prisma {
     source_type?: true
     channel_name?: true
     incident_id?: true
+    relevance_score?: true
+    access_count?: true
+    last_accessed_at?: true
+    decay_factor?: true
     created_at?: true
   }
 
@@ -6975,6 +7317,10 @@ export namespace Prisma {
     source_type?: true
     channel_name?: true
     incident_id?: true
+    relevance_score?: true
+    access_count?: true
+    last_accessed_at?: true
+    decay_factor?: true
     created_at?: true
     _all?: true
   }
@@ -7077,6 +7423,10 @@ export namespace Prisma {
     source_type: string | null
     channel_name: string | null
     incident_id: string | null
+    relevance_score: number
+    access_count: number
+    last_accessed_at: Date | null
+    decay_factor: number
     created_at: Date
     _count: DocumentChunkCountAggregateOutputType | null
     _avg: DocumentChunkAvgAggregateOutputType | null
@@ -7111,6 +7461,10 @@ export namespace Prisma {
     source_type?: boolean
     channel_name?: boolean
     incident_id?: boolean
+    relevance_score?: boolean
+    access_count?: boolean
+    last_accessed_at?: boolean
+    decay_factor?: boolean
     created_at?: boolean
     workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
     source?: boolean | SourceDefaultArgs<ExtArgs>
@@ -7131,6 +7485,10 @@ export namespace Prisma {
     source_type?: boolean
     channel_name?: boolean
     incident_id?: boolean
+    relevance_score?: boolean
+    access_count?: boolean
+    last_accessed_at?: boolean
+    decay_factor?: boolean
     created_at?: boolean
     workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
     source?: boolean | SourceDefaultArgs<ExtArgs>
@@ -7149,6 +7507,10 @@ export namespace Prisma {
     source_type?: boolean
     channel_name?: boolean
     incident_id?: boolean
+    relevance_score?: boolean
+    access_count?: boolean
+    last_accessed_at?: boolean
+    decay_factor?: boolean
     created_at?: boolean
   }
 
@@ -7185,6 +7547,10 @@ export namespace Prisma {
       source_type: string | null
       channel_name: string | null
       incident_id: string | null
+      relevance_score: number
+      access_count: number
+      last_accessed_at: Date | null
+      decay_factor: number
       created_at: Date
     }, ExtArgs["result"]["documentChunk"]>
     composites: {}
@@ -7594,6 +7960,10 @@ export namespace Prisma {
     readonly source_type: FieldRef<"DocumentChunk", 'String'>
     readonly channel_name: FieldRef<"DocumentChunk", 'String'>
     readonly incident_id: FieldRef<"DocumentChunk", 'String'>
+    readonly relevance_score: FieldRef<"DocumentChunk", 'Float'>
+    readonly access_count: FieldRef<"DocumentChunk", 'Int'>
+    readonly last_accessed_at: FieldRef<"DocumentChunk", 'DateTime'>
+    readonly decay_factor: FieldRef<"DocumentChunk", 'Float'>
     readonly created_at: FieldRef<"DocumentChunk", 'DateTime'>
   }
     
@@ -12222,11 +12592,13 @@ export namespace Prisma {
 
   export type IncidentAvgAggregateOutputType = {
     analysis_confidence: number | null
+    confidence_score: number | null
     pr_number: number | null
   }
 
   export type IncidentSumAggregateOutputType = {
     analysis_confidence: number | null
+    confidence_score: number | null
     pr_number: number | null
   }
 
@@ -12248,6 +12620,8 @@ export namespace Prisma {
     external_id: string | null
     root_cause: string | null
     analysis_confidence: number | null
+    confidence_score: number | null
+    trace_id: string | null
     pr_url: string | null
     pr_number: number | null
     pr_branch: string | null
@@ -12279,6 +12653,8 @@ export namespace Prisma {
     external_id: string | null
     root_cause: string | null
     analysis_confidence: number | null
+    confidence_score: number | null
+    trace_id: string | null
     pr_url: string | null
     pr_number: number | null
     pr_branch: string | null
@@ -12313,6 +12689,8 @@ export namespace Prisma {
     affected_files: number
     analysis_confidence: number
     analysis_keywords: number
+    confidence_score: number
+    trace_id: number
     memory_context: number
     pr_url: number
     pr_number: number
@@ -12331,11 +12709,13 @@ export namespace Prisma {
 
   export type IncidentAvgAggregateInputType = {
     analysis_confidence?: true
+    confidence_score?: true
     pr_number?: true
   }
 
   export type IncidentSumAggregateInputType = {
     analysis_confidence?: true
+    confidence_score?: true
     pr_number?: true
   }
 
@@ -12357,6 +12737,8 @@ export namespace Prisma {
     external_id?: true
     root_cause?: true
     analysis_confidence?: true
+    confidence_score?: true
+    trace_id?: true
     pr_url?: true
     pr_number?: true
     pr_branch?: true
@@ -12388,6 +12770,8 @@ export namespace Prisma {
     external_id?: true
     root_cause?: true
     analysis_confidence?: true
+    confidence_score?: true
+    trace_id?: true
     pr_url?: true
     pr_number?: true
     pr_branch?: true
@@ -12422,6 +12806,8 @@ export namespace Prisma {
     affected_files?: true
     analysis_confidence?: true
     analysis_keywords?: true
+    confidence_score?: true
+    trace_id?: true
     memory_context?: true
     pr_url?: true
     pr_number?: true
@@ -12544,6 +12930,8 @@ export namespace Prisma {
     affected_files: JsonValue
     analysis_confidence: number | null
     analysis_keywords: string[]
+    confidence_score: number | null
+    trace_id: string | null
     memory_context: JsonValue | null
     pr_url: string | null
     pr_number: number | null
@@ -12598,6 +12986,8 @@ export namespace Prisma {
     affected_files?: boolean
     analysis_confidence?: boolean
     analysis_keywords?: boolean
+    confidence_score?: boolean
+    trace_id?: boolean
     memory_context?: boolean
     pr_url?: boolean
     pr_number?: boolean
@@ -12638,6 +13028,8 @@ export namespace Prisma {
     affected_files?: boolean
     analysis_confidence?: boolean
     analysis_keywords?: boolean
+    confidence_score?: boolean
+    trace_id?: boolean
     memory_context?: boolean
     pr_url?: boolean
     pr_number?: boolean
@@ -12675,6 +13067,8 @@ export namespace Prisma {
     affected_files?: boolean
     analysis_confidence?: boolean
     analysis_keywords?: boolean
+    confidence_score?: boolean
+    trace_id?: boolean
     memory_context?: boolean
     pr_url?: boolean
     pr_number?: boolean
@@ -12730,6 +13124,8 @@ export namespace Prisma {
       affected_files: Prisma.JsonValue
       analysis_confidence: number | null
       analysis_keywords: string[]
+      confidence_score: number | null
+      trace_id: string | null
       memory_context: Prisma.JsonValue | null
       pr_url: string | null
       pr_number: number | null
@@ -13159,6 +13555,8 @@ export namespace Prisma {
     readonly affected_files: FieldRef<"Incident", 'Json'>
     readonly analysis_confidence: FieldRef<"Incident", 'Float'>
     readonly analysis_keywords: FieldRef<"Incident", 'String[]'>
+    readonly confidence_score: FieldRef<"Incident", 'Float'>
+    readonly trace_id: FieldRef<"Incident", 'String'>
     readonly memory_context: FieldRef<"Incident", 'Json'>
     readonly pr_url: FieldRef<"Incident", 'String'>
     readonly pr_number: FieldRef<"Incident", 'Int'>
@@ -17693,6 +18091,2048 @@ export namespace Prisma {
 
 
   /**
+   * Model Notification
+   */
+
+  export type AggregateNotification = {
+    _count: NotificationCountAggregateOutputType | null
+    _min: NotificationMinAggregateOutputType | null
+    _max: NotificationMaxAggregateOutputType | null
+  }
+
+  export type NotificationMinAggregateOutputType = {
+    id: string | null
+    workspace_id: string | null
+    channel: string | null
+    event_type: string | null
+    title: string | null
+    body: string | null
+    resource_type: string | null
+    resource_id: string | null
+    status: string | null
+    error_message: string | null
+    sent_at: Date | null
+    created_at: Date | null
+  }
+
+  export type NotificationMaxAggregateOutputType = {
+    id: string | null
+    workspace_id: string | null
+    channel: string | null
+    event_type: string | null
+    title: string | null
+    body: string | null
+    resource_type: string | null
+    resource_id: string | null
+    status: string | null
+    error_message: string | null
+    sent_at: Date | null
+    created_at: Date | null
+  }
+
+  export type NotificationCountAggregateOutputType = {
+    id: number
+    workspace_id: number
+    channel: number
+    event_type: number
+    title: number
+    body: number
+    resource_type: number
+    resource_id: number
+    status: number
+    error_message: number
+    sent_at: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type NotificationMinAggregateInputType = {
+    id?: true
+    workspace_id?: true
+    channel?: true
+    event_type?: true
+    title?: true
+    body?: true
+    resource_type?: true
+    resource_id?: true
+    status?: true
+    error_message?: true
+    sent_at?: true
+    created_at?: true
+  }
+
+  export type NotificationMaxAggregateInputType = {
+    id?: true
+    workspace_id?: true
+    channel?: true
+    event_type?: true
+    title?: true
+    body?: true
+    resource_type?: true
+    resource_id?: true
+    status?: true
+    error_message?: true
+    sent_at?: true
+    created_at?: true
+  }
+
+  export type NotificationCountAggregateInputType = {
+    id?: true
+    workspace_id?: true
+    channel?: true
+    event_type?: true
+    title?: true
+    body?: true
+    resource_type?: true
+    resource_id?: true
+    status?: true
+    error_message?: true
+    sent_at?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type NotificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notification to aggregate.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Notifications
+    **/
+    _count?: true | NotificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NotificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NotificationMaxAggregateInputType
+  }
+
+  export type GetNotificationAggregateType<T extends NotificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateNotification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNotification[P]>
+      : GetScalarType<T[P], AggregateNotification[P]>
+  }
+
+
+
+
+  export type NotificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificationWhereInput
+    orderBy?: NotificationOrderByWithAggregationInput | NotificationOrderByWithAggregationInput[]
+    by: NotificationScalarFieldEnum[] | NotificationScalarFieldEnum
+    having?: NotificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NotificationCountAggregateInputType | true
+    _min?: NotificationMinAggregateInputType
+    _max?: NotificationMaxAggregateInputType
+  }
+
+  export type NotificationGroupByOutputType = {
+    id: string
+    workspace_id: string
+    channel: string
+    event_type: string
+    title: string
+    body: string
+    resource_type: string | null
+    resource_id: string | null
+    status: string
+    error_message: string | null
+    sent_at: Date | null
+    created_at: Date
+    _count: NotificationCountAggregateOutputType | null
+    _min: NotificationMinAggregateOutputType | null
+    _max: NotificationMaxAggregateOutputType | null
+  }
+
+  type GetNotificationGroupByPayload<T extends NotificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NotificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NotificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NotificationGroupByOutputType[P]>
+            : GetScalarType<T[P], NotificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    workspace_id?: boolean
+    channel?: boolean
+    event_type?: boolean
+    title?: boolean
+    body?: boolean
+    resource_type?: boolean
+    resource_id?: boolean
+    status?: boolean
+    error_message?: boolean
+    sent_at?: boolean
+    created_at?: boolean
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    workspace_id?: boolean
+    channel?: boolean
+    event_type?: boolean
+    title?: boolean
+    body?: boolean
+    resource_type?: boolean
+    resource_id?: boolean
+    status?: boolean
+    error_message?: boolean
+    sent_at?: boolean
+    created_at?: boolean
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
+
+  export type NotificationSelectScalar = {
+    id?: boolean
+    workspace_id?: boolean
+    channel?: boolean
+    event_type?: boolean
+    title?: boolean
+    body?: boolean
+    resource_type?: boolean
+    resource_id?: boolean
+    status?: boolean
+    error_message?: boolean
+    sent_at?: boolean
+    created_at?: boolean
+  }
+
+  export type NotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }
+  export type NotificationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }
+
+  export type $NotificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Notification"
+    objects: {
+      workspace: Prisma.$WorkspacePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      workspace_id: string
+      channel: string
+      event_type: string
+      title: string
+      body: string
+      resource_type: string | null
+      resource_id: string | null
+      status: string
+      error_message: string | null
+      sent_at: Date | null
+      created_at: Date
+    }, ExtArgs["result"]["notification"]>
+    composites: {}
+  }
+
+  type NotificationGetPayload<S extends boolean | null | undefined | NotificationDefaultArgs> = $Result.GetResult<Prisma.$NotificationPayload, S>
+
+  type NotificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<NotificationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: NotificationCountAggregateInputType | true
+    }
+
+  export interface NotificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Notification'], meta: { name: 'Notification' } }
+    /**
+     * Find zero or one Notification that matches the filter.
+     * @param {NotificationFindUniqueArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NotificationFindUniqueArgs>(args: SelectSubset<T, NotificationFindUniqueArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Notification that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {NotificationFindUniqueOrThrowArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NotificationFindUniqueOrThrowArgs>(args: SelectSubset<T, NotificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Notification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindFirstArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NotificationFindFirstArgs>(args?: SelectSubset<T, NotificationFindFirstArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Notification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindFirstOrThrowArgs} args - Arguments to find a Notification
+     * @example
+     * // Get one Notification
+     * const notification = await prisma.notification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NotificationFindFirstOrThrowArgs>(args?: SelectSubset<T, NotificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Notifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Notifications
+     * const notifications = await prisma.notification.findMany()
+     * 
+     * // Get first 10 Notifications
+     * const notifications = await prisma.notification.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const notificationWithIdOnly = await prisma.notification.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NotificationFindManyArgs>(args?: SelectSubset<T, NotificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Notification.
+     * @param {NotificationCreateArgs} args - Arguments to create a Notification.
+     * @example
+     * // Create one Notification
+     * const Notification = await prisma.notification.create({
+     *   data: {
+     *     // ... data to create a Notification
+     *   }
+     * })
+     * 
+     */
+    create<T extends NotificationCreateArgs>(args: SelectSubset<T, NotificationCreateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Notifications.
+     * @param {NotificationCreateManyArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notification = await prisma.notification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NotificationCreateManyArgs>(args?: SelectSubset<T, NotificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Notifications and returns the data saved in the database.
+     * @param {NotificationCreateManyAndReturnArgs} args - Arguments to create many Notifications.
+     * @example
+     * // Create many Notifications
+     * const notification = await prisma.notification.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Notifications and only return the `id`
+     * const notificationWithIdOnly = await prisma.notification.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NotificationCreateManyAndReturnArgs>(args?: SelectSubset<T, NotificationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Notification.
+     * @param {NotificationDeleteArgs} args - Arguments to delete one Notification.
+     * @example
+     * // Delete one Notification
+     * const Notification = await prisma.notification.delete({
+     *   where: {
+     *     // ... filter to delete one Notification
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NotificationDeleteArgs>(args: SelectSubset<T, NotificationDeleteArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Notification.
+     * @param {NotificationUpdateArgs} args - Arguments to update one Notification.
+     * @example
+     * // Update one Notification
+     * const notification = await prisma.notification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NotificationUpdateArgs>(args: SelectSubset<T, NotificationUpdateArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Notifications.
+     * @param {NotificationDeleteManyArgs} args - Arguments to filter Notifications to delete.
+     * @example
+     * // Delete a few Notifications
+     * const { count } = await prisma.notification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NotificationDeleteManyArgs>(args?: SelectSubset<T, NotificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Notifications
+     * const notification = await prisma.notification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NotificationUpdateManyArgs>(args: SelectSubset<T, NotificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Notification.
+     * @param {NotificationUpsertArgs} args - Arguments to update or create a Notification.
+     * @example
+     * // Update or create a Notification
+     * const notification = await prisma.notification.upsert({
+     *   create: {
+     *     // ... data to create a Notification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Notification we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NotificationUpsertArgs>(args: SelectSubset<T, NotificationUpsertArgs<ExtArgs>>): Prisma__NotificationClient<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Notifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationCountArgs} args - Arguments to filter Notifications to count.
+     * @example
+     * // Count the number of Notifications
+     * const count = await prisma.notification.count({
+     *   where: {
+     *     // ... the filter for the Notifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends NotificationCountArgs>(
+      args?: Subset<T, NotificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NotificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Notification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NotificationAggregateArgs>(args: Subset<T, NotificationAggregateArgs>): Prisma.PrismaPromise<GetNotificationAggregateType<T>>
+
+    /**
+     * Group by Notification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NotificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NotificationGroupByArgs['orderBy'] }
+        : { orderBy?: NotificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NotificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNotificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Notification model
+   */
+  readonly fields: NotificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Notification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NotificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    workspace<T extends WorkspaceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkspaceDefaultArgs<ExtArgs>>): Prisma__WorkspaceClient<$Result.GetResult<Prisma.$WorkspacePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Notification model
+   */ 
+  interface NotificationFieldRefs {
+    readonly id: FieldRef<"Notification", 'String'>
+    readonly workspace_id: FieldRef<"Notification", 'String'>
+    readonly channel: FieldRef<"Notification", 'String'>
+    readonly event_type: FieldRef<"Notification", 'String'>
+    readonly title: FieldRef<"Notification", 'String'>
+    readonly body: FieldRef<"Notification", 'String'>
+    readonly resource_type: FieldRef<"Notification", 'String'>
+    readonly resource_id: FieldRef<"Notification", 'String'>
+    readonly status: FieldRef<"Notification", 'String'>
+    readonly error_message: FieldRef<"Notification", 'String'>
+    readonly sent_at: FieldRef<"Notification", 'DateTime'>
+    readonly created_at: FieldRef<"Notification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Notification findUnique
+   */
+  export type NotificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification findUniqueOrThrow
+   */
+  export type NotificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification findFirst
+   */
+  export type NotificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notifications.
+     */
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification findFirstOrThrow
+   */
+  export type NotificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notification to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notifications.
+     */
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification findMany
+   */
+  export type NotificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which Notifications to fetch.
+     */
+    where?: NotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notifications to fetch.
+     */
+    orderBy?: NotificationOrderByWithRelationInput | NotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Notifications.
+     */
+    cursor?: NotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notifications.
+     */
+    skip?: number
+    distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * Notification create
+   */
+  export type NotificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Notification.
+     */
+    data: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+  }
+
+  /**
+   * Notification createMany
+   */
+  export type NotificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Notifications.
+     */
+    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Notification createManyAndReturn
+   */
+  export type NotificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Notifications.
+     */
+    data: NotificationCreateManyInput | NotificationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Notification update
+   */
+  export type NotificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Notification.
+     */
+    data: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+    /**
+     * Choose, which Notification to update.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification updateMany
+   */
+  export type NotificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Notifications.
+     */
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which Notifications to update
+     */
+    where?: NotificationWhereInput
+  }
+
+  /**
+   * Notification upsert
+   */
+  export type NotificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Notification to update in case it exists.
+     */
+    where: NotificationWhereUniqueInput
+    /**
+     * In case the Notification found by the `where` argument doesn't exist, create a new Notification with this data.
+     */
+    create: XOR<NotificationCreateInput, NotificationUncheckedCreateInput>
+    /**
+     * In case the Notification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NotificationUpdateInput, NotificationUncheckedUpdateInput>
+  }
+
+  /**
+   * Notification delete
+   */
+  export type NotificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+    /**
+     * Filter which Notification to delete.
+     */
+    where: NotificationWhereUniqueInput
+  }
+
+  /**
+   * Notification deleteMany
+   */
+  export type NotificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notifications to delete
+     */
+    where?: NotificationWhereInput
+  }
+
+  /**
+   * Notification without action
+   */
+  export type NotificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PostMortem
+   */
+
+  export type AggregatePostMortem = {
+    _count: PostMortemCountAggregateOutputType | null
+    _min: PostMortemMinAggregateOutputType | null
+    _max: PostMortemMaxAggregateOutputType | null
+  }
+
+  export type PostMortemMinAggregateOutputType = {
+    id: string | null
+    workspace_id: string | null
+    incident_id: string | null
+    title: string | null
+    summary: string | null
+    root_cause: string | null
+    impact: string | null
+    remediation: string | null
+    prevention: string | null
+    pdf_url: string | null
+    generated_at: Date | null
+    created_at: Date | null
+  }
+
+  export type PostMortemMaxAggregateOutputType = {
+    id: string | null
+    workspace_id: string | null
+    incident_id: string | null
+    title: string | null
+    summary: string | null
+    root_cause: string | null
+    impact: string | null
+    remediation: string | null
+    prevention: string | null
+    pdf_url: string | null
+    generated_at: Date | null
+    created_at: Date | null
+  }
+
+  export type PostMortemCountAggregateOutputType = {
+    id: number
+    workspace_id: number
+    incident_id: number
+    title: number
+    summary: number
+    root_cause: number
+    timeline: number
+    impact: number
+    remediation: number
+    prevention: number
+    pdf_url: number
+    generated_at: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type PostMortemMinAggregateInputType = {
+    id?: true
+    workspace_id?: true
+    incident_id?: true
+    title?: true
+    summary?: true
+    root_cause?: true
+    impact?: true
+    remediation?: true
+    prevention?: true
+    pdf_url?: true
+    generated_at?: true
+    created_at?: true
+  }
+
+  export type PostMortemMaxAggregateInputType = {
+    id?: true
+    workspace_id?: true
+    incident_id?: true
+    title?: true
+    summary?: true
+    root_cause?: true
+    impact?: true
+    remediation?: true
+    prevention?: true
+    pdf_url?: true
+    generated_at?: true
+    created_at?: true
+  }
+
+  export type PostMortemCountAggregateInputType = {
+    id?: true
+    workspace_id?: true
+    incident_id?: true
+    title?: true
+    summary?: true
+    root_cause?: true
+    timeline?: true
+    impact?: true
+    remediation?: true
+    prevention?: true
+    pdf_url?: true
+    generated_at?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type PostMortemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PostMortem to aggregate.
+     */
+    where?: PostMortemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostMortems to fetch.
+     */
+    orderBy?: PostMortemOrderByWithRelationInput | PostMortemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PostMortemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostMortems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostMortems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PostMortems
+    **/
+    _count?: true | PostMortemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PostMortemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PostMortemMaxAggregateInputType
+  }
+
+  export type GetPostMortemAggregateType<T extends PostMortemAggregateArgs> = {
+        [P in keyof T & keyof AggregatePostMortem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePostMortem[P]>
+      : GetScalarType<T[P], AggregatePostMortem[P]>
+  }
+
+
+
+
+  export type PostMortemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostMortemWhereInput
+    orderBy?: PostMortemOrderByWithAggregationInput | PostMortemOrderByWithAggregationInput[]
+    by: PostMortemScalarFieldEnum[] | PostMortemScalarFieldEnum
+    having?: PostMortemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PostMortemCountAggregateInputType | true
+    _min?: PostMortemMinAggregateInputType
+    _max?: PostMortemMaxAggregateInputType
+  }
+
+  export type PostMortemGroupByOutputType = {
+    id: string
+    workspace_id: string
+    incident_id: string
+    title: string
+    summary: string
+    root_cause: string | null
+    timeline: JsonValue
+    impact: string | null
+    remediation: string | null
+    prevention: string | null
+    pdf_url: string | null
+    generated_at: Date
+    created_at: Date
+    _count: PostMortemCountAggregateOutputType | null
+    _min: PostMortemMinAggregateOutputType | null
+    _max: PostMortemMaxAggregateOutputType | null
+  }
+
+  type GetPostMortemGroupByPayload<T extends PostMortemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PostMortemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PostMortemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PostMortemGroupByOutputType[P]>
+            : GetScalarType<T[P], PostMortemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PostMortemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    workspace_id?: boolean
+    incident_id?: boolean
+    title?: boolean
+    summary?: boolean
+    root_cause?: boolean
+    timeline?: boolean
+    impact?: boolean
+    remediation?: boolean
+    prevention?: boolean
+    pdf_url?: boolean
+    generated_at?: boolean
+    created_at?: boolean
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["postMortem"]>
+
+  export type PostMortemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    workspace_id?: boolean
+    incident_id?: boolean
+    title?: boolean
+    summary?: boolean
+    root_cause?: boolean
+    timeline?: boolean
+    impact?: boolean
+    remediation?: boolean
+    prevention?: boolean
+    pdf_url?: boolean
+    generated_at?: boolean
+    created_at?: boolean
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["postMortem"]>
+
+  export type PostMortemSelectScalar = {
+    id?: boolean
+    workspace_id?: boolean
+    incident_id?: boolean
+    title?: boolean
+    summary?: boolean
+    root_cause?: boolean
+    timeline?: boolean
+    impact?: boolean
+    remediation?: boolean
+    prevention?: boolean
+    pdf_url?: boolean
+    generated_at?: boolean
+    created_at?: boolean
+  }
+
+  export type PostMortemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }
+  export type PostMortemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    workspace?: boolean | WorkspaceDefaultArgs<ExtArgs>
+  }
+
+  export type $PostMortemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PostMortem"
+    objects: {
+      workspace: Prisma.$WorkspacePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      workspace_id: string
+      incident_id: string
+      title: string
+      summary: string
+      root_cause: string | null
+      timeline: Prisma.JsonValue
+      impact: string | null
+      remediation: string | null
+      prevention: string | null
+      pdf_url: string | null
+      generated_at: Date
+      created_at: Date
+    }, ExtArgs["result"]["postMortem"]>
+    composites: {}
+  }
+
+  type PostMortemGetPayload<S extends boolean | null | undefined | PostMortemDefaultArgs> = $Result.GetResult<Prisma.$PostMortemPayload, S>
+
+  type PostMortemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PostMortemFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PostMortemCountAggregateInputType | true
+    }
+
+  export interface PostMortemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PostMortem'], meta: { name: 'PostMortem' } }
+    /**
+     * Find zero or one PostMortem that matches the filter.
+     * @param {PostMortemFindUniqueArgs} args - Arguments to find a PostMortem
+     * @example
+     * // Get one PostMortem
+     * const postMortem = await prisma.postMortem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PostMortemFindUniqueArgs>(args: SelectSubset<T, PostMortemFindUniqueArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one PostMortem that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {PostMortemFindUniqueOrThrowArgs} args - Arguments to find a PostMortem
+     * @example
+     * // Get one PostMortem
+     * const postMortem = await prisma.postMortem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PostMortemFindUniqueOrThrowArgs>(args: SelectSubset<T, PostMortemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first PostMortem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostMortemFindFirstArgs} args - Arguments to find a PostMortem
+     * @example
+     * // Get one PostMortem
+     * const postMortem = await prisma.postMortem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PostMortemFindFirstArgs>(args?: SelectSubset<T, PostMortemFindFirstArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first PostMortem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostMortemFindFirstOrThrowArgs} args - Arguments to find a PostMortem
+     * @example
+     * // Get one PostMortem
+     * const postMortem = await prisma.postMortem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PostMortemFindFirstOrThrowArgs>(args?: SelectSubset<T, PostMortemFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more PostMortems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostMortemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PostMortems
+     * const postMortems = await prisma.postMortem.findMany()
+     * 
+     * // Get first 10 PostMortems
+     * const postMortems = await prisma.postMortem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const postMortemWithIdOnly = await prisma.postMortem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PostMortemFindManyArgs>(args?: SelectSubset<T, PostMortemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a PostMortem.
+     * @param {PostMortemCreateArgs} args - Arguments to create a PostMortem.
+     * @example
+     * // Create one PostMortem
+     * const PostMortem = await prisma.postMortem.create({
+     *   data: {
+     *     // ... data to create a PostMortem
+     *   }
+     * })
+     * 
+     */
+    create<T extends PostMortemCreateArgs>(args: SelectSubset<T, PostMortemCreateArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many PostMortems.
+     * @param {PostMortemCreateManyArgs} args - Arguments to create many PostMortems.
+     * @example
+     * // Create many PostMortems
+     * const postMortem = await prisma.postMortem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PostMortemCreateManyArgs>(args?: SelectSubset<T, PostMortemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PostMortems and returns the data saved in the database.
+     * @param {PostMortemCreateManyAndReturnArgs} args - Arguments to create many PostMortems.
+     * @example
+     * // Create many PostMortems
+     * const postMortem = await prisma.postMortem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PostMortems and only return the `id`
+     * const postMortemWithIdOnly = await prisma.postMortem.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PostMortemCreateManyAndReturnArgs>(args?: SelectSubset<T, PostMortemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a PostMortem.
+     * @param {PostMortemDeleteArgs} args - Arguments to delete one PostMortem.
+     * @example
+     * // Delete one PostMortem
+     * const PostMortem = await prisma.postMortem.delete({
+     *   where: {
+     *     // ... filter to delete one PostMortem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PostMortemDeleteArgs>(args: SelectSubset<T, PostMortemDeleteArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one PostMortem.
+     * @param {PostMortemUpdateArgs} args - Arguments to update one PostMortem.
+     * @example
+     * // Update one PostMortem
+     * const postMortem = await prisma.postMortem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PostMortemUpdateArgs>(args: SelectSubset<T, PostMortemUpdateArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more PostMortems.
+     * @param {PostMortemDeleteManyArgs} args - Arguments to filter PostMortems to delete.
+     * @example
+     * // Delete a few PostMortems
+     * const { count } = await prisma.postMortem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PostMortemDeleteManyArgs>(args?: SelectSubset<T, PostMortemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PostMortems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostMortemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PostMortems
+     * const postMortem = await prisma.postMortem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PostMortemUpdateManyArgs>(args: SelectSubset<T, PostMortemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PostMortem.
+     * @param {PostMortemUpsertArgs} args - Arguments to update or create a PostMortem.
+     * @example
+     * // Update or create a PostMortem
+     * const postMortem = await prisma.postMortem.upsert({
+     *   create: {
+     *     // ... data to create a PostMortem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PostMortem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PostMortemUpsertArgs>(args: SelectSubset<T, PostMortemUpsertArgs<ExtArgs>>): Prisma__PostMortemClient<$Result.GetResult<Prisma.$PostMortemPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of PostMortems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostMortemCountArgs} args - Arguments to filter PostMortems to count.
+     * @example
+     * // Count the number of PostMortems
+     * const count = await prisma.postMortem.count({
+     *   where: {
+     *     // ... the filter for the PostMortems we want to count
+     *   }
+     * })
+    **/
+    count<T extends PostMortemCountArgs>(
+      args?: Subset<T, PostMortemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PostMortemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PostMortem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostMortemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PostMortemAggregateArgs>(args: Subset<T, PostMortemAggregateArgs>): Prisma.PrismaPromise<GetPostMortemAggregateType<T>>
+
+    /**
+     * Group by PostMortem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostMortemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PostMortemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PostMortemGroupByArgs['orderBy'] }
+        : { orderBy?: PostMortemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PostMortemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostMortemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PostMortem model
+   */
+  readonly fields: PostMortemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PostMortem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PostMortemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    workspace<T extends WorkspaceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkspaceDefaultArgs<ExtArgs>>): Prisma__WorkspaceClient<$Result.GetResult<Prisma.$WorkspacePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PostMortem model
+   */ 
+  interface PostMortemFieldRefs {
+    readonly id: FieldRef<"PostMortem", 'String'>
+    readonly workspace_id: FieldRef<"PostMortem", 'String'>
+    readonly incident_id: FieldRef<"PostMortem", 'String'>
+    readonly title: FieldRef<"PostMortem", 'String'>
+    readonly summary: FieldRef<"PostMortem", 'String'>
+    readonly root_cause: FieldRef<"PostMortem", 'String'>
+    readonly timeline: FieldRef<"PostMortem", 'Json'>
+    readonly impact: FieldRef<"PostMortem", 'String'>
+    readonly remediation: FieldRef<"PostMortem", 'String'>
+    readonly prevention: FieldRef<"PostMortem", 'String'>
+    readonly pdf_url: FieldRef<"PostMortem", 'String'>
+    readonly generated_at: FieldRef<"PostMortem", 'DateTime'>
+    readonly created_at: FieldRef<"PostMortem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PostMortem findUnique
+   */
+  export type PostMortemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * Filter, which PostMortem to fetch.
+     */
+    where: PostMortemWhereUniqueInput
+  }
+
+  /**
+   * PostMortem findUniqueOrThrow
+   */
+  export type PostMortemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * Filter, which PostMortem to fetch.
+     */
+    where: PostMortemWhereUniqueInput
+  }
+
+  /**
+   * PostMortem findFirst
+   */
+  export type PostMortemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * Filter, which PostMortem to fetch.
+     */
+    where?: PostMortemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostMortems to fetch.
+     */
+    orderBy?: PostMortemOrderByWithRelationInput | PostMortemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PostMortems.
+     */
+    cursor?: PostMortemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostMortems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostMortems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PostMortems.
+     */
+    distinct?: PostMortemScalarFieldEnum | PostMortemScalarFieldEnum[]
+  }
+
+  /**
+   * PostMortem findFirstOrThrow
+   */
+  export type PostMortemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * Filter, which PostMortem to fetch.
+     */
+    where?: PostMortemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostMortems to fetch.
+     */
+    orderBy?: PostMortemOrderByWithRelationInput | PostMortemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PostMortems.
+     */
+    cursor?: PostMortemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostMortems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostMortems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PostMortems.
+     */
+    distinct?: PostMortemScalarFieldEnum | PostMortemScalarFieldEnum[]
+  }
+
+  /**
+   * PostMortem findMany
+   */
+  export type PostMortemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * Filter, which PostMortems to fetch.
+     */
+    where?: PostMortemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PostMortems to fetch.
+     */
+    orderBy?: PostMortemOrderByWithRelationInput | PostMortemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PostMortems.
+     */
+    cursor?: PostMortemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PostMortems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PostMortems.
+     */
+    skip?: number
+    distinct?: PostMortemScalarFieldEnum | PostMortemScalarFieldEnum[]
+  }
+
+  /**
+   * PostMortem create
+   */
+  export type PostMortemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PostMortem.
+     */
+    data: XOR<PostMortemCreateInput, PostMortemUncheckedCreateInput>
+  }
+
+  /**
+   * PostMortem createMany
+   */
+  export type PostMortemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PostMortems.
+     */
+    data: PostMortemCreateManyInput | PostMortemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PostMortem createManyAndReturn
+   */
+  export type PostMortemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many PostMortems.
+     */
+    data: PostMortemCreateManyInput | PostMortemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PostMortem update
+   */
+  export type PostMortemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PostMortem.
+     */
+    data: XOR<PostMortemUpdateInput, PostMortemUncheckedUpdateInput>
+    /**
+     * Choose, which PostMortem to update.
+     */
+    where: PostMortemWhereUniqueInput
+  }
+
+  /**
+   * PostMortem updateMany
+   */
+  export type PostMortemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PostMortems.
+     */
+    data: XOR<PostMortemUpdateManyMutationInput, PostMortemUncheckedUpdateManyInput>
+    /**
+     * Filter which PostMortems to update
+     */
+    where?: PostMortemWhereInput
+  }
+
+  /**
+   * PostMortem upsert
+   */
+  export type PostMortemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PostMortem to update in case it exists.
+     */
+    where: PostMortemWhereUniqueInput
+    /**
+     * In case the PostMortem found by the `where` argument doesn't exist, create a new PostMortem with this data.
+     */
+    create: XOR<PostMortemCreateInput, PostMortemUncheckedCreateInput>
+    /**
+     * In case the PostMortem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PostMortemUpdateInput, PostMortemUncheckedUpdateInput>
+  }
+
+  /**
+   * PostMortem delete
+   */
+  export type PostMortemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+    /**
+     * Filter which PostMortem to delete.
+     */
+    where: PostMortemWhereUniqueInput
+  }
+
+  /**
+   * PostMortem deleteMany
+   */
+  export type PostMortemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PostMortems to delete
+     */
+    where?: PostMortemWhereInput
+  }
+
+  /**
+   * PostMortem without action
+   */
+  export type PostMortemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMortem
+     */
+    select?: PostMortemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMortemInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -17743,6 +20183,12 @@ export namespace Prisma {
     notify_on_pr: 'notify_on_pr',
     notify_on_revert: 'notify_on_revert',
     notify_on_task: 'notify_on_task',
+    slack_webhook_url: 'slack_webhook_url',
+    slack_bot_token: 'slack_bot_token',
+    slack_channel_id: 'slack_channel_id',
+    ollama_base_url: 'ollama_base_url',
+    otel_endpoint: 'otel_endpoint',
+    otel_service_name: 'otel_service_name',
     settings: 'settings',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -17793,6 +20239,10 @@ export namespace Prisma {
     source_type: 'source_type',
     channel_name: 'channel_name',
     incident_id: 'incident_id',
+    relevance_score: 'relevance_score',
+    access_count: 'access_count',
+    last_accessed_at: 'last_accessed_at',
+    decay_factor: 'decay_factor',
     created_at: 'created_at'
   };
 
@@ -17893,6 +20343,8 @@ export namespace Prisma {
     affected_files: 'affected_files',
     analysis_confidence: 'analysis_confidence',
     analysis_keywords: 'analysis_keywords',
+    confidence_score: 'confidence_score',
+    trace_id: 'trace_id',
     memory_context: 'memory_context',
     pr_url: 'pr_url',
     pr_number: 'pr_number',
@@ -17977,6 +20429,43 @@ export namespace Prisma {
   };
 
   export type ActivityLogScalarFieldEnum = (typeof ActivityLogScalarFieldEnum)[keyof typeof ActivityLogScalarFieldEnum]
+
+
+  export const NotificationScalarFieldEnum: {
+    id: 'id',
+    workspace_id: 'workspace_id',
+    channel: 'channel',
+    event_type: 'event_type',
+    title: 'title',
+    body: 'body',
+    resource_type: 'resource_type',
+    resource_id: 'resource_id',
+    status: 'status',
+    error_message: 'error_message',
+    sent_at: 'sent_at',
+    created_at: 'created_at'
+  };
+
+  export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+  export const PostMortemScalarFieldEnum: {
+    id: 'id',
+    workspace_id: 'workspace_id',
+    incident_id: 'incident_id',
+    title: 'title',
+    summary: 'summary',
+    root_cause: 'root_cause',
+    timeline: 'timeline',
+    impact: 'impact',
+    remediation: 'remediation',
+    prevention: 'prevention',
+    pdf_url: 'pdf_url',
+    generated_at: 'generated_at',
+    created_at: 'created_at'
+  };
+
+  export type PostMortemScalarFieldEnum = (typeof PostMortemScalarFieldEnum)[keyof typeof PostMortemScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -18251,6 +20740,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFilter<"Workspace"> | boolean
     notify_on_revert?: BoolFilter<"Workspace"> | boolean
     notify_on_task?: BoolFilter<"Workspace"> | boolean
+    slack_webhook_url?: StringNullableFilter<"Workspace"> | string | null
+    slack_bot_token?: StringNullableFilter<"Workspace"> | string | null
+    slack_channel_id?: StringNullableFilter<"Workspace"> | string | null
+    ollama_base_url?: StringNullableFilter<"Workspace"> | string | null
+    otel_endpoint?: StringNullableFilter<"Workspace"> | string | null
+    otel_service_name?: StringNullableFilter<"Workspace"> | string | null
     settings?: JsonFilter<"Workspace">
     created_at?: DateTimeFilter<"Workspace"> | Date | string
     updated_at?: DateTimeFilter<"Workspace"> | Date | string
@@ -18266,6 +20761,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogListRelationFilter
     revert_events?: RevertEventListRelationFilter
     error_rate_snapshots?: ErrorRateSnapshotListRelationFilter
+    notifications?: NotificationListRelationFilter
+    post_mortems?: PostMortemListRelationFilter
   }
 
   export type WorkspaceOrderByWithRelationInput = {
@@ -18285,6 +20782,12 @@ export namespace Prisma {
     notify_on_pr?: SortOrder
     notify_on_revert?: SortOrder
     notify_on_task?: SortOrder
+    slack_webhook_url?: SortOrderInput | SortOrder
+    slack_bot_token?: SortOrderInput | SortOrder
+    slack_channel_id?: SortOrderInput | SortOrder
+    ollama_base_url?: SortOrderInput | SortOrder
+    otel_endpoint?: SortOrderInput | SortOrder
+    otel_service_name?: SortOrderInput | SortOrder
     settings?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -18300,6 +20803,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogOrderByRelationAggregateInput
     revert_events?: RevertEventOrderByRelationAggregateInput
     error_rate_snapshots?: ErrorRateSnapshotOrderByRelationAggregateInput
+    notifications?: NotificationOrderByRelationAggregateInput
+    post_mortems?: PostMortemOrderByRelationAggregateInput
   }
 
   export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
@@ -18322,6 +20827,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFilter<"Workspace"> | boolean
     notify_on_revert?: BoolFilter<"Workspace"> | boolean
     notify_on_task?: BoolFilter<"Workspace"> | boolean
+    slack_webhook_url?: StringNullableFilter<"Workspace"> | string | null
+    slack_bot_token?: StringNullableFilter<"Workspace"> | string | null
+    slack_channel_id?: StringNullableFilter<"Workspace"> | string | null
+    ollama_base_url?: StringNullableFilter<"Workspace"> | string | null
+    otel_endpoint?: StringNullableFilter<"Workspace"> | string | null
+    otel_service_name?: StringNullableFilter<"Workspace"> | string | null
     settings?: JsonFilter<"Workspace">
     created_at?: DateTimeFilter<"Workspace"> | Date | string
     updated_at?: DateTimeFilter<"Workspace"> | Date | string
@@ -18337,6 +20848,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogListRelationFilter
     revert_events?: RevertEventListRelationFilter
     error_rate_snapshots?: ErrorRateSnapshotListRelationFilter
+    notifications?: NotificationListRelationFilter
+    post_mortems?: PostMortemListRelationFilter
   }, "id" | "slug">
 
   export type WorkspaceOrderByWithAggregationInput = {
@@ -18356,6 +20869,12 @@ export namespace Prisma {
     notify_on_pr?: SortOrder
     notify_on_revert?: SortOrder
     notify_on_task?: SortOrder
+    slack_webhook_url?: SortOrderInput | SortOrder
+    slack_bot_token?: SortOrderInput | SortOrder
+    slack_channel_id?: SortOrderInput | SortOrder
+    ollama_base_url?: SortOrderInput | SortOrder
+    otel_endpoint?: SortOrderInput | SortOrder
+    otel_service_name?: SortOrderInput | SortOrder
     settings?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -18386,6 +20905,12 @@ export namespace Prisma {
     notify_on_pr?: BoolWithAggregatesFilter<"Workspace"> | boolean
     notify_on_revert?: BoolWithAggregatesFilter<"Workspace"> | boolean
     notify_on_task?: BoolWithAggregatesFilter<"Workspace"> | boolean
+    slack_webhook_url?: StringNullableWithAggregatesFilter<"Workspace"> | string | null
+    slack_bot_token?: StringNullableWithAggregatesFilter<"Workspace"> | string | null
+    slack_channel_id?: StringNullableWithAggregatesFilter<"Workspace"> | string | null
+    ollama_base_url?: StringNullableWithAggregatesFilter<"Workspace"> | string | null
+    otel_endpoint?: StringNullableWithAggregatesFilter<"Workspace"> | string | null
+    otel_service_name?: StringNullableWithAggregatesFilter<"Workspace"> | string | null
     settings?: JsonWithAggregatesFilter<"Workspace">
     created_at?: DateTimeWithAggregatesFilter<"Workspace"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Workspace"> | Date | string
@@ -18565,6 +21090,10 @@ export namespace Prisma {
     source_type?: StringNullableFilter<"DocumentChunk"> | string | null
     channel_name?: StringNullableFilter<"DocumentChunk"> | string | null
     incident_id?: UuidNullableFilter<"DocumentChunk"> | string | null
+    relevance_score?: FloatFilter<"DocumentChunk"> | number
+    access_count?: IntFilter<"DocumentChunk"> | number
+    last_accessed_at?: DateTimeNullableFilter<"DocumentChunk"> | Date | string | null
+    decay_factor?: FloatFilter<"DocumentChunk"> | number
     created_at?: DateTimeFilter<"DocumentChunk"> | Date | string
     workspace?: XOR<WorkspaceRelationFilter, WorkspaceWhereInput>
     source?: XOR<SourceRelationFilter, SourceWhereInput>
@@ -18584,6 +21113,10 @@ export namespace Prisma {
     source_type?: SortOrderInput | SortOrder
     channel_name?: SortOrderInput | SortOrder
     incident_id?: SortOrderInput | SortOrder
+    relevance_score?: SortOrder
+    access_count?: SortOrder
+    last_accessed_at?: SortOrderInput | SortOrder
+    decay_factor?: SortOrder
     created_at?: SortOrder
     workspace?: WorkspaceOrderByWithRelationInput
     source?: SourceOrderByWithRelationInput
@@ -18606,6 +21139,10 @@ export namespace Prisma {
     source_type?: StringNullableFilter<"DocumentChunk"> | string | null
     channel_name?: StringNullableFilter<"DocumentChunk"> | string | null
     incident_id?: UuidNullableFilter<"DocumentChunk"> | string | null
+    relevance_score?: FloatFilter<"DocumentChunk"> | number
+    access_count?: IntFilter<"DocumentChunk"> | number
+    last_accessed_at?: DateTimeNullableFilter<"DocumentChunk"> | Date | string | null
+    decay_factor?: FloatFilter<"DocumentChunk"> | number
     created_at?: DateTimeFilter<"DocumentChunk"> | Date | string
     workspace?: XOR<WorkspaceRelationFilter, WorkspaceWhereInput>
     source?: XOR<SourceRelationFilter, SourceWhereInput>
@@ -18625,6 +21162,10 @@ export namespace Prisma {
     source_type?: SortOrderInput | SortOrder
     channel_name?: SortOrderInput | SortOrder
     incident_id?: SortOrderInput | SortOrder
+    relevance_score?: SortOrder
+    access_count?: SortOrder
+    last_accessed_at?: SortOrderInput | SortOrder
+    decay_factor?: SortOrder
     created_at?: SortOrder
     _count?: DocumentChunkCountOrderByAggregateInput
     _avg?: DocumentChunkAvgOrderByAggregateInput
@@ -18648,6 +21189,10 @@ export namespace Prisma {
     source_type?: StringNullableWithAggregatesFilter<"DocumentChunk"> | string | null
     channel_name?: StringNullableWithAggregatesFilter<"DocumentChunk"> | string | null
     incident_id?: UuidNullableWithAggregatesFilter<"DocumentChunk"> | string | null
+    relevance_score?: FloatWithAggregatesFilter<"DocumentChunk"> | number
+    access_count?: IntWithAggregatesFilter<"DocumentChunk"> | number
+    last_accessed_at?: DateTimeNullableWithAggregatesFilter<"DocumentChunk"> | Date | string | null
+    decay_factor?: FloatWithAggregatesFilter<"DocumentChunk"> | number
     created_at?: DateTimeWithAggregatesFilter<"DocumentChunk"> | Date | string
   }
 
@@ -19055,6 +21600,8 @@ export namespace Prisma {
     affected_files?: JsonFilter<"Incident">
     analysis_confidence?: FloatNullableFilter<"Incident"> | number | null
     analysis_keywords?: StringNullableListFilter<"Incident">
+    confidence_score?: FloatNullableFilter<"Incident"> | number | null
+    trace_id?: StringNullableFilter<"Incident"> | string | null
     memory_context?: JsonNullableFilter<"Incident">
     pr_url?: StringNullableFilter<"Incident"> | string | null
     pr_number?: IntNullableFilter<"Incident"> | number | null
@@ -19094,6 +21641,8 @@ export namespace Prisma {
     affected_files?: SortOrder
     analysis_confidence?: SortOrderInput | SortOrder
     analysis_keywords?: SortOrder
+    confidence_score?: SortOrderInput | SortOrder
+    trace_id?: SortOrderInput | SortOrder
     memory_context?: SortOrderInput | SortOrder
     pr_url?: SortOrderInput | SortOrder
     pr_number?: SortOrderInput | SortOrder
@@ -19136,6 +21685,8 @@ export namespace Prisma {
     affected_files?: JsonFilter<"Incident">
     analysis_confidence?: FloatNullableFilter<"Incident"> | number | null
     analysis_keywords?: StringNullableListFilter<"Incident">
+    confidence_score?: FloatNullableFilter<"Incident"> | number | null
+    trace_id?: StringNullableFilter<"Incident"> | string | null
     memory_context?: JsonNullableFilter<"Incident">
     pr_url?: StringNullableFilter<"Incident"> | string | null
     pr_number?: IntNullableFilter<"Incident"> | number | null
@@ -19175,6 +21726,8 @@ export namespace Prisma {
     affected_files?: SortOrder
     analysis_confidence?: SortOrderInput | SortOrder
     analysis_keywords?: SortOrder
+    confidence_score?: SortOrderInput | SortOrder
+    trace_id?: SortOrderInput | SortOrder
     memory_context?: SortOrderInput | SortOrder
     pr_url?: SortOrderInput | SortOrder
     pr_number?: SortOrderInput | SortOrder
@@ -19218,6 +21771,8 @@ export namespace Prisma {
     affected_files?: JsonWithAggregatesFilter<"Incident">
     analysis_confidence?: FloatNullableWithAggregatesFilter<"Incident"> | number | null
     analysis_keywords?: StringNullableListFilter<"Incident">
+    confidence_score?: FloatNullableWithAggregatesFilter<"Incident"> | number | null
+    trace_id?: StringNullableWithAggregatesFilter<"Incident"> | string | null
     memory_context?: JsonNullableWithAggregatesFilter<"Incident">
     pr_url?: StringNullableWithAggregatesFilter<"Incident"> | string | null
     pr_number?: IntNullableWithAggregatesFilter<"Incident"> | number | null
@@ -19587,6 +22142,191 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"ActivityLog"> | Date | string
   }
 
+  export type NotificationWhereInput = {
+    AND?: NotificationWhereInput | NotificationWhereInput[]
+    OR?: NotificationWhereInput[]
+    NOT?: NotificationWhereInput | NotificationWhereInput[]
+    id?: UuidFilter<"Notification"> | string
+    workspace_id?: UuidFilter<"Notification"> | string
+    channel?: StringFilter<"Notification"> | string
+    event_type?: StringFilter<"Notification"> | string
+    title?: StringFilter<"Notification"> | string
+    body?: StringFilter<"Notification"> | string
+    resource_type?: StringNullableFilter<"Notification"> | string | null
+    resource_id?: UuidNullableFilter<"Notification"> | string | null
+    status?: StringFilter<"Notification"> | string
+    error_message?: StringNullableFilter<"Notification"> | string | null
+    sent_at?: DateTimeNullableFilter<"Notification"> | Date | string | null
+    created_at?: DateTimeFilter<"Notification"> | Date | string
+    workspace?: XOR<WorkspaceRelationFilter, WorkspaceWhereInput>
+  }
+
+  export type NotificationOrderByWithRelationInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    channel?: SortOrder
+    event_type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    resource_type?: SortOrderInput | SortOrder
+    resource_id?: SortOrderInput | SortOrder
+    status?: SortOrder
+    error_message?: SortOrderInput | SortOrder
+    sent_at?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    workspace?: WorkspaceOrderByWithRelationInput
+  }
+
+  export type NotificationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NotificationWhereInput | NotificationWhereInput[]
+    OR?: NotificationWhereInput[]
+    NOT?: NotificationWhereInput | NotificationWhereInput[]
+    workspace_id?: UuidFilter<"Notification"> | string
+    channel?: StringFilter<"Notification"> | string
+    event_type?: StringFilter<"Notification"> | string
+    title?: StringFilter<"Notification"> | string
+    body?: StringFilter<"Notification"> | string
+    resource_type?: StringNullableFilter<"Notification"> | string | null
+    resource_id?: UuidNullableFilter<"Notification"> | string | null
+    status?: StringFilter<"Notification"> | string
+    error_message?: StringNullableFilter<"Notification"> | string | null
+    sent_at?: DateTimeNullableFilter<"Notification"> | Date | string | null
+    created_at?: DateTimeFilter<"Notification"> | Date | string
+    workspace?: XOR<WorkspaceRelationFilter, WorkspaceWhereInput>
+  }, "id">
+
+  export type NotificationOrderByWithAggregationInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    channel?: SortOrder
+    event_type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    resource_type?: SortOrderInput | SortOrder
+    resource_id?: SortOrderInput | SortOrder
+    status?: SortOrder
+    error_message?: SortOrderInput | SortOrder
+    sent_at?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    _count?: NotificationCountOrderByAggregateInput
+    _max?: NotificationMaxOrderByAggregateInput
+    _min?: NotificationMinOrderByAggregateInput
+  }
+
+  export type NotificationScalarWhereWithAggregatesInput = {
+    AND?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
+    OR?: NotificationScalarWhereWithAggregatesInput[]
+    NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"Notification"> | string
+    workspace_id?: UuidWithAggregatesFilter<"Notification"> | string
+    channel?: StringWithAggregatesFilter<"Notification"> | string
+    event_type?: StringWithAggregatesFilter<"Notification"> | string
+    title?: StringWithAggregatesFilter<"Notification"> | string
+    body?: StringWithAggregatesFilter<"Notification"> | string
+    resource_type?: StringNullableWithAggregatesFilter<"Notification"> | string | null
+    resource_id?: UuidNullableWithAggregatesFilter<"Notification"> | string | null
+    status?: StringWithAggregatesFilter<"Notification"> | string
+    error_message?: StringNullableWithAggregatesFilter<"Notification"> | string | null
+    sent_at?: DateTimeNullableWithAggregatesFilter<"Notification"> | Date | string | null
+    created_at?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
+  }
+
+  export type PostMortemWhereInput = {
+    AND?: PostMortemWhereInput | PostMortemWhereInput[]
+    OR?: PostMortemWhereInput[]
+    NOT?: PostMortemWhereInput | PostMortemWhereInput[]
+    id?: UuidFilter<"PostMortem"> | string
+    workspace_id?: UuidFilter<"PostMortem"> | string
+    incident_id?: UuidFilter<"PostMortem"> | string
+    title?: StringFilter<"PostMortem"> | string
+    summary?: StringFilter<"PostMortem"> | string
+    root_cause?: StringNullableFilter<"PostMortem"> | string | null
+    timeline?: JsonFilter<"PostMortem">
+    impact?: StringNullableFilter<"PostMortem"> | string | null
+    remediation?: StringNullableFilter<"PostMortem"> | string | null
+    prevention?: StringNullableFilter<"PostMortem"> | string | null
+    pdf_url?: StringNullableFilter<"PostMortem"> | string | null
+    generated_at?: DateTimeFilter<"PostMortem"> | Date | string
+    created_at?: DateTimeFilter<"PostMortem"> | Date | string
+    workspace?: XOR<WorkspaceRelationFilter, WorkspaceWhereInput>
+  }
+
+  export type PostMortemOrderByWithRelationInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    incident_id?: SortOrder
+    title?: SortOrder
+    summary?: SortOrder
+    root_cause?: SortOrderInput | SortOrder
+    timeline?: SortOrder
+    impact?: SortOrderInput | SortOrder
+    remediation?: SortOrderInput | SortOrder
+    prevention?: SortOrderInput | SortOrder
+    pdf_url?: SortOrderInput | SortOrder
+    generated_at?: SortOrder
+    created_at?: SortOrder
+    workspace?: WorkspaceOrderByWithRelationInput
+  }
+
+  export type PostMortemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PostMortemWhereInput | PostMortemWhereInput[]
+    OR?: PostMortemWhereInput[]
+    NOT?: PostMortemWhereInput | PostMortemWhereInput[]
+    workspace_id?: UuidFilter<"PostMortem"> | string
+    incident_id?: UuidFilter<"PostMortem"> | string
+    title?: StringFilter<"PostMortem"> | string
+    summary?: StringFilter<"PostMortem"> | string
+    root_cause?: StringNullableFilter<"PostMortem"> | string | null
+    timeline?: JsonFilter<"PostMortem">
+    impact?: StringNullableFilter<"PostMortem"> | string | null
+    remediation?: StringNullableFilter<"PostMortem"> | string | null
+    prevention?: StringNullableFilter<"PostMortem"> | string | null
+    pdf_url?: StringNullableFilter<"PostMortem"> | string | null
+    generated_at?: DateTimeFilter<"PostMortem"> | Date | string
+    created_at?: DateTimeFilter<"PostMortem"> | Date | string
+    workspace?: XOR<WorkspaceRelationFilter, WorkspaceWhereInput>
+  }, "id">
+
+  export type PostMortemOrderByWithAggregationInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    incident_id?: SortOrder
+    title?: SortOrder
+    summary?: SortOrder
+    root_cause?: SortOrderInput | SortOrder
+    timeline?: SortOrder
+    impact?: SortOrderInput | SortOrder
+    remediation?: SortOrderInput | SortOrder
+    prevention?: SortOrderInput | SortOrder
+    pdf_url?: SortOrderInput | SortOrder
+    generated_at?: SortOrder
+    created_at?: SortOrder
+    _count?: PostMortemCountOrderByAggregateInput
+    _max?: PostMortemMaxOrderByAggregateInput
+    _min?: PostMortemMinOrderByAggregateInput
+  }
+
+  export type PostMortemScalarWhereWithAggregatesInput = {
+    AND?: PostMortemScalarWhereWithAggregatesInput | PostMortemScalarWhereWithAggregatesInput[]
+    OR?: PostMortemScalarWhereWithAggregatesInput[]
+    NOT?: PostMortemScalarWhereWithAggregatesInput | PostMortemScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"PostMortem"> | string
+    workspace_id?: UuidWithAggregatesFilter<"PostMortem"> | string
+    incident_id?: UuidWithAggregatesFilter<"PostMortem"> | string
+    title?: StringWithAggregatesFilter<"PostMortem"> | string
+    summary?: StringWithAggregatesFilter<"PostMortem"> | string
+    root_cause?: StringNullableWithAggregatesFilter<"PostMortem"> | string | null
+    timeline?: JsonWithAggregatesFilter<"PostMortem">
+    impact?: StringNullableWithAggregatesFilter<"PostMortem"> | string | null
+    remediation?: StringNullableWithAggregatesFilter<"PostMortem"> | string | null
+    prevention?: StringNullableWithAggregatesFilter<"PostMortem"> | string | null
+    pdf_url?: StringNullableWithAggregatesFilter<"PostMortem"> | string | null
+    generated_at?: DateTimeWithAggregatesFilter<"PostMortem"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"PostMortem"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -19742,6 +22482,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -19757,6 +22503,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateInput = {
@@ -19776,6 +22524,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -19790,6 +22544,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUpdateInput = {
@@ -19808,6 +22564,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19823,6 +22585,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateInput = {
@@ -19842,6 +22606,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19856,6 +22626,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceCreateManyInput = {
@@ -19875,6 +22647,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -19896,6 +22674,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19918,6 +22702,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20101,6 +22891,10 @@ export namespace Prisma {
     timestamp?: Date | string | null
     source_type?: string | null
     channel_name?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     workspace: WorkspaceCreateNestedOneWithoutChunksInput
     source: SourceCreateNestedOneWithoutChunksInput
@@ -20120,6 +22914,10 @@ export namespace Prisma {
     source_type?: string | null
     channel_name?: string | null
     incident_id?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     tasks?: TaskUncheckedCreateNestedManyWithoutSource_chunkInput
   }
@@ -20133,6 +22931,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     workspace?: WorkspaceUpdateOneRequiredWithoutChunksNestedInput
     source?: SourceUpdateOneRequiredWithoutChunksNestedInput
@@ -20152,6 +22954,10 @@ export namespace Prisma {
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
     incident_id?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: TaskUncheckedUpdateManyWithoutSource_chunkNestedInput
   }
@@ -20168,6 +22974,10 @@ export namespace Prisma {
     source_type?: string | null
     channel_name?: string | null
     incident_id?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
   }
 
@@ -20180,6 +22990,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -20195,6 +23009,10 @@ export namespace Prisma {
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
     incident_id?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -20642,6 +23460,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -20681,6 +23501,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -20716,6 +23538,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -20755,6 +23579,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -20792,6 +23618,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -20825,6 +23653,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -20860,6 +23690,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -21267,6 +24099,221 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type NotificationCreateInput = {
+    id?: string
+    channel: string
+    event_type: string
+    title: string
+    body: string
+    resource_type?: string | null
+    resource_id?: string | null
+    status?: string
+    error_message?: string | null
+    sent_at?: Date | string | null
+    created_at?: Date | string
+    workspace: WorkspaceCreateNestedOneWithoutNotificationsInput
+  }
+
+  export type NotificationUncheckedCreateInput = {
+    id?: string
+    workspace_id: string
+    channel: string
+    event_type: string
+    title: string
+    body: string
+    resource_type?: string | null
+    resource_id?: string | null
+    status?: string
+    error_message?: string | null
+    sent_at?: Date | string | null
+    created_at?: Date | string
+  }
+
+  export type NotificationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    channel?: StringFieldUpdateOperationsInput | string
+    event_type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    resource_type?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    error_message?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    workspace?: WorkspaceUpdateOneRequiredWithoutNotificationsNestedInput
+  }
+
+  export type NotificationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    workspace_id?: StringFieldUpdateOperationsInput | string
+    channel?: StringFieldUpdateOperationsInput | string
+    event_type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    resource_type?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    error_message?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationCreateManyInput = {
+    id?: string
+    workspace_id: string
+    channel: string
+    event_type: string
+    title: string
+    body: string
+    resource_type?: string | null
+    resource_id?: string | null
+    status?: string
+    error_message?: string | null
+    sent_at?: Date | string | null
+    created_at?: Date | string
+  }
+
+  export type NotificationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    channel?: StringFieldUpdateOperationsInput | string
+    event_type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    resource_type?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    error_message?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    workspace_id?: StringFieldUpdateOperationsInput | string
+    channel?: StringFieldUpdateOperationsInput | string
+    event_type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    resource_type?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    error_message?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostMortemCreateInput = {
+    id?: string
+    incident_id: string
+    title: string
+    summary: string
+    root_cause?: string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: string | null
+    remediation?: string | null
+    prevention?: string | null
+    pdf_url?: string | null
+    generated_at?: Date | string
+    created_at?: Date | string
+    workspace: WorkspaceCreateNestedOneWithoutPost_mortemsInput
+  }
+
+  export type PostMortemUncheckedCreateInput = {
+    id?: string
+    workspace_id: string
+    incident_id: string
+    title: string
+    summary: string
+    root_cause?: string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: string | null
+    remediation?: string | null
+    prevention?: string | null
+    pdf_url?: string | null
+    generated_at?: Date | string
+    created_at?: Date | string
+  }
+
+  export type PostMortemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    incident_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    root_cause?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
+    remediation?: NullableStringFieldUpdateOperationsInput | string | null
+    prevention?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    generated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    workspace?: WorkspaceUpdateOneRequiredWithoutPost_mortemsNestedInput
+  }
+
+  export type PostMortemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    workspace_id?: StringFieldUpdateOperationsInput | string
+    incident_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    root_cause?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
+    remediation?: NullableStringFieldUpdateOperationsInput | string | null
+    prevention?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    generated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostMortemCreateManyInput = {
+    id?: string
+    workspace_id: string
+    incident_id: string
+    title: string
+    summary: string
+    root_cause?: string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: string | null
+    remediation?: string | null
+    prevention?: string | null
+    pdf_url?: string | null
+    generated_at?: Date | string
+    created_at?: Date | string
+  }
+
+  export type PostMortemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    incident_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    root_cause?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
+    remediation?: NullableStringFieldUpdateOperationsInput | string | null
+    prevention?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    generated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostMortemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    workspace_id?: StringFieldUpdateOperationsInput | string
+    incident_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    root_cause?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
+    remediation?: NullableStringFieldUpdateOperationsInput | string | null
+    prevention?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    generated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -21601,6 +24648,18 @@ export namespace Prisma {
     none?: ErrorRateSnapshotWhereInput
   }
 
+  export type NotificationListRelationFilter = {
+    every?: NotificationWhereInput
+    some?: NotificationWhereInput
+    none?: NotificationWhereInput
+  }
+
+  export type PostMortemListRelationFilter = {
+    every?: PostMortemWhereInput
+    some?: PostMortemWhereInput
+    none?: PostMortemWhereInput
+  }
+
   export type SourceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -21633,6 +24692,14 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type NotificationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PostMortemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type WorkspaceCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -21650,6 +24717,12 @@ export namespace Prisma {
     notify_on_pr?: SortOrder
     notify_on_revert?: SortOrder
     notify_on_task?: SortOrder
+    slack_webhook_url?: SortOrder
+    slack_bot_token?: SortOrder
+    slack_channel_id?: SortOrder
+    ollama_base_url?: SortOrder
+    otel_endpoint?: SortOrder
+    otel_service_name?: SortOrder
     settings?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -21677,6 +24750,12 @@ export namespace Prisma {
     notify_on_pr?: SortOrder
     notify_on_revert?: SortOrder
     notify_on_task?: SortOrder
+    slack_webhook_url?: SortOrder
+    slack_bot_token?: SortOrder
+    slack_channel_id?: SortOrder
+    ollama_base_url?: SortOrder
+    otel_endpoint?: SortOrder
+    otel_service_name?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -21698,6 +24777,12 @@ export namespace Prisma {
     notify_on_pr?: SortOrder
     notify_on_revert?: SortOrder
     notify_on_task?: SortOrder
+    slack_webhook_url?: SortOrder
+    slack_bot_token?: SortOrder
+    slack_channel_id?: SortOrder
+    ollama_base_url?: SortOrder
+    otel_endpoint?: SortOrder
+    otel_service_name?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -21967,11 +25052,18 @@ export namespace Prisma {
     source_type?: SortOrder
     channel_name?: SortOrder
     incident_id?: SortOrder
+    relevance_score?: SortOrder
+    access_count?: SortOrder
+    last_accessed_at?: SortOrder
+    decay_factor?: SortOrder
     created_at?: SortOrder
   }
 
   export type DocumentChunkAvgOrderByAggregateInput = {
     chunk_index?: SortOrder
+    relevance_score?: SortOrder
+    access_count?: SortOrder
+    decay_factor?: SortOrder
   }
 
   export type DocumentChunkMaxOrderByAggregateInput = {
@@ -21985,6 +25077,10 @@ export namespace Prisma {
     source_type?: SortOrder
     channel_name?: SortOrder
     incident_id?: SortOrder
+    relevance_score?: SortOrder
+    access_count?: SortOrder
+    last_accessed_at?: SortOrder
+    decay_factor?: SortOrder
     created_at?: SortOrder
   }
 
@@ -21999,11 +25095,18 @@ export namespace Prisma {
     source_type?: SortOrder
     channel_name?: SortOrder
     incident_id?: SortOrder
+    relevance_score?: SortOrder
+    access_count?: SortOrder
+    last_accessed_at?: SortOrder
+    decay_factor?: SortOrder
     created_at?: SortOrder
   }
 
   export type DocumentChunkSumOrderByAggregateInput = {
     chunk_index?: SortOrder
+    relevance_score?: SortOrder
+    access_count?: SortOrder
+    decay_factor?: SortOrder
   }
 
   export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -22303,6 +25406,8 @@ export namespace Prisma {
     affected_files?: SortOrder
     analysis_confidence?: SortOrder
     analysis_keywords?: SortOrder
+    confidence_score?: SortOrder
+    trace_id?: SortOrder
     memory_context?: SortOrder
     pr_url?: SortOrder
     pr_number?: SortOrder
@@ -22319,6 +25424,7 @@ export namespace Prisma {
 
   export type IncidentAvgOrderByAggregateInput = {
     analysis_confidence?: SortOrder
+    confidence_score?: SortOrder
     pr_number?: SortOrder
   }
 
@@ -22340,6 +25446,8 @@ export namespace Prisma {
     external_id?: SortOrder
     root_cause?: SortOrder
     analysis_confidence?: SortOrder
+    confidence_score?: SortOrder
+    trace_id?: SortOrder
     pr_url?: SortOrder
     pr_number?: SortOrder
     pr_branch?: SortOrder
@@ -22371,6 +25479,8 @@ export namespace Prisma {
     external_id?: SortOrder
     root_cause?: SortOrder
     analysis_confidence?: SortOrder
+    confidence_score?: SortOrder
+    trace_id?: SortOrder
     pr_url?: SortOrder
     pr_number?: SortOrder
     pr_branch?: SortOrder
@@ -22386,6 +25496,7 @@ export namespace Prisma {
 
   export type IncidentSumOrderByAggregateInput = {
     analysis_confidence?: SortOrder
+    confidence_score?: SortOrder
     pr_number?: SortOrder
   }
 
@@ -22615,6 +25726,97 @@ export namespace Prisma {
     action?: SortOrder
     resource_type?: SortOrder
     resource_id?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type NotificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    channel?: SortOrder
+    event_type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    resource_type?: SortOrder
+    resource_id?: SortOrder
+    status?: SortOrder
+    error_message?: SortOrder
+    sent_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type NotificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    channel?: SortOrder
+    event_type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    resource_type?: SortOrder
+    resource_id?: SortOrder
+    status?: SortOrder
+    error_message?: SortOrder
+    sent_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type NotificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    channel?: SortOrder
+    event_type?: SortOrder
+    title?: SortOrder
+    body?: SortOrder
+    resource_type?: SortOrder
+    resource_id?: SortOrder
+    status?: SortOrder
+    error_message?: SortOrder
+    sent_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type PostMortemCountOrderByAggregateInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    incident_id?: SortOrder
+    title?: SortOrder
+    summary?: SortOrder
+    root_cause?: SortOrder
+    timeline?: SortOrder
+    impact?: SortOrder
+    remediation?: SortOrder
+    prevention?: SortOrder
+    pdf_url?: SortOrder
+    generated_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type PostMortemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    incident_id?: SortOrder
+    title?: SortOrder
+    summary?: SortOrder
+    root_cause?: SortOrder
+    impact?: SortOrder
+    remediation?: SortOrder
+    prevention?: SortOrder
+    pdf_url?: SortOrder
+    generated_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type PostMortemMinOrderByAggregateInput = {
+    id?: SortOrder
+    workspace_id?: SortOrder
+    incident_id?: SortOrder
+    title?: SortOrder
+    summary?: SortOrder
+    root_cause?: SortOrder
+    impact?: SortOrder
+    remediation?: SortOrder
+    prevention?: SortOrder
+    pdf_url?: SortOrder
+    generated_at?: SortOrder
     created_at?: SortOrder
   }
 
@@ -22927,6 +26129,20 @@ export namespace Prisma {
     connect?: ErrorRateSnapshotWhereUniqueInput | ErrorRateSnapshotWhereUniqueInput[]
   }
 
+  export type NotificationCreateNestedManyWithoutWorkspaceInput = {
+    create?: XOR<NotificationCreateWithoutWorkspaceInput, NotificationUncheckedCreateWithoutWorkspaceInput> | NotificationCreateWithoutWorkspaceInput[] | NotificationUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutWorkspaceInput | NotificationCreateOrConnectWithoutWorkspaceInput[]
+    createMany?: NotificationCreateManyWorkspaceInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type PostMortemCreateNestedManyWithoutWorkspaceInput = {
+    create?: XOR<PostMortemCreateWithoutWorkspaceInput, PostMortemUncheckedCreateWithoutWorkspaceInput> | PostMortemCreateWithoutWorkspaceInput[] | PostMortemUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: PostMortemCreateOrConnectWithoutWorkspaceInput | PostMortemCreateOrConnectWithoutWorkspaceInput[]
+    createMany?: PostMortemCreateManyWorkspaceInputEnvelope
+    connect?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+  }
+
   export type WorkspaceMemberUncheckedCreateNestedManyWithoutWorkspaceInput = {
     create?: XOR<WorkspaceMemberCreateWithoutWorkspaceInput, WorkspaceMemberUncheckedCreateWithoutWorkspaceInput> | WorkspaceMemberCreateWithoutWorkspaceInput[] | WorkspaceMemberUncheckedCreateWithoutWorkspaceInput[]
     connectOrCreate?: WorkspaceMemberCreateOrConnectWithoutWorkspaceInput | WorkspaceMemberCreateOrConnectWithoutWorkspaceInput[]
@@ -23002,6 +26218,20 @@ export namespace Prisma {
     connectOrCreate?: ErrorRateSnapshotCreateOrConnectWithoutWorkspaceInput | ErrorRateSnapshotCreateOrConnectWithoutWorkspaceInput[]
     createMany?: ErrorRateSnapshotCreateManyWorkspaceInputEnvelope
     connect?: ErrorRateSnapshotWhereUniqueInput | ErrorRateSnapshotWhereUniqueInput[]
+  }
+
+  export type NotificationUncheckedCreateNestedManyWithoutWorkspaceInput = {
+    create?: XOR<NotificationCreateWithoutWorkspaceInput, NotificationUncheckedCreateWithoutWorkspaceInput> | NotificationCreateWithoutWorkspaceInput[] | NotificationUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutWorkspaceInput | NotificationCreateOrConnectWithoutWorkspaceInput[]
+    createMany?: NotificationCreateManyWorkspaceInputEnvelope
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput = {
+    create?: XOR<PostMortemCreateWithoutWorkspaceInput, PostMortemUncheckedCreateWithoutWorkspaceInput> | PostMortemCreateWithoutWorkspaceInput[] | PostMortemUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: PostMortemCreateOrConnectWithoutWorkspaceInput | PostMortemCreateOrConnectWithoutWorkspaceInput[]
+    createMany?: PostMortemCreateManyWorkspaceInputEnvelope
+    connect?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -23182,6 +26412,34 @@ export namespace Prisma {
     deleteMany?: ErrorRateSnapshotScalarWhereInput | ErrorRateSnapshotScalarWhereInput[]
   }
 
+  export type NotificationUpdateManyWithoutWorkspaceNestedInput = {
+    create?: XOR<NotificationCreateWithoutWorkspaceInput, NotificationUncheckedCreateWithoutWorkspaceInput> | NotificationCreateWithoutWorkspaceInput[] | NotificationUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutWorkspaceInput | NotificationCreateOrConnectWithoutWorkspaceInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutWorkspaceInput | NotificationUpsertWithWhereUniqueWithoutWorkspaceInput[]
+    createMany?: NotificationCreateManyWorkspaceInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutWorkspaceInput | NotificationUpdateWithWhereUniqueWithoutWorkspaceInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutWorkspaceInput | NotificationUpdateManyWithWhereWithoutWorkspaceInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type PostMortemUpdateManyWithoutWorkspaceNestedInput = {
+    create?: XOR<PostMortemCreateWithoutWorkspaceInput, PostMortemUncheckedCreateWithoutWorkspaceInput> | PostMortemCreateWithoutWorkspaceInput[] | PostMortemUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: PostMortemCreateOrConnectWithoutWorkspaceInput | PostMortemCreateOrConnectWithoutWorkspaceInput[]
+    upsert?: PostMortemUpsertWithWhereUniqueWithoutWorkspaceInput | PostMortemUpsertWithWhereUniqueWithoutWorkspaceInput[]
+    createMany?: PostMortemCreateManyWorkspaceInputEnvelope
+    set?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    disconnect?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    delete?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    connect?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    update?: PostMortemUpdateWithWhereUniqueWithoutWorkspaceInput | PostMortemUpdateWithWhereUniqueWithoutWorkspaceInput[]
+    updateMany?: PostMortemUpdateManyWithWhereWithoutWorkspaceInput | PostMortemUpdateManyWithWhereWithoutWorkspaceInput[]
+    deleteMany?: PostMortemScalarWhereInput | PostMortemScalarWhereInput[]
+  }
+
   export type WorkspaceMemberUncheckedUpdateManyWithoutWorkspaceNestedInput = {
     create?: XOR<WorkspaceMemberCreateWithoutWorkspaceInput, WorkspaceMemberUncheckedCreateWithoutWorkspaceInput> | WorkspaceMemberCreateWithoutWorkspaceInput[] | WorkspaceMemberUncheckedCreateWithoutWorkspaceInput[]
     connectOrCreate?: WorkspaceMemberCreateOrConnectWithoutWorkspaceInput | WorkspaceMemberCreateOrConnectWithoutWorkspaceInput[]
@@ -23334,6 +26592,34 @@ export namespace Prisma {
     update?: ErrorRateSnapshotUpdateWithWhereUniqueWithoutWorkspaceInput | ErrorRateSnapshotUpdateWithWhereUniqueWithoutWorkspaceInput[]
     updateMany?: ErrorRateSnapshotUpdateManyWithWhereWithoutWorkspaceInput | ErrorRateSnapshotUpdateManyWithWhereWithoutWorkspaceInput[]
     deleteMany?: ErrorRateSnapshotScalarWhereInput | ErrorRateSnapshotScalarWhereInput[]
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput = {
+    create?: XOR<NotificationCreateWithoutWorkspaceInput, NotificationUncheckedCreateWithoutWorkspaceInput> | NotificationCreateWithoutWorkspaceInput[] | NotificationUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: NotificationCreateOrConnectWithoutWorkspaceInput | NotificationCreateOrConnectWithoutWorkspaceInput[]
+    upsert?: NotificationUpsertWithWhereUniqueWithoutWorkspaceInput | NotificationUpsertWithWhereUniqueWithoutWorkspaceInput[]
+    createMany?: NotificationCreateManyWorkspaceInputEnvelope
+    set?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    disconnect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    delete?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+    update?: NotificationUpdateWithWhereUniqueWithoutWorkspaceInput | NotificationUpdateWithWhereUniqueWithoutWorkspaceInput[]
+    updateMany?: NotificationUpdateManyWithWhereWithoutWorkspaceInput | NotificationUpdateManyWithWhereWithoutWorkspaceInput[]
+    deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput = {
+    create?: XOR<PostMortemCreateWithoutWorkspaceInput, PostMortemUncheckedCreateWithoutWorkspaceInput> | PostMortemCreateWithoutWorkspaceInput[] | PostMortemUncheckedCreateWithoutWorkspaceInput[]
+    connectOrCreate?: PostMortemCreateOrConnectWithoutWorkspaceInput | PostMortemCreateOrConnectWithoutWorkspaceInput[]
+    upsert?: PostMortemUpsertWithWhereUniqueWithoutWorkspaceInput | PostMortemUpsertWithWhereUniqueWithoutWorkspaceInput[]
+    createMany?: PostMortemCreateManyWorkspaceInputEnvelope
+    set?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    disconnect?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    delete?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    connect?: PostMortemWhereUniqueInput | PostMortemWhereUniqueInput[]
+    update?: PostMortemUpdateWithWhereUniqueWithoutWorkspaceInput | PostMortemUpdateWithWhereUniqueWithoutWorkspaceInput[]
+    updateMany?: PostMortemUpdateManyWithWhereWithoutWorkspaceInput | PostMortemUpdateManyWithWhereWithoutWorkspaceInput[]
+    deleteMany?: PostMortemScalarWhereInput | PostMortemScalarWhereInput[]
   }
 
   export type WorkspaceCreateNestedOneWithoutMembersInput = {
@@ -23893,6 +27179,34 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutActivity_logsInput, UserUpdateWithoutActivity_logsInput>, UserUncheckedUpdateWithoutActivity_logsInput>
   }
 
+  export type WorkspaceCreateNestedOneWithoutNotificationsInput = {
+    create?: XOR<WorkspaceCreateWithoutNotificationsInput, WorkspaceUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: WorkspaceCreateOrConnectWithoutNotificationsInput
+    connect?: WorkspaceWhereUniqueInput
+  }
+
+  export type WorkspaceUpdateOneRequiredWithoutNotificationsNestedInput = {
+    create?: XOR<WorkspaceCreateWithoutNotificationsInput, WorkspaceUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: WorkspaceCreateOrConnectWithoutNotificationsInput
+    upsert?: WorkspaceUpsertWithoutNotificationsInput
+    connect?: WorkspaceWhereUniqueInput
+    update?: XOR<XOR<WorkspaceUpdateToOneWithWhereWithoutNotificationsInput, WorkspaceUpdateWithoutNotificationsInput>, WorkspaceUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type WorkspaceCreateNestedOneWithoutPost_mortemsInput = {
+    create?: XOR<WorkspaceCreateWithoutPost_mortemsInput, WorkspaceUncheckedCreateWithoutPost_mortemsInput>
+    connectOrCreate?: WorkspaceCreateOrConnectWithoutPost_mortemsInput
+    connect?: WorkspaceWhereUniqueInput
+  }
+
+  export type WorkspaceUpdateOneRequiredWithoutPost_mortemsNestedInput = {
+    create?: XOR<WorkspaceCreateWithoutPost_mortemsInput, WorkspaceUncheckedCreateWithoutPost_mortemsInput>
+    connectOrCreate?: WorkspaceCreateOrConnectWithoutPost_mortemsInput
+    upsert?: WorkspaceUpsertWithoutPost_mortemsInput
+    connect?: WorkspaceWhereUniqueInput
+    update?: XOR<XOR<WorkspaceUpdateToOneWithWhereWithoutPost_mortemsInput, WorkspaceUpdateWithoutPost_mortemsInput>, WorkspaceUncheckedUpdateWithoutPost_mortemsInput>
+  }
+
   export type NestedUuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -24263,6 +27577,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -24277,6 +27597,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutOwnerInput = {
@@ -24295,6 +27617,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -24309,6 +27637,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutOwnerInput = {
@@ -24499,6 +27829,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFilter<"Workspace"> | boolean
     notify_on_revert?: BoolFilter<"Workspace"> | boolean
     notify_on_task?: BoolFilter<"Workspace"> | boolean
+    slack_webhook_url?: StringNullableFilter<"Workspace"> | string | null
+    slack_bot_token?: StringNullableFilter<"Workspace"> | string | null
+    slack_channel_id?: StringNullableFilter<"Workspace"> | string | null
+    ollama_base_url?: StringNullableFilter<"Workspace"> | string | null
+    otel_endpoint?: StringNullableFilter<"Workspace"> | string | null
+    otel_service_name?: StringNullableFilter<"Workspace"> | string | null
     settings?: JsonFilter<"Workspace">
     created_at?: DateTimeFilter<"Workspace"> | Date | string
     updated_at?: DateTimeFilter<"Workspace"> | Date | string
@@ -24757,6 +28093,10 @@ export namespace Prisma {
     timestamp?: Date | string | null
     source_type?: string | null
     channel_name?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     source: SourceCreateNestedOneWithoutChunksInput
     incident?: IncidentCreateNestedOneWithoutChunksInput
@@ -24774,6 +28114,10 @@ export namespace Prisma {
     source_type?: string | null
     channel_name?: string | null
     incident_id?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     tasks?: TaskUncheckedCreateNestedManyWithoutSource_chunkInput
   }
@@ -24963,6 +28307,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -25000,6 +28346,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -25117,6 +28465,84 @@ export namespace Prisma {
 
   export type ErrorRateSnapshotCreateManyWorkspaceInputEnvelope = {
     data: ErrorRateSnapshotCreateManyWorkspaceInput | ErrorRateSnapshotCreateManyWorkspaceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NotificationCreateWithoutWorkspaceInput = {
+    id?: string
+    channel: string
+    event_type: string
+    title: string
+    body: string
+    resource_type?: string | null
+    resource_id?: string | null
+    status?: string
+    error_message?: string | null
+    sent_at?: Date | string | null
+    created_at?: Date | string
+  }
+
+  export type NotificationUncheckedCreateWithoutWorkspaceInput = {
+    id?: string
+    channel: string
+    event_type: string
+    title: string
+    body: string
+    resource_type?: string | null
+    resource_id?: string | null
+    status?: string
+    error_message?: string | null
+    sent_at?: Date | string | null
+    created_at?: Date | string
+  }
+
+  export type NotificationCreateOrConnectWithoutWorkspaceInput = {
+    where: NotificationWhereUniqueInput
+    create: XOR<NotificationCreateWithoutWorkspaceInput, NotificationUncheckedCreateWithoutWorkspaceInput>
+  }
+
+  export type NotificationCreateManyWorkspaceInputEnvelope = {
+    data: NotificationCreateManyWorkspaceInput | NotificationCreateManyWorkspaceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PostMortemCreateWithoutWorkspaceInput = {
+    id?: string
+    incident_id: string
+    title: string
+    summary: string
+    root_cause?: string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: string | null
+    remediation?: string | null
+    prevention?: string | null
+    pdf_url?: string | null
+    generated_at?: Date | string
+    created_at?: Date | string
+  }
+
+  export type PostMortemUncheckedCreateWithoutWorkspaceInput = {
+    id?: string
+    incident_id: string
+    title: string
+    summary: string
+    root_cause?: string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: string | null
+    remediation?: string | null
+    prevention?: string | null
+    pdf_url?: string | null
+    generated_at?: Date | string
+    created_at?: Date | string
+  }
+
+  export type PostMortemCreateOrConnectWithoutWorkspaceInput = {
+    where: PostMortemWhereUniqueInput
+    create: XOR<PostMortemCreateWithoutWorkspaceInput, PostMortemUncheckedCreateWithoutWorkspaceInput>
+  }
+
+  export type PostMortemCreateManyWorkspaceInputEnvelope = {
+    data: PostMortemCreateManyWorkspaceInput | PostMortemCreateManyWorkspaceInput[]
     skipDuplicates?: boolean
   }
 
@@ -25255,6 +28681,10 @@ export namespace Prisma {
     source_type?: StringNullableFilter<"DocumentChunk"> | string | null
     channel_name?: StringNullableFilter<"DocumentChunk"> | string | null
     incident_id?: UuidNullableFilter<"DocumentChunk"> | string | null
+    relevance_score?: FloatFilter<"DocumentChunk"> | number
+    access_count?: IntFilter<"DocumentChunk"> | number
+    last_accessed_at?: DateTimeNullableFilter<"DocumentChunk"> | Date | string | null
+    decay_factor?: FloatFilter<"DocumentChunk"> | number
     created_at?: DateTimeFilter<"DocumentChunk"> | Date | string
   }
 
@@ -25419,6 +28849,8 @@ export namespace Prisma {
     affected_files?: JsonFilter<"Incident">
     analysis_confidence?: FloatNullableFilter<"Incident"> | number | null
     analysis_keywords?: StringNullableListFilter<"Incident">
+    confidence_score?: FloatNullableFilter<"Incident"> | number | null
+    trace_id?: StringNullableFilter<"Incident"> | string | null
     memory_context?: JsonNullableFilter<"Incident">
     pr_url?: StringNullableFilter<"Incident"> | string | null
     pr_number?: IntNullableFilter<"Incident"> | number | null
@@ -25510,6 +28942,75 @@ export namespace Prisma {
     recorded_at?: DateTimeFilter<"ErrorRateSnapshot"> | Date | string
   }
 
+  export type NotificationUpsertWithWhereUniqueWithoutWorkspaceInput = {
+    where: NotificationWhereUniqueInput
+    update: XOR<NotificationUpdateWithoutWorkspaceInput, NotificationUncheckedUpdateWithoutWorkspaceInput>
+    create: XOR<NotificationCreateWithoutWorkspaceInput, NotificationUncheckedCreateWithoutWorkspaceInput>
+  }
+
+  export type NotificationUpdateWithWhereUniqueWithoutWorkspaceInput = {
+    where: NotificationWhereUniqueInput
+    data: XOR<NotificationUpdateWithoutWorkspaceInput, NotificationUncheckedUpdateWithoutWorkspaceInput>
+  }
+
+  export type NotificationUpdateManyWithWhereWithoutWorkspaceInput = {
+    where: NotificationScalarWhereInput
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyWithoutWorkspaceInput>
+  }
+
+  export type NotificationScalarWhereInput = {
+    AND?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+    OR?: NotificationScalarWhereInput[]
+    NOT?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+    id?: UuidFilter<"Notification"> | string
+    workspace_id?: UuidFilter<"Notification"> | string
+    channel?: StringFilter<"Notification"> | string
+    event_type?: StringFilter<"Notification"> | string
+    title?: StringFilter<"Notification"> | string
+    body?: StringFilter<"Notification"> | string
+    resource_type?: StringNullableFilter<"Notification"> | string | null
+    resource_id?: UuidNullableFilter<"Notification"> | string | null
+    status?: StringFilter<"Notification"> | string
+    error_message?: StringNullableFilter<"Notification"> | string | null
+    sent_at?: DateTimeNullableFilter<"Notification"> | Date | string | null
+    created_at?: DateTimeFilter<"Notification"> | Date | string
+  }
+
+  export type PostMortemUpsertWithWhereUniqueWithoutWorkspaceInput = {
+    where: PostMortemWhereUniqueInput
+    update: XOR<PostMortemUpdateWithoutWorkspaceInput, PostMortemUncheckedUpdateWithoutWorkspaceInput>
+    create: XOR<PostMortemCreateWithoutWorkspaceInput, PostMortemUncheckedCreateWithoutWorkspaceInput>
+  }
+
+  export type PostMortemUpdateWithWhereUniqueWithoutWorkspaceInput = {
+    where: PostMortemWhereUniqueInput
+    data: XOR<PostMortemUpdateWithoutWorkspaceInput, PostMortemUncheckedUpdateWithoutWorkspaceInput>
+  }
+
+  export type PostMortemUpdateManyWithWhereWithoutWorkspaceInput = {
+    where: PostMortemScalarWhereInput
+    data: XOR<PostMortemUpdateManyMutationInput, PostMortemUncheckedUpdateManyWithoutWorkspaceInput>
+  }
+
+  export type PostMortemScalarWhereInput = {
+    AND?: PostMortemScalarWhereInput | PostMortemScalarWhereInput[]
+    OR?: PostMortemScalarWhereInput[]
+    NOT?: PostMortemScalarWhereInput | PostMortemScalarWhereInput[]
+    id?: UuidFilter<"PostMortem"> | string
+    workspace_id?: UuidFilter<"PostMortem"> | string
+    incident_id?: UuidFilter<"PostMortem"> | string
+    title?: StringFilter<"PostMortem"> | string
+    summary?: StringFilter<"PostMortem"> | string
+    root_cause?: StringNullableFilter<"PostMortem"> | string | null
+    timeline?: JsonFilter<"PostMortem">
+    impact?: StringNullableFilter<"PostMortem"> | string | null
+    remediation?: StringNullableFilter<"PostMortem"> | string | null
+    prevention?: StringNullableFilter<"PostMortem"> | string | null
+    pdf_url?: StringNullableFilter<"PostMortem"> | string | null
+    generated_at?: DateTimeFilter<"PostMortem"> | Date | string
+    created_at?: DateTimeFilter<"PostMortem"> | Date | string
+  }
+
   export type WorkspaceCreateWithoutMembersInput = {
     id?: string
     name: string
@@ -25526,6 +29027,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -25540,6 +29047,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutMembersInput = {
@@ -25559,6 +29068,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -25572,6 +29087,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutMembersInput = {
@@ -25653,6 +29170,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25667,6 +29190,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutMembersInput = {
@@ -25686,6 +29211,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25699,6 +29230,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type UserUpsertWithoutMembershipsInput = {
@@ -25770,6 +29303,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -25784,6 +29323,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutSourcesInput = {
@@ -25803,6 +29344,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -25816,6 +29363,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutSourcesInput = {
@@ -25832,6 +29381,10 @@ export namespace Prisma {
     timestamp?: Date | string | null
     source_type?: string | null
     channel_name?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     workspace: WorkspaceCreateNestedOneWithoutChunksInput
     incident?: IncidentCreateNestedOneWithoutChunksInput
@@ -25849,6 +29402,10 @@ export namespace Prisma {
     source_type?: string | null
     channel_name?: string | null
     incident_id?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     tasks?: TaskUncheckedCreateNestedManyWithoutSource_chunkInput
   }
@@ -25890,6 +29447,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25904,6 +29467,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutSourcesInput = {
@@ -25923,6 +29488,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25936,6 +29507,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type DocumentChunkUpsertWithWhereUniqueWithoutSourceInput = {
@@ -25970,6 +29543,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -25984,6 +29563,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutChunksInput = {
@@ -26003,6 +29584,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -26016,6 +29603,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutChunksInput = {
@@ -26079,6 +29668,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -26117,6 +29708,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -26206,6 +29799,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26220,6 +29819,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutChunksInput = {
@@ -26239,6 +29840,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26252,6 +29859,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type SourceUpsertWithoutChunksInput = {
@@ -26327,6 +29936,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -26365,6 +29976,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -26412,6 +30025,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -26426,6 +30045,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutQuery_historyInput = {
@@ -26445,6 +30066,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -26458,6 +30085,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutQuery_historyInput = {
@@ -26539,6 +30168,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26553,6 +30188,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutQuery_historyInput = {
@@ -26572,6 +30209,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26585,6 +30228,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type UserUpsertWithoutQuery_historyInput = {
@@ -26656,6 +30301,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -26670,6 +30321,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutTasksInput = {
@@ -26689,6 +30342,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -26702,6 +30361,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutTasksInput = {
@@ -26718,6 +30379,10 @@ export namespace Prisma {
     timestamp?: Date | string | null
     source_type?: string | null
     channel_name?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     workspace: WorkspaceCreateNestedOneWithoutChunksInput
     source: SourceCreateNestedOneWithoutChunksInput
@@ -26736,6 +30401,10 @@ export namespace Prisma {
     source_type?: string | null
     channel_name?: string | null
     incident_id?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
   }
 
@@ -26771,6 +30440,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26785,6 +30460,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutTasksInput = {
@@ -26804,6 +30481,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26817,6 +30500,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type DocumentChunkUpsertWithoutTasksInput = {
@@ -26839,6 +30524,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     workspace?: WorkspaceUpdateOneRequiredWithoutChunksNestedInput
     source?: SourceUpdateOneRequiredWithoutChunksNestedInput
@@ -26857,6 +30546,10 @@ export namespace Prisma {
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
     incident_id?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -26876,6 +30569,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -26890,6 +30589,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutProblemsInput = {
@@ -26909,6 +30610,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -26922,6 +30629,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutProblemsInput = {
@@ -26956,6 +30665,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26970,6 +30685,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutProblemsInput = {
@@ -26989,6 +30706,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27002,6 +30725,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceCreateWithoutRepositoriesInput = {
@@ -27020,6 +30745,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -27034,6 +30765,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutRepositoriesInput = {
@@ -27053,6 +30786,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -27066,6 +30805,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutRepositoriesInput = {
@@ -27092,6 +30833,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -27129,6 +30872,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -27182,6 +30927,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27196,6 +30947,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutRepositoriesInput = {
@@ -27215,6 +30968,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27228,6 +30987,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type IncidentUpsertWithWhereUniqueWithoutRepositoryInput = {
@@ -27262,6 +31023,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -27276,6 +31043,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutIncidentsInput = {
@@ -27295,6 +31064,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -27308,6 +31083,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutIncidentsInput = {
@@ -27415,6 +31192,10 @@ export namespace Prisma {
     timestamp?: Date | string | null
     source_type?: string | null
     channel_name?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     workspace: WorkspaceCreateNestedOneWithoutChunksInput
     source: SourceCreateNestedOneWithoutChunksInput
@@ -27432,6 +31213,10 @@ export namespace Prisma {
     timestamp?: Date | string | null
     source_type?: string | null
     channel_name?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
     tasks?: TaskUncheckedCreateNestedManyWithoutSource_chunkInput
   }
@@ -27473,6 +31258,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27487,6 +31278,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutIncidentsInput = {
@@ -27506,6 +31299,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27519,6 +31318,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type RepositoryUpsertWithoutIncidentsInput = {
@@ -27617,6 +31418,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -27655,6 +31458,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -27752,6 +31557,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -27790,6 +31597,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -27874,6 +31683,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -27888,6 +31703,8 @@ export namespace Prisma {
     incidents?: IncidentCreateNestedManyWithoutWorkspaceInput
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutRevert_eventsInput = {
@@ -27907,6 +31724,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -27920,6 +31743,8 @@ export namespace Prisma {
     incidents?: IncidentUncheckedCreateNestedManyWithoutWorkspaceInput
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutRevert_eventsInput = {
@@ -27954,6 +31779,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27968,6 +31799,8 @@ export namespace Prisma {
     incidents?: IncidentUpdateManyWithoutWorkspaceNestedInput
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutRevert_eventsInput = {
@@ -27987,6 +31820,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28000,6 +31839,8 @@ export namespace Prisma {
     incidents?: IncidentUncheckedUpdateManyWithoutWorkspaceNestedInput
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceCreateWithoutError_rate_snapshotsInput = {
@@ -28018,6 +31859,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -28032,6 +31879,8 @@ export namespace Prisma {
     incidents?: IncidentCreateNestedManyWithoutWorkspaceInput
     activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutError_rate_snapshotsInput = {
@@ -28051,6 +31900,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -28064,6 +31919,8 @@ export namespace Prisma {
     incidents?: IncidentUncheckedCreateNestedManyWithoutWorkspaceInput
     activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutError_rate_snapshotsInput = {
@@ -28098,6 +31955,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28112,6 +31975,8 @@ export namespace Prisma {
     incidents?: IncidentUpdateManyWithoutWorkspaceNestedInput
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutError_rate_snapshotsInput = {
@@ -28131,6 +31996,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28144,6 +32015,8 @@ export namespace Prisma {
     incidents?: IncidentUncheckedUpdateManyWithoutWorkspaceNestedInput
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceCreateWithoutActivity_logsInput = {
@@ -28162,6 +32035,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -28176,6 +32055,8 @@ export namespace Prisma {
     incidents?: IncidentCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceUncheckedCreateWithoutActivity_logsInput = {
@@ -28195,6 +32076,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -28208,6 +32095,8 @@ export namespace Prisma {
     incidents?: IncidentUncheckedCreateNestedManyWithoutWorkspaceInput
     revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
   }
 
   export type WorkspaceCreateOrConnectWithoutActivity_logsInput = {
@@ -28289,6 +32178,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28303,6 +32198,8 @@ export namespace Prisma {
     incidents?: IncidentUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutActivity_logsInput = {
@@ -28322,6 +32219,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28335,6 +32238,8 @@ export namespace Prisma {
     incidents?: IncidentUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type UserUpsertWithoutActivity_logsInput = {
@@ -28390,6 +32295,358 @@ export namespace Prisma {
     reviewed_fixes?: FixUncheckedUpdateManyWithoutReviewerNestedInput
   }
 
+  export type WorkspaceCreateWithoutNotificationsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    telegram_chat_id?: string | null
+    jira_project_key?: string | null
+    jira_base_url?: string | null
+    default_branch?: string
+    auto_revert_enabled?: boolean
+    error_rate_threshold?: number
+    revert_window_min?: number
+    notify_telegram_chat_id?: string | null
+    notify_on_pr?: boolean
+    notify_on_revert?: boolean
+    notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    owner: UserCreateNestedOneWithoutOwned_workspacesInput
+    members?: WorkspaceMemberCreateNestedManyWithoutWorkspaceInput
+    sources?: SourceCreateNestedManyWithoutWorkspaceInput
+    chunks?: DocumentChunkCreateNestedManyWithoutWorkspaceInput
+    query_history?: QueryHistoryCreateNestedManyWithoutWorkspaceInput
+    tasks?: TaskCreateNestedManyWithoutWorkspaceInput
+    problems?: ProblemCreateNestedManyWithoutWorkspaceInput
+    repositories?: RepositoryCreateNestedManyWithoutWorkspaceInput
+    incidents?: IncidentCreateNestedManyWithoutWorkspaceInput
+    activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
+    revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
+    error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemCreateNestedManyWithoutWorkspaceInput
+  }
+
+  export type WorkspaceUncheckedCreateWithoutNotificationsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    owner_id: string
+    telegram_chat_id?: string | null
+    jira_project_key?: string | null
+    jira_base_url?: string | null
+    default_branch?: string
+    auto_revert_enabled?: boolean
+    error_rate_threshold?: number
+    revert_window_min?: number
+    notify_telegram_chat_id?: string | null
+    notify_on_pr?: boolean
+    notify_on_revert?: boolean
+    notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    members?: WorkspaceMemberUncheckedCreateNestedManyWithoutWorkspaceInput
+    sources?: SourceUncheckedCreateNestedManyWithoutWorkspaceInput
+    chunks?: DocumentChunkUncheckedCreateNestedManyWithoutWorkspaceInput
+    query_history?: QueryHistoryUncheckedCreateNestedManyWithoutWorkspaceInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutWorkspaceInput
+    problems?: ProblemUncheckedCreateNestedManyWithoutWorkspaceInput
+    repositories?: RepositoryUncheckedCreateNestedManyWithoutWorkspaceInput
+    incidents?: IncidentUncheckedCreateNestedManyWithoutWorkspaceInput
+    activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
+    revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
+    error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    post_mortems?: PostMortemUncheckedCreateNestedManyWithoutWorkspaceInput
+  }
+
+  export type WorkspaceCreateOrConnectWithoutNotificationsInput = {
+    where: WorkspaceWhereUniqueInput
+    create: XOR<WorkspaceCreateWithoutNotificationsInput, WorkspaceUncheckedCreateWithoutNotificationsInput>
+  }
+
+  export type WorkspaceUpsertWithoutNotificationsInput = {
+    update: XOR<WorkspaceUpdateWithoutNotificationsInput, WorkspaceUncheckedUpdateWithoutNotificationsInput>
+    create: XOR<WorkspaceCreateWithoutNotificationsInput, WorkspaceUncheckedCreateWithoutNotificationsInput>
+    where?: WorkspaceWhereInput
+  }
+
+  export type WorkspaceUpdateToOneWithWhereWithoutNotificationsInput = {
+    where?: WorkspaceWhereInput
+    data: XOR<WorkspaceUpdateWithoutNotificationsInput, WorkspaceUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type WorkspaceUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    default_branch?: StringFieldUpdateOperationsInput | string
+    auto_revert_enabled?: BoolFieldUpdateOperationsInput | boolean
+    error_rate_threshold?: FloatFieldUpdateOperationsInput | number
+    revert_window_min?: IntFieldUpdateOperationsInput | number
+    notify_telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutOwned_workspacesNestedInput
+    members?: WorkspaceMemberUpdateManyWithoutWorkspaceNestedInput
+    sources?: SourceUpdateManyWithoutWorkspaceNestedInput
+    chunks?: DocumentChunkUpdateManyWithoutWorkspaceNestedInput
+    query_history?: QueryHistoryUpdateManyWithoutWorkspaceNestedInput
+    tasks?: TaskUpdateManyWithoutWorkspaceNestedInput
+    problems?: ProblemUpdateManyWithoutWorkspaceNestedInput
+    repositories?: RepositoryUpdateManyWithoutWorkspaceNestedInput
+    incidents?: IncidentUpdateManyWithoutWorkspaceNestedInput
+    activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
+    revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
+    error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
+  }
+
+  export type WorkspaceUncheckedUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_id?: StringFieldUpdateOperationsInput | string
+    telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    default_branch?: StringFieldUpdateOperationsInput | string
+    auto_revert_enabled?: BoolFieldUpdateOperationsInput | boolean
+    error_rate_threshold?: FloatFieldUpdateOperationsInput | number
+    revert_window_min?: IntFieldUpdateOperationsInput | number
+    notify_telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: WorkspaceMemberUncheckedUpdateManyWithoutWorkspaceNestedInput
+    sources?: SourceUncheckedUpdateManyWithoutWorkspaceNestedInput
+    chunks?: DocumentChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
+    query_history?: QueryHistoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutWorkspaceNestedInput
+    problems?: ProblemUncheckedUpdateManyWithoutWorkspaceNestedInput
+    repositories?: RepositoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+    incidents?: IncidentUncheckedUpdateManyWithoutWorkspaceNestedInput
+    activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+    revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
+    error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
+  }
+
+  export type WorkspaceCreateWithoutPost_mortemsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    telegram_chat_id?: string | null
+    jira_project_key?: string | null
+    jira_base_url?: string | null
+    default_branch?: string
+    auto_revert_enabled?: boolean
+    error_rate_threshold?: number
+    revert_window_min?: number
+    notify_telegram_chat_id?: string | null
+    notify_on_pr?: boolean
+    notify_on_revert?: boolean
+    notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    owner: UserCreateNestedOneWithoutOwned_workspacesInput
+    members?: WorkspaceMemberCreateNestedManyWithoutWorkspaceInput
+    sources?: SourceCreateNestedManyWithoutWorkspaceInput
+    chunks?: DocumentChunkCreateNestedManyWithoutWorkspaceInput
+    query_history?: QueryHistoryCreateNestedManyWithoutWorkspaceInput
+    tasks?: TaskCreateNestedManyWithoutWorkspaceInput
+    problems?: ProblemCreateNestedManyWithoutWorkspaceInput
+    repositories?: RepositoryCreateNestedManyWithoutWorkspaceInput
+    incidents?: IncidentCreateNestedManyWithoutWorkspaceInput
+    activity_logs?: ActivityLogCreateNestedManyWithoutWorkspaceInput
+    revert_events?: RevertEventCreateNestedManyWithoutWorkspaceInput
+    error_rate_snapshots?: ErrorRateSnapshotCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationCreateNestedManyWithoutWorkspaceInput
+  }
+
+  export type WorkspaceUncheckedCreateWithoutPost_mortemsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    owner_id: string
+    telegram_chat_id?: string | null
+    jira_project_key?: string | null
+    jira_base_url?: string | null
+    default_branch?: string
+    auto_revert_enabled?: boolean
+    error_rate_threshold?: number
+    revert_window_min?: number
+    notify_telegram_chat_id?: string | null
+    notify_on_pr?: boolean
+    notify_on_revert?: boolean
+    notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    members?: WorkspaceMemberUncheckedCreateNestedManyWithoutWorkspaceInput
+    sources?: SourceUncheckedCreateNestedManyWithoutWorkspaceInput
+    chunks?: DocumentChunkUncheckedCreateNestedManyWithoutWorkspaceInput
+    query_history?: QueryHistoryUncheckedCreateNestedManyWithoutWorkspaceInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutWorkspaceInput
+    problems?: ProblemUncheckedCreateNestedManyWithoutWorkspaceInput
+    repositories?: RepositoryUncheckedCreateNestedManyWithoutWorkspaceInput
+    incidents?: IncidentUncheckedCreateNestedManyWithoutWorkspaceInput
+    activity_logs?: ActivityLogUncheckedCreateNestedManyWithoutWorkspaceInput
+    revert_events?: RevertEventUncheckedCreateNestedManyWithoutWorkspaceInput
+    error_rate_snapshots?: ErrorRateSnapshotUncheckedCreateNestedManyWithoutWorkspaceInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutWorkspaceInput
+  }
+
+  export type WorkspaceCreateOrConnectWithoutPost_mortemsInput = {
+    where: WorkspaceWhereUniqueInput
+    create: XOR<WorkspaceCreateWithoutPost_mortemsInput, WorkspaceUncheckedCreateWithoutPost_mortemsInput>
+  }
+
+  export type WorkspaceUpsertWithoutPost_mortemsInput = {
+    update: XOR<WorkspaceUpdateWithoutPost_mortemsInput, WorkspaceUncheckedUpdateWithoutPost_mortemsInput>
+    create: XOR<WorkspaceCreateWithoutPost_mortemsInput, WorkspaceUncheckedCreateWithoutPost_mortemsInput>
+    where?: WorkspaceWhereInput
+  }
+
+  export type WorkspaceUpdateToOneWithWhereWithoutPost_mortemsInput = {
+    where?: WorkspaceWhereInput
+    data: XOR<WorkspaceUpdateWithoutPost_mortemsInput, WorkspaceUncheckedUpdateWithoutPost_mortemsInput>
+  }
+
+  export type WorkspaceUpdateWithoutPost_mortemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    default_branch?: StringFieldUpdateOperationsInput | string
+    auto_revert_enabled?: BoolFieldUpdateOperationsInput | boolean
+    error_rate_threshold?: FloatFieldUpdateOperationsInput | number
+    revert_window_min?: IntFieldUpdateOperationsInput | number
+    notify_telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutOwned_workspacesNestedInput
+    members?: WorkspaceMemberUpdateManyWithoutWorkspaceNestedInput
+    sources?: SourceUpdateManyWithoutWorkspaceNestedInput
+    chunks?: DocumentChunkUpdateManyWithoutWorkspaceNestedInput
+    query_history?: QueryHistoryUpdateManyWithoutWorkspaceNestedInput
+    tasks?: TaskUpdateManyWithoutWorkspaceNestedInput
+    problems?: ProblemUpdateManyWithoutWorkspaceNestedInput
+    repositories?: RepositoryUpdateManyWithoutWorkspaceNestedInput
+    incidents?: IncidentUpdateManyWithoutWorkspaceNestedInput
+    activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
+    revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
+    error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+  }
+
+  export type WorkspaceUncheckedUpdateWithoutPost_mortemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    owner_id?: StringFieldUpdateOperationsInput | string
+    telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_project_key?: NullableStringFieldUpdateOperationsInput | string | null
+    jira_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    default_branch?: StringFieldUpdateOperationsInput | string
+    auto_revert_enabled?: BoolFieldUpdateOperationsInput | boolean
+    error_rate_threshold?: FloatFieldUpdateOperationsInput | number
+    revert_window_min?: IntFieldUpdateOperationsInput | number
+    notify_telegram_chat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
+    notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: JsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: WorkspaceMemberUncheckedUpdateManyWithoutWorkspaceNestedInput
+    sources?: SourceUncheckedUpdateManyWithoutWorkspaceNestedInput
+    chunks?: DocumentChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
+    query_history?: QueryHistoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutWorkspaceNestedInput
+    problems?: ProblemUncheckedUpdateManyWithoutWorkspaceNestedInput
+    repositories?: RepositoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+    incidents?: IncidentUncheckedUpdateManyWithoutWorkspaceNestedInput
+    activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+    revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
+    error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  }
+
   export type WorkspaceCreateManyOwnerInput = {
     id?: string
     name: string
@@ -28406,6 +32663,12 @@ export namespace Prisma {
     notify_on_pr?: boolean
     notify_on_revert?: boolean
     notify_on_task?: boolean
+    slack_webhook_url?: string | null
+    slack_bot_token?: string | null
+    slack_channel_id?: string | null
+    ollama_base_url?: string | null
+    otel_endpoint?: string | null
+    otel_service_name?: string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -28478,6 +32741,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28492,6 +32761,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateWithoutOwnerInput = {
@@ -28510,6 +32781,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28524,6 +32801,8 @@ export namespace Prisma {
     activity_logs?: ActivityLogUncheckedUpdateManyWithoutWorkspaceNestedInput
     revert_events?: RevertEventUncheckedUpdateManyWithoutWorkspaceNestedInput
     error_rate_snapshots?: ErrorRateSnapshotUncheckedUpdateManyWithoutWorkspaceNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutWorkspaceNestedInput
+    post_mortems?: PostMortemUncheckedUpdateManyWithoutWorkspaceNestedInput
   }
 
   export type WorkspaceUncheckedUpdateManyWithoutOwnerInput = {
@@ -28542,6 +32821,12 @@ export namespace Prisma {
     notify_on_pr?: BoolFieldUpdateOperationsInput | boolean
     notify_on_revert?: BoolFieldUpdateOperationsInput | boolean
     notify_on_task?: BoolFieldUpdateOperationsInput | boolean
+    slack_webhook_url?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_bot_token?: NullableStringFieldUpdateOperationsInput | string | null
+    slack_channel_id?: NullableStringFieldUpdateOperationsInput | string | null
+    ollama_base_url?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_endpoint?: NullableStringFieldUpdateOperationsInput | string | null
+    otel_service_name?: NullableStringFieldUpdateOperationsInput | string | null
     settings?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28733,6 +33018,10 @@ export namespace Prisma {
     source_type?: string | null
     channel_name?: string | null
     incident_id?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
   }
 
@@ -28813,6 +33102,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -28857,6 +33148,35 @@ export namespace Prisma {
     rate: number
     deploy_id?: string | null
     recorded_at?: Date | string
+  }
+
+  export type NotificationCreateManyWorkspaceInput = {
+    id?: string
+    channel: string
+    event_type: string
+    title: string
+    body: string
+    resource_type?: string | null
+    resource_id?: string | null
+    status?: string
+    error_message?: string | null
+    sent_at?: Date | string | null
+    created_at?: Date | string
+  }
+
+  export type PostMortemCreateManyWorkspaceInput = {
+    id?: string
+    incident_id: string
+    title: string
+    summary: string
+    root_cause?: string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: string | null
+    remediation?: string | null
+    prevention?: string | null
+    pdf_url?: string | null
+    generated_at?: Date | string
+    created_at?: Date | string
   }
 
   export type WorkspaceMemberUpdateWithoutWorkspaceInput = {
@@ -28936,6 +33256,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     source?: SourceUpdateOneRequiredWithoutChunksNestedInput
     incident?: IncidentUpdateOneWithoutChunksNestedInput
@@ -28953,6 +33277,10 @@ export namespace Prisma {
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
     incident_id?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: TaskUncheckedUpdateManyWithoutSource_chunkNestedInput
   }
@@ -28968,6 +33296,10 @@ export namespace Prisma {
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
     incident_id?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -29163,6 +33495,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29200,6 +33534,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29236,6 +33572,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29346,6 +33684,93 @@ export namespace Prisma {
     recorded_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type NotificationUpdateWithoutWorkspaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    channel?: StringFieldUpdateOperationsInput | string
+    event_type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    resource_type?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    error_message?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateWithoutWorkspaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    channel?: StringFieldUpdateOperationsInput | string
+    event_type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    resource_type?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    error_message?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificationUncheckedUpdateManyWithoutWorkspaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    channel?: StringFieldUpdateOperationsInput | string
+    event_type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    resource_type?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    error_message?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostMortemUpdateWithoutWorkspaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    incident_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    root_cause?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
+    remediation?: NullableStringFieldUpdateOperationsInput | string | null
+    prevention?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    generated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostMortemUncheckedUpdateWithoutWorkspaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    incident_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    root_cause?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
+    remediation?: NullableStringFieldUpdateOperationsInput | string | null
+    prevention?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    generated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostMortemUncheckedUpdateManyWithoutWorkspaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    incident_id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    root_cause?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: JsonNullValueInput | InputJsonValue
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
+    remediation?: NullableStringFieldUpdateOperationsInput | string | null
+    prevention?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    generated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type DocumentChunkCreateManySourceInput = {
     id?: string
     workspace_id: string
@@ -29357,6 +33782,10 @@ export namespace Prisma {
     source_type?: string | null
     channel_name?: string | null
     incident_id?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
   }
 
@@ -29369,6 +33798,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     workspace?: WorkspaceUpdateOneRequiredWithoutChunksNestedInput
     incident?: IncidentUpdateOneWithoutChunksNestedInput
@@ -29386,6 +33819,10 @@ export namespace Prisma {
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
     incident_id?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: TaskUncheckedUpdateManyWithoutSource_chunkNestedInput
   }
@@ -29401,6 +33838,10 @@ export namespace Prisma {
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
     incident_id?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -29488,6 +33929,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: number | null
     analysis_keywords?: IncidentCreateanalysis_keywordsInput | string[]
+    confidence_score?: number | null
+    trace_id?: string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: string | null
     pr_number?: number | null
@@ -29521,6 +33964,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29558,6 +34003,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29594,6 +34041,8 @@ export namespace Prisma {
     affected_files?: JsonNullValueInput | InputJsonValue
     analysis_confidence?: NullableFloatFieldUpdateOperationsInput | number | null
     analysis_keywords?: IncidentUpdateanalysis_keywordsInput | string[]
+    confidence_score?: NullableFloatFieldUpdateOperationsInput | number | null
+    trace_id?: NullableStringFieldUpdateOperationsInput | string | null
     memory_context?: NullableJsonNullValueInput | InputJsonValue
     pr_url?: NullableStringFieldUpdateOperationsInput | string | null
     pr_number?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29640,6 +34089,10 @@ export namespace Prisma {
     timestamp?: Date | string | null
     source_type?: string | null
     channel_name?: string | null
+    relevance_score?: number
+    access_count?: number
+    last_accessed_at?: Date | string | null
+    decay_factor?: number
     created_at?: Date | string
   }
 
@@ -29715,6 +34168,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     workspace?: WorkspaceUpdateOneRequiredWithoutChunksNestedInput
     source?: SourceUpdateOneRequiredWithoutChunksNestedInput
@@ -29732,6 +34189,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: TaskUncheckedUpdateManyWithoutSource_chunkNestedInput
   }
@@ -29747,6 +34208,10 @@ export namespace Prisma {
     timestamp?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     source_type?: NullableStringFieldUpdateOperationsInput | string | null
     channel_name?: NullableStringFieldUpdateOperationsInput | string | null
+    relevance_score?: FloatFieldUpdateOperationsInput | number
+    access_count?: IntFieldUpdateOperationsInput | number
+    last_accessed_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decay_factor?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -29835,6 +34300,14 @@ export namespace Prisma {
      * @deprecated Use ActivityLogDefaultArgs instead
      */
     export type ActivityLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ActivityLogDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use NotificationDefaultArgs instead
+     */
+    export type NotificationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = NotificationDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PostMortemDefaultArgs instead
+     */
+    export type PostMortemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PostMortemDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

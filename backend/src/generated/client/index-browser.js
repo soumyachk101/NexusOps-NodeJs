@@ -156,6 +156,12 @@ exports.Prisma.WorkspaceScalarFieldEnum = {
   notify_on_pr: 'notify_on_pr',
   notify_on_revert: 'notify_on_revert',
   notify_on_task: 'notify_on_task',
+  slack_webhook_url: 'slack_webhook_url',
+  slack_bot_token: 'slack_bot_token',
+  slack_channel_id: 'slack_channel_id',
+  ollama_base_url: 'ollama_base_url',
+  otel_endpoint: 'otel_endpoint',
+  otel_service_name: 'otel_service_name',
   settings: 'settings',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -197,6 +203,10 @@ exports.Prisma.DocumentChunkScalarFieldEnum = {
   source_type: 'source_type',
   channel_name: 'channel_name',
   incident_id: 'incident_id',
+  relevance_score: 'relevance_score',
+  access_count: 'access_count',
+  last_accessed_at: 'last_accessed_at',
+  decay_factor: 'decay_factor',
   created_at: 'created_at'
 };
 
@@ -282,6 +292,8 @@ exports.Prisma.IncidentScalarFieldEnum = {
   affected_files: 'affected_files',
   analysis_confidence: 'analysis_confidence',
   analysis_keywords: 'analysis_keywords',
+  confidence_score: 'confidence_score',
+  trace_id: 'trace_id',
   memory_context: 'memory_context',
   pr_url: 'pr_url',
   pr_number: 'pr_number',
@@ -353,6 +365,37 @@ exports.Prisma.ActivityLogScalarFieldEnum = {
   created_at: 'created_at'
 };
 
+exports.Prisma.NotificationScalarFieldEnum = {
+  id: 'id',
+  workspace_id: 'workspace_id',
+  channel: 'channel',
+  event_type: 'event_type',
+  title: 'title',
+  body: 'body',
+  resource_type: 'resource_type',
+  resource_id: 'resource_id',
+  status: 'status',
+  error_message: 'error_message',
+  sent_at: 'sent_at',
+  created_at: 'created_at'
+};
+
+exports.Prisma.PostMortemScalarFieldEnum = {
+  id: 'id',
+  workspace_id: 'workspace_id',
+  incident_id: 'incident_id',
+  title: 'title',
+  summary: 'summary',
+  root_cause: 'root_cause',
+  timeline: 'timeline',
+  impact: 'impact',
+  remediation: 'remediation',
+  prevention: 'prevention',
+  pdf_url: 'pdf_url',
+  generated_at: 'generated_at',
+  created_at: 'created_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -398,7 +441,9 @@ exports.Prisma.ModelName = {
   Fix: 'Fix',
   RevertEvent: 'RevertEvent',
   ErrorRateSnapshot: 'ErrorRateSnapshot',
-  ActivityLog: 'ActivityLog'
+  ActivityLog: 'ActivityLog',
+  Notification: 'Notification',
+  PostMortem: 'PostMortem'
 };
 
 /**

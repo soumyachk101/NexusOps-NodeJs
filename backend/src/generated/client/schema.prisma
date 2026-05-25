@@ -52,6 +52,12 @@ model Workspace {
   notify_on_pr            Boolean  @default(true)
   notify_on_revert        Boolean  @default(true)
   notify_on_task          Boolean  @default(false)
+  slack_webhook_url       String?
+  slack_bot_token         String?
+  slack_channel_id        String?  @db.VarChar(50)
+  ollama_base_url         String?  @default("http://localhost:11434")
+  otel_endpoint           String?
+  otel_service_name       String?  @default("nexusops")
   settings                Json     @default("{}")
   created_at              DateTime @default(now())
   updated_at              DateTime @updatedAt
@@ -68,6 +74,8 @@ model Workspace {
   activity_logs        ActivityLog[]
   revert_events        RevertEvent[]
   error_rate_snapshots ErrorRateSnapshot[]
+  notifications        Notification[]
+  post_mortems         PostMortem[]
 
   @@map("workspaces")
 }
@@ -111,19 +119,23 @@ model Source {
 }
 
 model DocumentChunk {
-  id           String                       @id @default(uuid()) @db.Uuid
-  workspace_id String                       @db.Uuid
-  source_id    String                       @db.Uuid
-  chunk_index  Int
-  text         String                       @db.Text
-  embedding    Unsupported("vector(1536)")?
-  metadata     Json                         @default("{}")
-  sender       String?                      @db.VarChar(255)
-  timestamp    DateTime?
-  source_type  String?                      @db.VarChar(50)
-  channel_name String?                      @db.VarChar(255)
-  incident_id  String?                      @db.Uuid
-  created_at   DateTime                     @default(now())
+  id               String                       @id @default(uuid()) @db.Uuid
+  workspace_id     String                       @db.Uuid
+  source_id        String                       @db.Uuid
+  chunk_index      Int
+  text             String                       @db.Text
+  embedding        Unsupported("vector(1536)")?
+  metadata         Json                         @default("{}")
+  sender           String?                      @db.VarChar(255)
+  timestamp        DateTime?
+  source_type      String?                      @db.VarChar(50)
+  channel_name     String?                      @db.VarChar(255)
+  incident_id      String?                      @db.Uuid
+  relevance_score  Float                        @default(1.0)
+  access_count     Int                          @default(0)
+  last_accessed_at DateTime?
+  decay_factor     Float                        @default(1.0)
+  created_at       DateTime                     @default(now())
 
   workspace Workspace @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
   source    Source    @relation(fields: [source_id], references: [id], onDelete: Cascade)
@@ -242,6 +254,8 @@ model Incident {
   affected_files        Json      @default("[]")
   analysis_confidence   Float?
   analysis_keywords     String[]  @default([])
+  confidence_score      Float?
+  trace_id              String?   @db.VarChar(100)
   memory_context        Json?
   pr_url                String?
   pr_number             Int?
@@ -343,4 +357,46 @@ model ActivityLog {
 
   @@index([workspace_id, created_at])
   @@map("activity_log")
+}
+
+model Notification {
+  id            String    @id @default(uuid()) @db.Uuid
+  workspace_id  String    @db.Uuid
+  channel       String    @db.VarChar(30)
+  event_type    String    @db.VarChar(100)
+  title         String    @db.VarChar(500)
+  body          String    @db.Text
+  resource_type String?   @db.VarChar(50)
+  resource_id   String?   @db.Uuid
+  status        String    @default("pending") @db.VarChar(30)
+  error_message String?
+  sent_at       DateTime?
+  created_at    DateTime  @default(now())
+
+  workspace Workspace @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+
+  @@index([workspace_id])
+  @@index([status])
+  @@map("notifications")
+}
+
+model PostMortem {
+  id           String   @id @default(uuid()) @db.Uuid
+  workspace_id String   @db.Uuid
+  incident_id  String   @db.Uuid
+  title        String   @db.VarChar(500)
+  summary      String   @db.Text
+  root_cause   String?
+  timeline     Json     @default("[]")
+  impact       String?
+  remediation  String?
+  prevention   String?
+  pdf_url      String?
+  generated_at DateTime @default(now())
+  created_at   DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspace_id], references: [id], onDelete: Cascade)
+
+  @@index([workspace_id])
+  @@map("post_mortems")
 }
