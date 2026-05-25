@@ -1,0 +1,32 @@
+services:
+  # ----------------------------------------------------
+  # NexusOps Backend Service
+  # ----------------------------------------------------
+  - type: web
+    name: nexusops-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: yarn install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+
+  # ----------------------------------------------------
+  # NexusOps Frontend Service
+  # ----------------------------------------------------
+  - type: web
+    name: nexusops-frontend
+    env: node
+    plan: free
+    rootDir: frontend
+    buildCommand: yarn install && yarn build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        value: https://nexusops-nodejs.onrender.com
