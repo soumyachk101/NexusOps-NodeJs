@@ -7,6 +7,7 @@
     "check": "find src -name '*.js' -not -path '*/generated/*' -print0 | xargs -0 -n1 node -c",
     "prisma:generate": "prisma generate",
     "postinstall": "prisma generate",
+    "build": "prisma generate",
     "test": "npm run check",
     "start": "HOME=$(pwd) node src/index.js",
     "dev": "HOME=$(pwd) nodemon src/index.js"
