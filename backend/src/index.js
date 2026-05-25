@@ -10,9 +10,14 @@ const memoryRoutes = require('./routes/memory');
 const autofixRoutes = require('./routes/autofix');
 const dashboardRoutes = require('./routes/dashboard');
 const webhookRoutes = require('./routes/webhooks');
+const slackRoutes = require('./routes/slack');
+const notificationRoutes = require('./routes/notifications');
+const ollamaRoutes = require('./routes/ollama');
+const postmortemRoutes = require('./routes/postmortems');
 const { errorMiddleware } = require('./middleware/error');
 const { startWorkers } = require('./workers/queue');
 const { startBot } = require('./bot');
+const otelService = require('./services/otel.service');
 
 const app = express();
 const corsOrigin = config.CORS_ORIGIN === '*' ? true : config.CORS_ORIGIN.split(',').map((origin) => origin.trim());
@@ -29,6 +34,10 @@ app.use(express.json({
   },
 }));
 app.use(express.urlencoded({ extended: true }));
+
+// OpenTelemetry tracing middleware
+otelService.initTracing();
+app.use(otelService.traceMiddleware);
 
 app.get('/', (_req, res) => {
   res.json({
@@ -62,7 +71,11 @@ app.use('/api/v1/workspace', workspaceRoutes);
 app.use('/api/v1/memory', memoryRoutes);
 app.use('/api/v1/autofix', autofixRoutes);
 app.use('/api/v1/dashboard', dashboardRoutes);
+app.use('/api/v1/notifications', notificationRoutes);
+app.use('/api/v1/ollama', ollamaRoutes);
+app.use('/api/v1/postmortems', postmortemRoutes);
 app.use('/webhook', webhookRoutes);
+app.use('/api/v1/slack', slackRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: `Route not found: ${req.method} ${req.originalUrl}` });
@@ -112,6 +125,13 @@ if (require.main === module) {
   if (process.env.START_BOT !== 'false') {
     startBot();
   }
+
+  // Graceful shutdown
+  process.on('SIGTERM', async () => {
+    console.log('SIGTERM received. Shutting down gracefully...');
+    await otelService.shutdown().catch(() => {});
+    server.close(() => process.exit(0));
+  });
 }
 
 app.attachSocket = attachSocket;

@@ -34,6 +34,13 @@ const envSchema = z.object({
   SENTRY_WEBHOOK_SECRET: z.string().optional(),
   VERCEL_TOKEN: z.string().optional(),
   RAILWAY_TOKEN: z.string().optional(),
+  SLACK_BOT_TOKEN: z.string().optional(),
+  SLACK_SIGNING_SECRET: z.string().optional(),
+  OLLAMA_BASE_URL: z.string().default('http://localhost:11434'),
+  OLLAMA_MODEL: z.string().default('llama3.3:70b'),
+  OTLP_ENDPOINT: z.string().optional(),
+  OTLP_SERVICE_NAME: z.string().default('nexusops-backend'),
+  OLLAMA_FALLBACK_ENABLED: z.string().default('false'),
 });
 
 const parsed = envSchema.safeParse(process.env);

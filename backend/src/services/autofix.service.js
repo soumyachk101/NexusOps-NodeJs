@@ -5,6 +5,9 @@ const { config } = require('../lib/config');
 const { extractJsonObject } = require('../utils/json');
 const { similaritySearch, ingestIncidentMemory } = require('./memory.service');
 const githubService = require('./github.service');
+const confidenceService = require('./confidence.service');
+const otelService = require('./otel.service');
+const notificationService = require('./notification.service');
 
 const SECRET_PATTERNS = [
   { name: 'jwt', pattern: /eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g },
@@ -225,86 +228,102 @@ async function processIncidentPipeline(incidentId) {
 
   if (!incident) throw new Error('Incident not found');
 
-  try {
-    await setIncidentStatus(incidentId, 'sanitizing');
-    const sanitizedError = sanitizeText(incident.raw_error || incident.error_message);
-    const sanitizedStack = sanitizeText(incident.raw_stack_trace || incident.stack_trace);
+  return otelService.traceIncidentPipeline(incidentId, async (span) => {
+    try {
+      await setIncidentStatus(incidentId, 'sanitizing');
+      span?.addEvent?.('sanitizing');
+      const sanitizedError = sanitizeText(incident.raw_error || incident.error_message);
+      const sanitizedStack = sanitizeText(incident.raw_stack_trace || incident.stack_trace);
 
-    await setIncidentStatus(incidentId, 'analyzing', {
-      sanitized_error: sanitizedError.text,
-      sanitized_stack_trace: sanitizedStack.text,
-      sanitization_report: {
-        replacements: Array.from(new Set([...sanitizedError.replacements, ...sanitizedStack.replacements])),
-      },
-    });
+      await setIncidentStatus(incidentId, 'analyzing', {
+        sanitized_error: sanitizedError.text,
+        sanitized_stack_trace: sanitizedStack.text,
+        sanitization_report: {
+          replacements: Array.from(new Set([...sanitizedError.replacements, ...sanitizedStack.replacements])),
+        },
+      });
+      span?.addEvent?.('analyzing');
 
-    const analysis = await analyzeIncident({
-      ...incident,
-      sanitized_error: sanitizedError.text,
-      sanitized_stack_trace: sanitizedStack.text,
-    });
+      const analysis = await analyzeIncident({
+        ...incident,
+        sanitized_error: sanitizedError.text,
+        sanitized_stack_trace: sanitizedStack.text,
+      });
 
-    await setIncidentStatus(incidentId, 'querying_memory', {
-      root_cause: analysis.root_cause || analysis.explanation,
-      affected_files: analysis.affected_files || [],
-      analysis_keywords: analysis.keywords || [],
-      analysis_confidence: Number(analysis.confidence || 0.35),
-    });
+      await setIncidentStatus(incidentId, 'querying_memory', {
+        root_cause: analysis.root_cause || analysis.explanation,
+        affected_files: analysis.affected_files || [],
+        analysis_keywords: analysis.keywords || [],
+        analysis_confidence: Number(analysis.confidence || 0.35),
+      });
+      span?.addEvent?.('querying_memory');
 
-    const memoryContext = await buildMemoryContext(incident, analysis);
+      const memoryContext = await buildMemoryContext(incident, analysis);
+      const fileContents = await fetchRepoFileContents(incident, analysis.affected_files || []);
 
-    const fileContents = await fetchRepoFileContents(incident, analysis.affected_files || []);
+      // Score confidence
+      const confidenceResult = await confidenceService.scoreAnalysis(incident, analysis, memoryContext);
 
-    await setIncidentStatus(incidentId, 'generating_fix', {
-      memory_context: memoryContext,
-    });
+      await setIncidentStatus(incidentId, 'generating_fix', {
+        memory_context: memoryContext,
+        confidence_score: confidenceResult.score,
+        trace_id: otelService.getCurrentTraceId(),
+      });
+      span?.addEvent?.('generating_fix');
 
-    const fix = await generateFix(incident, analysis, memoryContext, fileContents);
-    const safety = safetyCheck(fix);
+      const fix = await generateFix(incident, analysis, memoryContext, fileContents);
+      const safety = safetyCheck(fix);
 
-    const savedFix = await prisma.fix.create({
-      data: {
-        incident_id: incidentId,
-        title: fix.title || 'Proposed fix',
-        explanation: fix.explanation || '',
-        diff: fix.diff || '',
-        confidence: Number(fix.confidence || 0.4),
-        caveats: Array.isArray(fix.caveats) ? fix.caveats : [],
-        file_changes: fix.file_changes || [],
-        safety_score: safety.safety_score,
-        safety_issues: safety.safety_issues,
-        model_used: config.GROQ_MODEL,
-        status: 'pending',
-      },
-    });
+      // Score fix confidence
+      const fixConfidence = await confidenceService.scoreFixProposal(fix, incident);
 
-    await setIncidentStatus(incidentId, (safety.safety_score === 'BLOCKED' || safety.safety_score === 'REVIEW_REQUIRED') ? 'fix_blocked' : 'resolved');
+      const savedFix = await prisma.fix.create({
+        data: {
+          incident_id: incidentId,
+          title: fix.title || 'Proposed fix',
+          explanation: fix.explanation || '',
+          diff: fix.diff || '',
+          confidence: fixConfidence.score,
+          caveats: Array.isArray(fix.caveats) ? fix.caveats : [],
+          file_changes: fix.file_changes || [],
+          safety_score: safety.safety_score,
+          safety_issues: safety.safety_issues,
+          model_used: config.GROQ_MODEL,
+          status: 'pending',
+        },
+      });
 
-    // Index fix + analysis back into memory for future incident correlation
-    await ingestIncidentMemory({
-      workspaceId: incident.workspace_id,
-      incidentId,
-      analysis,
-      fix: { ...fix, safety_score: safety.safety_score },
-      memoryContext,
-    });
+      await setIncidentStatus(incidentId, (safety.safety_score === 'BLOCKED' || safety.safety_score === 'REVIEW_REQUIRED') ? 'fix_blocked' : 'resolved');
 
-    await prisma.activityLog.create({
-      data: {
-        workspace_id: incident.workspace_id,
-        module: 'autofix',
-        action: 'fix_generated',
-        resource_type: 'fix',
-        resource_id: savedFix.id,
-        metadata: { incident_id: incidentId, safety_score: safety.safety_score },
-      },
-    }).catch(() => null);
+      // Index fix + analysis back into memory for future incident correlation
+      await ingestIncidentMemory({
+        workspaceId: incident.workspace_id,
+        incidentId,
+        analysis,
+        fix: { ...fix, safety_score: safety.safety_score },
+        memoryContext,
+      });
 
-    return savedFix;
-  } catch (error) {
-    await setIncidentStatus(incidentId, 'failed', { pipeline_error: error.message }).catch(() => null);
-    throw error;
-  }
+      await prisma.activityLog.create({
+        data: {
+          workspace_id: incident.workspace_id,
+          module: 'autofix',
+          action: 'fix_generated',
+          resource_type: 'fix',
+          resource_id: savedFix.id,
+          metadata: { incident_id: incidentId, safety_score: safety.safety_score, confidence: fixConfidence.score },
+        },
+      }).catch(() => null);
+
+      // Notify on fix generated
+      notificationService.notifyIncidentEvent(incident.workspace_id, incidentId, 'fix_generated').catch(() => null);
+
+      return savedFix;
+    } catch (error) {
+      await setIncidentStatus(incidentId, 'failed', { pipeline_error: error.message }).catch(() => null);
+      throw error;
+    }
+  });
 }
 
 async function getRepositories(workspaceId) {
@@ -455,6 +474,9 @@ async function createPR(fixId, overrideToken) {
       metadata: { pr_url: pr.url, pr_number: pr.number, repository: repo.full_name },
     },
   }).catch(() => null);
+
+  // Notify on PR creation
+  notificationService.notifyIncidentEvent(incident.workspace_id, incident.id, 'pr_created').catch(() => null);
 
   return pr;
 }

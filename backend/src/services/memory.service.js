@@ -12,6 +12,8 @@ const { config } = require('../lib/config');
 const { AppError } = require('../lib/http');
 const { embedDocuments, insertChunkWithEmbedding, similaritySearch } = require('./vector.service');
 const storageService = require('./storage.service');
+const otelService = require('./otel.service');
+const decayService = require('./memory-decay.service');
 
 const splitter = new RecursiveCharacterTextSplitter({
   chunkSize: 1000,
@@ -178,6 +180,7 @@ Text:
 async function ingestText({ workspaceId, name, sourceType = 'document', text, metadata = {}, detectTasks = false, fileUrl }) {
   if (!text || !text.trim()) throw new AppError(400, 'No text content found to ingest');
 
+  return otelService.traceIngestion(workspaceId, sourceType, async () => {
   const source = await createSource({ workspaceId, name, sourceType, metadata, content: text, fileUrl });
 
   try {
@@ -227,6 +230,7 @@ async function ingestText({ workspaceId, name, sourceType = 'document', text, me
     });
     throw error;
   }
+  });
 }
 
 async function ingestFile({ workspaceId, file, metadata = {} }) {
@@ -317,10 +321,12 @@ Question: {question}
 
 async function queryMemory({ workspaceId, question, userId }) {
   const startedAt = Date.now();
-  try {
-    const chunks = await similaritySearch(workspaceId, question, 8);
-    const filtered = chunks.filter((chunk) => !chunk.score || chunk.score >= 0.6).slice(0, 5);
-    const answer = await answerWithGroq(question, filtered);
+  return otelService.traceMemoryQuery(workspaceId, question, async () => {
+    try {
+      const chunks = await similaritySearch(workspaceId, question, 12);
+      const reranked = decayService.rerankResults(chunks);
+      const filtered = reranked.filter((chunk) => !chunk.effective_score || chunk.effective_score >= 0.3).slice(0, 5);
+      const answer = await answerWithGroq(question, filtered);
 
     const sources = filtered.slice(0, 3).map((chunk) => ({
       id: chunk.id,
@@ -356,13 +362,14 @@ async function queryMemory({ workspaceId, question, userId }) {
     ]).catch((err) => console.error('[Memory Service] History/Log creation failed:', err.message));
 
     return { answer, sources };
-  } catch (error) {
-    console.error('[Memory Service] queryMemory error:', error);
-    return {
-      answer: "I encountered an error while searching your team's memory. This might be due to a service outage or configuration issue. Please try again later.",
-      sources: [],
-    };
-  }
+    } catch (error) {
+      console.error('[Memory Service] queryMemory error:', error);
+      return {
+        answer: "I encountered an error while searching your team's memory. This might be due to a service outage or configuration issue. Please try again later.",
+        sources: [],
+      };
+    }
+  });
 }
 
 module.exports = {

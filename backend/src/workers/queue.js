@@ -6,8 +6,14 @@ const { processIncidentPipeline } = require('../services/autofix.service');
 let redis;
 let autofixQueue;
 let maintenanceQueue;
+let memoryQueue;
+let notificationQueue;
+let postmortemQueue;
 let autofixWorker;
 let maintenanceWorker;
+let memoryWorker;
+let notificationWorker;
+let postmortemWorker;
 let redisAvailable = false;
 let redisChecked = false;
 
@@ -74,6 +80,27 @@ function getAutofixQueue() {
   return autofixQueue;
 }
 
+function getMemoryQueue() {
+  if (!memoryQueue && redisAvailable) {
+    memoryQueue = new Queue('memory', { connection: getRedis() });
+  }
+  return memoryQueue;
+}
+
+function getNotificationQueue() {
+  if (!notificationQueue && redisAvailable) {
+    notificationQueue = new Queue('notifications', { connection: getRedis() });
+  }
+  return notificationQueue;
+}
+
+function getPostmortemQueue() {
+  if (!postmortemQueue && redisAvailable) {
+    postmortemQueue = new Queue('postmortems', { connection: getRedis() });
+  }
+  return postmortemQueue;
+}
+
 async function enqueueAutofix(incidentId) {
   const queue = getAutofixQueue();
   if (queue) {
@@ -96,6 +123,75 @@ async function enqueueAutofix(incidentId) {
     processIncidentPipeline(incidentId).catch((err) => {
       console.error(`Inline AutoFix failed for ${incidentId}:`, err);
     });
+  });
+}
+
+async function enqueueMemoryDecay(workspaceId) {
+  const queue = getMemoryQueue();
+  if (queue) {
+    try {
+      await Promise.race([
+        queue.add('update_decay', { workspaceId }, { attempts: 1 }),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Redis enqueue timeout')), 1500)),
+      ]);
+      return;
+    } catch (error) {
+      console.warn(`BullMQ memory decay enqueue failed; falling back to inline: ${error.message}`);
+    }
+  }
+  setImmediate(async () => {
+    try {
+      const decayService = require('../services/memory-decay.service');
+      await decayService.updateDecayFactors(workspaceId);
+    } catch (err) {
+      console.error(`Inline memory decay failed for ${workspaceId}:`, err.message);
+    }
+  });
+}
+
+async function enqueueNotification(workspaceId, payload) {
+  const queue = getNotificationQueue();
+  if (queue) {
+    try {
+      await Promise.race([
+        queue.add('send_notification', { workspaceId, ...payload }, { attempts: 3, backoff: { type: 'exponential', delay: 2000 } }),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Redis enqueue timeout')), 1500)),
+      ]);
+      return;
+    } catch (error) {
+      console.warn(`BullMQ notification enqueue failed; falling back to inline: ${error.message}`);
+    }
+  }
+  setImmediate(async () => {
+    try {
+      const notificationService = require('../services/notification.service');
+      await notificationService.broadcastNotification(workspaceId, payload);
+    } catch (err) {
+      console.error(`Inline notification failed for ${workspaceId}:`, err.message);
+    }
+  });
+}
+
+async function enqueuePostMortem(incidentId) {
+  const queue = getPostmortemQueue();
+  if (queue) {
+    try {
+      await Promise.race([
+        queue.add('generate_postmortem', { incidentId }, { attempts: 2, backoff: { type: 'exponential', delay: 5000 } }),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Redis enqueue timeout')), 1500)),
+      ]);
+      return;
+    } catch (error) {
+      console.warn(`BullMQ postmortem enqueue failed; falling back to inline: ${error.message}`);
+    }
+  }
+  setImmediate(async () => {
+    try {
+      const postmortemService = require('../services/postmortem.service');
+      await postmortemService.generatePostMortem(incidentId);
+    } catch (err) {
+      console.error(`Inline postmortem failed for ${incidentId}:`, err.message);
+    }
   });
 }
 
@@ -139,23 +235,153 @@ async function startWorkers() {
       { connection: getRedis(), concurrency: 1 },
     );
 
+    // Memory decay worker
+    memoryWorker = new Worker(
+      'memory',
+      async (job) => {
+        if (job.name === 'memory_decay') {
+          const { decayWorkspaceChunks } = require('../services/memory-decay.service');
+          return decayWorkspaceChunks(job.data.workspaceId);
+        }
+      },
+      { connection: getRedis(), concurrency: 2 },
+    );
+    memoryWorker.on('failed', (job, error) => {
+      console.error(`Memory job ${job?.id} failed:`, error.message);
+    });
+    console.log('✅ BullMQ Memory worker started');
+
+    // Notification worker
+    notificationWorker = new Worker(
+      'notifications',
+      async (job) => {
+        const notificationService = require('../services/notification.service');
+        return notificationService.broadcastNotification(job.data.workspaceId, job.data);
+      },
+      { connection: getRedis(), concurrency: 5 },
+    );
+    notificationWorker.on('failed', (job, error) => {
+      console.error(`Notification job ${job?.id} failed:`, error.message);
+    });
+    console.log('✅ BullMQ Notification worker started');
+
+    // Post-mortem worker
+    postmortemWorker = new Worker(
+      'postmortems',
+      async (job) => {
+        const postmortemService = require('../services/postmortem.service');
+        return postmortemService.generatePostMortem(job.data.incidentId);
+      },
+      { connection: getRedis(), concurrency: 2 },
+    );
+    postmortemWorker.on('failed', (job, error) => {
+      console.error(`Post-mortem job ${job?.id} failed:`, error.message);
+    });
+    console.log('✅ BullMQ Post-mortem worker started');
+
     // Setup repeatable jobs
     const mQueue = getMaintenanceQueue();
     if (mQueue) {
       await mQueue.add('detect_problems', {}, {
         repeat: { pattern: '0 */6 * * *' } // Every 6 hours
       });
+
+      await mQueue.add('memory_decay_all', {}, {
+        repeat: { pattern: '0 2 * * *' } // Daily at 2 AM
+      });
+
       console.log('✅ BullMQ Maintenance worker started (Repeatable jobs scheduled)');
     }
   } catch (error) {
     console.warn(`BullMQ worker disabled: ${error.message}`);
   }
 
-  return { autofixWorker, maintenanceWorker };
+  return { autofixWorker, maintenanceWorker, memoryWorker, notificationWorker, postmortemWorker };
+}
+
+function getMemoryQueue() {
+  if (!memoryQueue && redisAvailable) {
+    memoryQueue = new Queue('memory', { connection: getRedis() });
+  }
+  return memoryQueue;
+}
+
+function getNotificationQueue() {
+  if (!notificationQueue && redisAvailable) {
+    notificationQueue = new Queue('notifications', { connection: getRedis() });
+  }
+  return notificationQueue;
+}
+
+function getPostmortemQueue() {
+  if (!postmortemQueue && redisAvailable) {
+    postmortemQueue = new Queue('postmortems', { connection: getRedis() });
+  }
+  return postmortemQueue;
+}
+
+async function enqueueMemoryDecay(workspaceId) {
+  const queue = getMemoryQueue();
+  if (queue) {
+    try {
+      await queue.add('memory_decay', { workspaceId }, {
+        attempts: 1,
+        removeOnComplete: true,
+      });
+      return;
+    } catch (error) {
+      console.warn(`Memory decay enqueue failed: ${error.message}`);
+    }
+  }
+  // Inline fallback
+  const { decayWorkspaceChunks } = require('../services/memory-decay.service');
+  setImmediate(() => decayWorkspaceChunks(workspaceId).catch(() => {}));
+}
+
+async function enqueueNotification(workspaceId, payload) {
+  const queue = getNotificationQueue();
+  if (queue) {
+    try {
+      await queue.add('send_notification', { workspaceId, ...payload }, {
+        attempts: 3,
+        backoff: { type: 'exponential', delay: 2000 },
+      });
+      return;
+    } catch (error) {
+      console.warn(`Notification enqueue failed: ${error.message}`);
+    }
+  }
+  // Inline fallback
+  const notificationService = require('../services/notification.service');
+  setImmediate(() => notificationService.broadcastNotification(workspaceId, payload).catch(() => {}));
+}
+
+async function enqueuePostMortem(incidentId) {
+  const queue = getPostmortemQueue();
+  if (queue) {
+    try {
+      await queue.add('generate_postmortem', { incidentId }, {
+        attempts: 2,
+        backoff: { type: 'exponential', delay: 3000 },
+      });
+      return;
+    } catch (error) {
+      console.warn(`Post-mortem enqueue failed: ${error.message}`);
+    }
+  }
+  // Inline fallback
+  const postmortemService = require('../services/postmortem.service');
+  setImmediate(() => postmortemService.generatePostMortem(incidentId).catch(() => {}));
 }
 
 module.exports = {
   getAutofixQueue,
+  getMemoryQueue,
+  getNotificationQueue,
+  getPostmortemQueue,
   enqueueAutofix,
+  enqueueMemoryDecay,
+  enqueueNotification,
+  enqueuePostMortem,
   startWorkers,
 };

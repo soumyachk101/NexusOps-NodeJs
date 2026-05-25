@@ -1,5 +1,6 @@
 const { prisma } = require('../lib/prisma');
 const { config } = require('../lib/config');
+const notificationService = require('./notification.service');
 
 /**
  * Triggers a rollback on Vercel or Railway.

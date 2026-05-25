@@ -12,12 +12,15 @@
 
 <br />
 
-[![Version](https://img.shields.io/badge/version-2.0.4-8B5CF6?style=for-the-badge&logoColor=white)](https://github.com/soumyachk101/NexusOps-2.0/releases)
+[![Version](https://img.shields.io/badge/version-2.0.5-8B5CF6?style=for-the-badge&logoColor=white)](https://github.com/soumyachk101/NexusOps-2.0/releases)
 [![License](https://img.shields.io/badge/license-MIT-10B981?style=for-the-badge&logoColor=white)](./LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
 [![Prisma](https://img.shields.io/badge/Prisma-5.x-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io)
 [![LangChain](https://img.shields.io/badge/LangChain-0.3-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)](https://js.langchain.com)
 [![Groq](https://img.shields.io/badge/Groq-AI-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com)
+[![Ollama](https://img.shields.io/badge/Ollama-Self--Hosted_LLM-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.ai)
+[![Slack](https://img.shields.io/badge/Slack-Integration-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://slack.com)
+[![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-Tracing-425CC7?style=for-the-badge&logo=opentelemetry&logoColor=white)](https://opentelemetry.io)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
 
@@ -102,36 +105,43 @@ graph LR
     A["🔴 Sentry\nWebhook"] -->|"POST /webhook/sentry"| B["⚡ Express\nGateway"]
     C["✈️ Telegram\nBot"] -->|"Messages"| B
     D["📡 Custom\nTelemetry"] -->|"POST /webhook/error"| B
+    E["💼 Slack\nEvents"] -->|"POST /api/v1/slack/events"| B
+    F["🔍 Ollama\nSelf-Hosted LLM"] -.->|"Fallback"| G["🤖 Groq\nLLM"]
     
-    B --> E["🛡️ PII\nSanitizer"]
-    E --> F["🧠 Memory\nEngine"]
-    F <-->|"pgvector\n1536-dim"| G[("🐘 PostgreSQL\npgvector")]
+    B --> H["🛡️ PII\nSanitizer"]
+    H --> I["🧠 Memory\nEngine"]
+    I <-->|"pgvector\n1536-dim"| J[("🐘 PostgreSQL\npgvector")]
     
-    F --> H["⚙️ BullMQ\nQueue"]
-    H <--> I[("🔴 Redis")]
-    H --> J["🤖 Groq\nLLM"]
+    I --> K["⚙️ BullMQ\nQueue"]
+    K <--> L[("🔴 Redis")]
+    K --> G
     
-    J --> K["📝 Root Cause\nAnalysis"]
-    K --> L["🔧 Fix\nGenerator"]
-    L --> M["📬 GitHub\nDraft PR"]
-    L --> N["📊 Dashboard\nUpdate"]
-    L --> O["💬 Telegram\nNotification"]
+    G --> M["📝 Root Cause\nAnalysis"]
+    M --> N["🔧 Fix\nGenerator"]
+    N --> O["📬 GitHub\nDraft PR"]
+    N --> P["📊 Dashboard\nUpdate"]
+    N --> Q["💬 Notifications\n(Telegram/Slack)"]
+    N --> R["📊 Confidence\nScoring"]
+    R --> S["📋 Post-Mortem\nPDF Export"]
     
     style A fill:#EF4444,stroke:#B91C1C,color:#fff
     style C fill:#3B82F6,stroke:#1D4ED8,color:#fff
     style D fill:#F59E0B,stroke:#D97706,color:#fff
-    style B fill:#8B5CF6,stroke:#6D28D9,color:#fff
-    style E fill:#10B981,stroke:#059669,color:#fff
-    style F fill:#8B5CF6,stroke:#6D28D9,color:#fff
-    style G fill:#3B82F6,stroke:#1D4ED8,color:#fff
-    style H fill:#F59E0B,stroke:#D97706,color:#fff
-    style I fill:#EF4444,stroke:#B91C1C,color:#fff
-    style J fill:#10B981,stroke:#059669,color:#fff
-    style K fill:#8B5CF6,stroke:#6D28D9,color:#fff
-    style L fill:#3B82F6,stroke:#1D4ED8,color:#fff
-    style M fill:#10B981,stroke:#059669,color:#fff
-    style N fill:#F59E0B,stroke:#D97706,color:#fff
-    style O fill:#EF4444,stroke:#B91C1C,color:#fff
+    style E fill:#4A154B,stroke:#350A2E,color:#fff
+    style F fill:#000000,stroke:#333333,color:#fff
+    style G fill:#10B981,stroke:#059669,color:#fff
+    style H fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style I fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style J fill:#3B82F6,stroke:#1D4ED8,color:#fff
+    style K fill:#F59E0B,stroke:#D97706,color:#fff
+    style L fill:#EF4444,stroke:#B91C1C,color:#fff
+    style M fill:#8B5CF6,stroke:#6D28D9,color:#fff
+    style N fill:#3B82F6,stroke:#1D4ED8,color:#fff
+    style O fill:#10B981,stroke:#059669,color:#fff
+    style P fill:#F59E0B,stroke:#D97706,color:#fff
+    style Q fill:#EF4444,stroke:#B91C1C,color:#fff
+    style R fill:#6366F1,stroke:#4F46E5,color:#fff
+    style S fill:#4169E1,stroke:#2B4CB8,color:#fff
 ```
 
 <br />
@@ -171,6 +181,8 @@ graph TD
         A2["✈️ Telegram Bot — Telegraf"]
         A3["📡 Custom Telemetry"]
         A4["📝 Manual Input"]
+        A5["💼 Slack Events API"]
+        A6["📄 Documents (PDF/DOCX/Audio)"]
     end
 
     subgraph PROCESSING ["⚙️ PROCESSING LAYER"]
@@ -180,42 +192,57 @@ graph TD
         B4[("🐘 PostgreSQL + pgvector")]
         B5["📋 BullMQ Pipeline"]
         B6[("🔴 Redis Queue")]
+        B7["📊 OpenTelemetry Tracing"]
+        B8["🔄 Memory Decay & Re-ranking"]
     end
 
     subgraph AI ["🤖 AI LAYER"]
         C1["🤖 Groq LLM — Llama 3.3 70B"]
-        C2["📊 Analysis Chain"]
-        C3["🔧 Fix Generation Chain"]
-        C4["🔍 Similarity Search"]
+        C2["🦙 Ollama — Self-hosted LLM"]
+        C3["📊 Analysis Chain"]
+        C4["🔧 Fix Generation Chain"]
+        C5["🔍 Similarity Search"]
+        C6["📈 Confidence Scoring Engine"]
     end
 
     subgraph OUTPUT ["📤 OUTPUT LAYER"]
         D1["📬 GitHub Draft PR — Octokit"]
         D2["🖥️ Real-time Dashboard"]
-        D3["💬 Telegram Notification"]
-        D4["📋 Activity Logs"]
+        D3["💬 Telegram Notifications"]
+        D4["💼 Slack Notifications"]
+        D5["📋 Activity Logs"]
+        D6["📄 Post-Mortem PDF Export"]
     end
 
     A1 --> B1
     A2 --> B1
     A3 --> B1
     A4 --> B1
+    A5 --> B1
+    A6 --> B1
 
-    B1 --> B2
+    B1 --> B7
+    B7 --> B2
     B2 --> B3
     B3 <--> B4
+    B3 --> B8
     B3 --> B5
     B5 <--> B6
 
     B5 --> C1
-    C1 --> C2
+    B5 --> C2
+    C1 --> C3
     C2 --> C3
     C3 --> C4
+    C4 --> C6
+    C3 --> C5
 
-    C2 --> D1
-    C3 --> D2
+    C6 --> D1
+    C4 --> D2
     C4 --> D3
-    C3 --> D4
+    C4 --> D4
+    C4 --> D5
+    C6 --> D6
 
     style INGESTION fill:#1E1B4B,stroke:#8B5CF6,color:#E0E7FF
     style PROCESSING fill:#1E1B4B,stroke:#6D28D9,color:#E0E7FF
@@ -282,11 +309,14 @@ Multi-format support with intelligent chunking:
 | PDF | `pdf-parse` |
 | DOCX | `mammoth` |
 | Audio | OpenAI Whisper |
+| Slack Messages | Slack Events API |
 | Text/Markdown | Direct ingestion |
 
 **Features:**
 - Recursive text splitting (1000 chars, 150 overlap)
 - Automatic task detection via LLM
+- Memory decay with time-based re-ranking
+- Access-frequency boosting for popular chunks
 - Cloudflare R2 storage for files
 
 </td>
@@ -299,9 +329,12 @@ Multi-format support with intelligent chunking:
 | **Sentry** | Error webhook ingestion |
 | **GitHub** | Code fetch, branch create, Draft PRs |
 | **Telegram** | Message ingestion + notifications |
+| **Slack** | Event ingestion + notifications |
 | **Jira** | Task sync with bidirectional updates |
 | **Groq** | LLM inference (analysis + fix gen) |
+| **Ollama** | Self-hosted LLM (Llama 3.3 fallback) |
 | **OpenAI** | Embeddings (text-embedding-3-small) |
+| **OpenTelemetry** | Distributed tracing (OTLP export) |
 
 </td>
 </tr>
@@ -361,13 +394,23 @@ Automated rollback capability:
 ![OpenAI](https://img.shields.io/badge/OpenAI-Embeddings-412991?style=flat-square&logo=openai&logoColor=white)
 ![pgvector](https://img.shields.io/badge/pgvector-Vector_DB-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 
+### AI / ML
+
+![LangChain](https://img.shields.io/badge/LangChain-0.3-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-Llama_3.3_70B-F55036?style=flat-square&logo=groq&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-Self--Hosted_LLM-000000?style=flat-square&logo=ollama&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-Embeddings-412991?style=flat-square&logo=openai&logoColor=white)
+![pgvector](https://img.shields.io/badge/pgvector-Vector_DB-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+
 ### Integrations
 
 ![GitHub](https://img.shields.io/badge/GitHub-Octokit-181717?style=flat-square&logo=github&logoColor=white)
 ![Telegram](https://img.shields.io/badge/Telegram-Telegraf-26A5E4?style=flat-square&logo=telegram&logoColor=white)
+![Slack](https://img.shields.io/badge/Slack-Events_API-4A154B?style=flat-square&logo=slack&logoColor=white)
 ![Jira](https://img.shields.io/badge/Jira-REST_API-0052CC?style=flat-square&logo=jira&logoColor=white)
 ![Sentry](https://img.shields.io/badge/Sentry-Webhooks-362D59?style=flat-square&logo=sentry&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-Auth-DD2C00?style=flat-square&logo=firebase&logoColor=white)
+![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-OTLP-425CC7?style=flat-square&logo=opentelemetry&logoColor=white)
 
 </div>
 
@@ -521,6 +564,50 @@ POST   /webhook/github                 GitHub webhooks
 </details>
 
 <details>
+<summary><b>💼 Slack Endpoints</b></summary>
+
+```
+POST   /api/v1/slack/events            Slack Events API (URL verification + ingestion)
+POST   /api/v1/slack/notify            Send Slack notification (auth required)
+```
+
+</details>
+
+<details>
+<summary><b>🔔 Notification Endpoints</b></summary>
+
+```
+GET    /api/v1/notifications/           List notifications (paginated)
+GET    /api/v1/notifications/stats      Notification statistics
+POST   /api/v1/notifications/broadcast  Broadcast multi-channel notification
+```
+
+</details>
+
+<details>
+<summary><b>🦙 Ollama Endpoints</b></summary>
+
+```
+GET    /api/v1/ollama/health            Check Ollama availability + list models
+POST   /api/v1/ollama/pull              Pull a model
+POST   /api/v1/ollama/chat              Chat completion via Ollama
+```
+
+</details>
+
+<details>
+<summary><b>📋 Post-Mortem Endpoints</b></summary>
+
+```
+POST   /api/v1/postmortems/generate     Generate post-mortem from incident
+GET    /api/v1/postmortems/             List post-mortems
+GET    /api/v1/postmortems/:id          Get post-mortem by ID
+POST   /api/v1/postmortems/:id/pdf      Generate PDF export
+```
+
+</details>
+
+<details>
 <summary><b>❤️ Health Endpoints</b></summary>
 
 ```
@@ -547,7 +634,11 @@ nexusops-2.0/
 │   │   │   ├── dashboard.controller.js
 │   │   │   ├── memory.controller.js
 │   │   │   ├── webhook.controller.js
-│   │   │   └── workspace.controller.js
+│   │   │   ├── workspace.controller.js
+│   │   │   ├── slack.controller.js
+│   │   │   ├── notification.controller.js
+│   │   │   ├── ollama.controller.js
+│   │   │   └── postmortem.controller.js
 │   │   │
 │   │   ├── services/             # Business logic
 │   │   │   ├── autofix.service.js      # Incident pipeline + fix generation
@@ -555,13 +646,20 @@ nexusops-2.0/
 │   │   │   ├── vector.service.js       # pgvector operations
 │   │   │   ├── github.service.js       # Octokit integration
 │   │   │   ├── telegram.service.js     # Telegraf bot
+│   │   │   ├── slack.service.js        # Slack Events API ingestion
 │   │   │   ├── jira.service.js         # Atlassian REST API
 │   │   │   ├── dashboard.service.js    # Stats & analytics
 │   │   │   ├── storage.service.js      # Cloudflare R2
 │   │   │   ├── revert.service.js       # Deploy rollback
 │   │   │   ├── problem.service.js      # Problem detection
 │   │   │   ├── auth.service.js         # JWT + OAuth
-│   │   │   └── workspace.service.js    # Multi-tenant
+│   │   │   ├── workspace.service.js    # Multi-tenant
+│   │   │   ├── notification.service.js # Multi-channel notifications
+│   │   │   ├── ollama.service.js       # Self-hosted LLM (Ollama)
+│   │   │   ├── otel.service.js         # OpenTelemetry tracing
+│   │   │   ├── confidence.service.js   # Confidence scoring engine
+│   │   │   ├── memory-decay.service.js # Memory decay + re-ranking
+│   │   │   └── postmortem.service.js   # PDF post-mortem export
 │   │   │
 │   │   ├── routes/               # Express routers
 │   │   │   ├── auth.js
@@ -569,10 +667,14 @@ nexusops-2.0/
 │   │   │   ├── dashboard.js
 │   │   │   ├── memory.js
 │   │   │   ├── webhooks.js
-│   │   │   └── workspace.js
+│   │   │   ├── workspace.js
+│   │   │   ├── slack.js
+│   │   │   ├── notifications.js
+│   │   │   ├── ollama.js
+│   │   │   └── postmortems.js
 │   │   │
 │   │   ├── middleware/           # Express middleware
-│   │   │   ├── auth.js                 # JWT verification
+│   │   │   ├── auth.js                 # JWT verification + RBAC
 │   │   │   └── error.js               # Error handling
 │   │   │
 │   │   ├── lib/                  # Core utilities
@@ -595,7 +697,7 @@ nexusops-2.0/
 │   │   └── index.js              # Express app entry
 │   │
 │   ├── prisma/
-│   │   └── schema.prisma         # Database schema (14 models)
+│   │   └── schema.prisma         # Database schema (17 models)
 │   │
 │   ├── package.json
 │   └── .env.example
@@ -621,9 +723,12 @@ erDiagram
     workspaces ||--o{ repositories : "connects"
     workspaces ||--o{ tasks : "detects"
     workspaces ||--o{ problems : "identifies"
+    workspaces ||--o{ notifications : "sends"
+    workspaces ||--o{ post_mortems : "generates"
     sources ||--o{ document_chunks : "produces"
     incidents ||--o{ fixes : "generates"
     incidents ||--o{ document_chunks : "references"
+    incidents ||--o{ post_mortems : "documents"
     repositories ||--o{ incidents : "linked_to"
     document_chunks ||--o{ tasks : "extracts"
 
@@ -642,7 +747,10 @@ erDiagram
         varchar slug UK
         uuid owner_id FK
         varchar telegram_chat_id
+        varchar slack_channel_id
         varchar jira_project_key
+        varchar ollama_base_url
+        varchar otel_endpoint
     }
 
     incidents {
@@ -655,6 +763,8 @@ erDiagram
         varchar severity
         varchar status
         float analysis_confidence
+        float confidence_score
+        varchar trace_id
         text root_cause
         varchar pr_url
     }
@@ -677,7 +787,33 @@ erDiagram
         uuid source_id FK
         text text
         vector embedding
+        float relevance_score
+        int access_count
+        float decay_factor
         jsonb metadata
+    }
+
+    notifications {
+        uuid id PK
+        uuid workspace_id FK
+        varchar channel
+        varchar event_type
+        varchar title
+        text body
+        varchar status
+    }
+
+    post_mortems {
+        uuid id PK
+        uuid workspace_id FK
+        uuid incident_id FK
+        varchar title
+        text summary
+        text root_cause
+        jsonb timeline
+        text impact
+        text remediation
+        varchar pdf_url
     }
 ```
 
@@ -734,6 +870,19 @@ FIREBASE_WEB_API_KEY=your-web-api-key
 
 # ── Sentry ───────────────────────────────────────────────
 SENTRY_WEBHOOK_SECRET=your-sentry-webhook-secret
+
+# ── Slack ────────────────────────────────────────────────
+SLACK_BOT_TOKEN=xoxb-your-slack-bot-token
+SLACK_SIGNING_SECRET=your-slack-signing-secret
+
+# ── Ollama (Optional — self-hosted LLM) ─────────────────
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=llama3.3:70b
+OLLAMA_FALLBACK_ENABLED=false
+
+# ── OpenTelemetry (Optional — tracing) ──────────────────
+OTLP_ENDPOINT=https://your-otel-collector:4318
+OTLP_SERVICE_NAME=nexusops-backend
 
 # ── Workers ──────────────────────────────────────────────
 START_WORKERS=true
@@ -795,20 +944,20 @@ flowchart LR
 - [x] LangChain RAG memory enrichment
 - [x] Groq LLM inference (Llama 3.3 70B)
 - [x] GitHub Draft PR generation
-- [x] Telegram notifications
-- [x] Confidence scoring
-- [x] BullMQ async pipeline
+- [x] Telegram notifications (outbound)
+- [x] Confidence scoring (multi-signal engine)
+- [x] BullMQ async pipeline (5 queues: autofix, maintenance, memory, notifications, postmortems)
 - [x] Jira task sync
-- [x] Document ingestion (PDF, DOCX, audio)
+- [x] Document ingestion (PDF, DOCX, audio, Slack)
 - [x] Problem detection
-- [x] Revert engine
-- [ ] Slack ingestion adapter
-- [ ] OpenTelemetry trace integration
-- [ ] Multi-repository support
-- [ ] RBAC for team-level access control
-- [ ] Memory decay and re-ranking policies
-- [ ] Exportable incident post-mortems (PDF)
-- [ ] Self-hosted LLM option via Ollama
+- [x] Revert engine (Vercel + Railway)
+- [x] Slack ingestion adapter (Events API)
+- [x] OpenTelemetry trace integration (OTLP export)
+- [x] Multi-repository support
+- [x] RBAC for team-level access control (admin/member/viewer)
+- [x] Memory decay and re-ranking policies (exponential decay + access boost)
+- [x] Exportable incident post-mortems (PDF via PDFKit)
+- [x] Self-hosted LLM option via Ollama (with Groq fallback)
 
 <br />
 

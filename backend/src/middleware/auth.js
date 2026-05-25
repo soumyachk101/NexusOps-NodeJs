@@ -93,9 +93,27 @@ const requireWorkspaceAccess = asyncHandler(async (req, _res, next) => {
   next();
 });
 
+/**
+ * Require specific workspace roles. Must be used after requireWorkspaceAccess.
+ * @param  {...string} roles - Allowed roles (e.g., 'admin', 'member', 'viewer')
+ */
+function requireRole(...roles) {
+  return (req, res, next) => {
+    const userRole = req.workspaceRole;
+    if (!userRole) {
+      return next(new AppError(403, 'Forbidden: workspace role not determined'));
+    }
+    if (!roles.includes(userRole)) {
+      return next(new AppError(403, `Forbidden: requires one of [${roles.join(', ')}] role. Your role: ${userRole}`));
+    }
+    next();
+  };
+}
+
 module.exports = {
   verifyAuth,
   verifyFirebaseAuth: verifyAuth,
   optionalAuth,
   requireWorkspaceAccess,
+  requireRole,
 };
